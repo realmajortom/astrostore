@@ -1,4 +1,4 @@
-/* eslint-env node, mongo */
+// flex
 const mongoose = require('mongoose');
 
 const bookmarkSchema = new mongoose.Schema({
@@ -19,10 +19,10 @@ const bookmarkSchema = new mongoose.Schema({
     required: true,
     maxLength: 24
   },
-  bookmarkFav: { type: Boolean, default: false },
+  bookmarkFav: {type: Boolean, default: false},
   bookmarkMakeDate: Number
 },
-  { timestamps: true }
+  {timestamps: true}
 );
 
 module.exports = mongoose.model('Bookmark', bookmarkSchema);

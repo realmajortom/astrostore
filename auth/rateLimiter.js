@@ -1,6 +1,6 @@
+// flex
 const rateLimit = require('express-rate-limit');
 const mongoStore = require('rate-limit-mongo');
-
 
 // 5 registration/day/IP
 const regOp = rateLimit({

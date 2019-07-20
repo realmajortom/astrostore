@@ -1,4 +1,4 @@
-/* eslint-env node, mongo */
+// flex
 const mongoose = require('mongoose');
 
 function safety(val) {

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "cloud bookmark manager",
   "main": "server.js",
+  "engines": {
+    "node": ">=12.6.0"
+  },
   "scripts": {
     "start": "node server.js"
   },
