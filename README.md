@@ -8,6 +8,7 @@ I designed the app so I could access my bookmarks from any browser at any time, 
 
 ## Upcoming Features & Fixes
 - Optimize css for mobile use. Navbar and collection gallery should just need a couple small adjustments to their flexbox configurations.
+- Center heart buttons in non-chromium browsers
 - Rearrangement of collections and bookmarks.
 - Allow users to delete their accounts and data.
 - Night mode  
