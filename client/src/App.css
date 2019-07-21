@@ -1,0 +1,305 @@
+
+/************ app body ************/
+.appContainer {
+  font-family: "Lato" , sans-serif;
+  padding: 2vh 4vw;
+}
+.navbar {
+  width: 1100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.appTitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 38pt;
+  text-decoration: none;
+  color: #313131;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.tinyLogo {
+  height: 12px;
+  width: 12px;
+}
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(3600deg);}
+}
+.mainLogo {
+  height: 45px;
+  width: 45px;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+}
+.mainLogo:hover {
+  cursor: pointer;
+  animation-name: spin;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+
+/************ landing text ************/
+.astronaut {
+  margin-top: 20vh;
+  height: 600px;
+  width: 600px;
+}
+
+
+/************ list container ************/
+.listContainer {
+  height: 90vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+}
+.favTitle {
+  margin: 25px 0 5px 0;
+  font-size: 15pt;
+  user-select: none;
+  white-space: nowrap;
+}
+
+
+/************ collection container ************/
+.collectionContainer {
+  margin: 25px 50px 15px 0;
+}
+.collTitleContainer {
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+.collTitleText {
+  font-size: 15pt;
+  user-select: none;
+  white-space: nowrap;
+}
+.collTitleContainer .controls {
+  visibility: hidden;
+  transition-property: visibility;
+  transition-delay: .2s;
+}
+.collTitleContainer:hover .controls {
+  visibility: visible;
+}
+
+/**** list actions ****/
+.editButton{
+  border: none;
+  background-color: transparent;
+  color: #9b9b9b;
+  font-size: 11pt;
+  margin: 0 15px;
+  padding: 0;
+  user-select: none;
+}
+.editButton:hover {
+  color: #2de0c6;
+  cursor: pointer;
+}
+.plusButton {
+  border: none;
+  background-color: transparent;
+  color: #9b9b9b;
+  font-size: 15pt;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+}
+.plusButton:hover {
+  color: #2de0c6;
+  cursor: pointer;
+}
+
+/***** bookmarks *****/
+.bookList {
+  margin-top: 5px;
+}
+.bookRow {
+  cursor: default;
+  width: 320px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+.borderCont {
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding: 8px;
+}
+.titleColumn {
+  width: 250px;
+}
+.bookTitle {
+  text-decoration: none;
+  color: #1d1d1d;
+  font-size: 11pt;
+}
+.bookTitle:hover {
+  color:#7e17ea;
+}
+.bookRow .controls {
+  visibility: hidden;
+  transition-property: visibility;
+  transition-delay: .2s;
+}
+.bookRow:hover .controls{
+  visibility: visible;
+}
+.favColumn {
+  padding-right: 2px;
+  color: #8b8b8b;
+  font-size: 10pt;
+}
+.editCol {
+  border: none;
+}
+
+/***** hearts *****/
+.heart-checkbox {
+    box-sizing: border-box;
+    width: 8px;
+    height: 8px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background-color: #eee;
+    transform: rotate(135deg);
+    transition: all .1s;
+    cursor: default;
+}
+.heart-checkbox::before {
+    content: "";
+    display: block;
+    position: relative;
+    right: 4px;
+    width: 8px;
+    height: 8px;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border-radius: 50%;
+    background-color: #eee;
+    transition: all .3s;
+}
+.heart-checkbox::after {
+    content: "";
+    display: block;
+    position: relative;
+    bottom: 4px;
+    width: 8px;
+    height: 8px;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border-radius: 50%;
+    background-color: #eee;
+    transition: all .3s;
+}
+.heart-checkbox.checked, .heart-checkbox.checked::before, .heart-checkbox.checked::after  {
+    background-color: #f4afff;
+}
+
+
+/************ dialogs ************/
+.modalBody {
+  font-family: "Lato", sans-serif;
+  height: 400px;
+  width: 360px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.modalSmall {
+  height: 230px;
+}
+.modalMedium {
+  height: 300px;
+}
+.modalHeader {
+  font-family: "Roboto", sans-serif;
+  color: #313131;
+  font-size: 24pt;
+  margin-top: 20px;
+}
+.modalMessage {
+  margin-bottom: 15px;
+}
+.collectionSelection {
+  margin: 12px 0 36px 0;
+  width: 80%;
+}
+.fieldWrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around;
+  flex-grow: 1;
+}
+.submitWrapper {
+  margin: 30px 0;
+}
+.deleteWrapper {
+  margin-bottom: 30px;
+}
+
+/*********** User Drawer ************/
+.paper {
+  width: 35vw;
+}
+.userContainer {
+  font-family: "Lato" , sans-serif;
+  font-size: 14pt;
+  color: #313131;
+  margin: 3vh 4vw;
+}
+.welcomeHome {
+  font-family: "Roboto", sans-serif;
+  font-size: 38pt;
+  margin-bottom: 4vh;
+}
+.userForm {
+  height: 15vh;
+  border-top: 1px solid #eee;
+  margin-top: 30px;
+  padding: 1vh 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+}
+.passForm {
+  height: 30vh;
+  border-top: 1px solid #eee;
+  margin-top: 1.5vh;
+  padding: 1.5vh 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+}
+.deleteWrapperUser {
+  border-top: 1px solid #eee;
+  margin-top: 1.5vh;
+  padding: 40px 0;
+}
+.footer {
+  font-size: 11pt;
+}
+.footerLink {
+  text-decoration: none;
+  color: #2de0c6
+}
