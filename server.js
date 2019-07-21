@@ -11,31 +11,13 @@ const bodyParser = require('body-parser');
 const limiter = require('./auth/rateLimiter');
 
 const app = express();
-const API_PORT = process.env.API_PORT || 8080;
-app.use(express.static(path.join(__dirname, 'client')));
+const API_PORT = process.env.API_PORT || 3999;
+app.use(express.static(path.join(__dirname, 'build')));
 
+
+// middlewarez
+app.use(cors());
 app.use(helmet());
-
-// CORS middlewarez
-app.options('*', cors());
-
-const whitelist = ['https://astrostore.io', 'https://round-fusion-247201.appspot.com'];
-
-const corsOptions = {
-  origin: function(origin, callback) {
-    if (whitelist.indexOf(origin !== -1) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  methods: ['GET', 'POST']
-};
-
-app.use(cors(corsOptions));
-
-// more middlewarez
 app.use(logger('short'));
 app.use(bodyParser.json());
 app.use(passport.initialize());
@@ -63,8 +45,9 @@ require('./routes/dataRoutes')(app);
 
 // catch-all
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'client', 'index.html'))
+  res.sendFile(path.join(__dirname, 'build', 'index.html'))
 });
+
 
 app.listen(API_PORT, () => console.log('Patiently listening for gentle whispers in the wind'));
 
