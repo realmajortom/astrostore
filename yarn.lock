@@ -235,8 +235,8 @@ detect-libc@^1.0.2:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
   integrity sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
 
-diff@~3.0.5:
-  version "3.0.5"
+diff@^3.5.0:
+  version "3.5.0"
   resolved "https://registry.yarnpkg.com/diff/"
   integrity sha1-NDJ2MI7Jkbe8giZ+1VvBQR+XFmY=
 
@@ -1282,7 +1282,7 @@ vows@*:
   resolved "https://registry.yarnpkg.com/vows/-/vows-0.8.2.tgz#691f79ab26ccde80ba726dde9fec8e73d6bcf2eb"
   integrity sha1-aR95qybM3oC6cm3en+yOc9a88us=
   dependencies:
-    diff ">=3.0.5"
+    diff ">=3.5.0"
     eyes "~0.1.6"
     glob "^7.1.2"
 
