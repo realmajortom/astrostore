@@ -1,5 +1,5 @@
 import React from 'react';
-import { AwesomeButton as Button } from "react-awesome-button";
+import {AwesomeButton as Button} from "react-awesome-button";
 import "./theme/button-theme.css"
 
 
@@ -7,7 +7,7 @@ const ChunkyButton = (props) => {
   return (
     <Button
       type={props.type}
-      size='large'
+      size={props.size === 'medium' ? 'medium' : 'large'}
       onPress={props.onPress}
       ripple
     >

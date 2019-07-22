@@ -21,7 +21,7 @@ function Login() {
     }
 
     else {
-      axios.post('http://localhost:3999/user/login',
+      axios.post('https://astrostore.io/api/user/login',
         {username: user, password: pass})
         .then(res => {
           if (res.data.success === true) {
@@ -56,7 +56,7 @@ function Login() {
           aria-labelledby="Login Form"
           elevation={24}
           onKeyPress={(e) => e.charCode === 13 && loginUser()}
-          transitionDuration={100}
+          transitionDuration={250}
         >
 
           <div className='modalHeader'>Login</div>

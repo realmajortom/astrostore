@@ -17,14 +17,14 @@ function Collection(props) {
 
   const toggleList = () => {
     setVis(!isVis)
-    axios.post(`http://localhost:3999/collection/collapse/${id}`,
+    axios.post(`https://astrostore.io/api/collapse/${id}`,
       {isVis: !isVis},
       {headers: {Authorization: `JWT ${token}`}}
     );
   };
 
   const deleteBookmark = (parent, date, id) => {
-    axios.post('http://localhost:3999/bookmark/delete',
+    axios.post('https://astrostore.io/api/bookmark/delete',
       {parentId: parent, bookmarkMakeDate: date},
       {headers: {Authorization: `JWT ${token}`}}
     ).then(res => {
@@ -45,19 +45,22 @@ function Collection(props) {
       <div className="collTitleContainer">
 
         <div className="collTitleText" onClick={() => toggleList()}>{title}</div>
-        <div className='controls'>
-          <EditCollection
-            title={title}
-            id={id}
-            liftUpdate={setTitle}
+
+        {isVis &&
+          <div className='controls'>
+            <EditCollection
+              title={title}
+              id={id}
+              liftUpdate={setTitle}
             />
-        </div>
-        <div className='controls'>
-          <AddBookmark id={id} pTitle={title} />
-        </div>
+          </div>}
+        {isVis &&
+          <div className='controls'>
+            <AddBookmark id={id} pTitle={title} />
+          </div>}
 
       </div>
-      
+
 
       <div className="bookList">
         {isVis

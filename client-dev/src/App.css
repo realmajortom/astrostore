@@ -2,13 +2,29 @@
 /************ app body ************/
 .appContainer {
   font-family: "Lato" , sans-serif;
-  padding: 2vh 4vw;
+  padding: .1px 0 0 50px;
 }
 .navbar {
-  width: 1100px;
+  width: 90vw;
+  padding: 10px 50px 0 0;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-start;
+  position: fixed;
+}
+.nav-home {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 700px;
+}
+.nav-landing {
+  display: flex;
+  flex-flow: row;
+  width: 320px;
+  align-items: baseline;
   justify-content: space-between;
 }
 .appTitle {
@@ -17,8 +33,12 @@
   text-decoration: none;
   color: #313131;
   margin: 0;
+  margin-right: 4vw;
   padding: 0;
-  cursor: pointer;
+  width: 248px;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: none;
 }
 .tinyLogo {
   height: 12px;
@@ -43,18 +63,18 @@
 }
 
 
-/************ landing text ************/
+/************ landing intro ************/
 .astronaut {
-  margin-top: 20vh;
-  height: 600px;
-  width: 600px;
+  margin-top: calc(100vh - 80vh);
+  height: 70vh;
+  width: 70vh;
 }
-
 
 /************ list container ************/
 .listContainer {
-  height: 90vh;
+  height: calc(100vh - 71px);
   margin: 0;
+  margin-top: 61px;
   padding: 0;
   display: flex;
   flex-flow: column wrap;
@@ -135,7 +155,6 @@
   border-bottom: 1px solid #eee;
   display: flex;
   flex-direction: row;
-  align-items: baseline;
   padding: 8px;
 }
 .titleColumn {
@@ -211,13 +230,17 @@
 .heart-checkbox.checked, .heart-checkbox.checked::before, .heart-checkbox.checked::after  {
     background-color: #f4afff;
 }
-
+.favColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 
 /************ dialogs ************/
 .modalBody {
   font-family: "Lato", sans-serif;
   height: 400px;
-  width: 360px;
+  min-width: 340px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -302,4 +325,115 @@
 .footerLink {
   text-decoration: none;
   color: #2de0c6
+}
+
+
+/****** mobile adjustments *******/
+@media (max-width: 887px) {
+  .navbar {
+    flex-direction: column;
+    align-items: baseline;
+  }
+  .nav-home {
+    width: 525px;
+  }
+  .appTitle {
+    font-size: 22pt;
+  }
+  .listContainer {
+    height: calc(100vh - 91px);
+    margin-top: 81px;
+  }
+  .astronaut {
+    margin-top: 44vh;
+    height: 80vw;
+    width: 80vw;
+  }
+  .paper {
+    width: 60vw;
+  }
+  .welcomeHome {
+    font-size: 22pt;
+  }
+}
+
+@media (max-width: 592px) {
+  .paper {
+    width: 80vw;
+  }
+  .navbar {
+    width: 335px;
+    padding-right: 0;
+    z-index: 1000;
+    background-color: #fff;
+    position: unset;
+  }
+  .nav-home {
+    flex-wrap: wrap;
+    width: 335px;
+    height: 80px;
+  }
+  .nav-landing {
+    flex-direction: column;
+    height: 90px;
+    margin-top: 15px;
+  }
+  .listContainer {
+    height: 100%;
+    margin-top: 0px;
+    padding-bottom: 200px;
+  }
+  .collectionContainer {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+  .collTitleContainer .controls {
+    visibility: visible;
+  }
+  .bookRow .controls {
+    visibility: visible;
+  }
+}
+
+@media (max-width: 410px) {
+  .appContainer {
+    padding-left: 20px;
+  }
+  .listContainer {
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 374px) {
+  .navbar {
+    width: calc(100vw - 40px);
+    min-width: 305px;
+  }
+  .nav-home {
+    width: calc(100vw - 40px);
+    min-width: 305px;
+  }
+  .listContainer {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 345px) {
+  .appContainer {
+    padding-left: 10px;
+  }
+  .modalBody {
+    min-width: 300px;
+  }
+  .editButton {
+    margin-right: 0;
+  }
+  .bookRow {
+    width: 310px;
+  }
+  .borderCont {
+    padding-right: 0;
+    width: 240px;
+  }
+
 }

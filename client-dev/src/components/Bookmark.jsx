@@ -18,7 +18,7 @@ function Bookmark(props) {
   const [fav, setFav] = useState(book.bookmarkFav);
 
   const favChange = () => {
-    axios.post('http://localhost:3999/bookmark/fav',
+    axios.post('https://astrostore.io/api/bookmark/fav',
       {p: parent, d: date, f: !fav},
       {headers: {Authorization: `JWT ${token}`}}
     );
@@ -30,7 +30,7 @@ function Bookmark(props) {
   };
 
   const updateBookmark = (someTitle, someUrl) => {
-    axios.post('http://localhost:3999/bookmark/update',
+    axios.post('https://astrostore.io/api/bookmark/update',
       {p: parent, d: date, t: someTitle, u: someUrl},
       {headers: {Authorization: `JWT ${token}`}}
     ).then(res => {

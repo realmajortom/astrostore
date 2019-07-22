@@ -23,7 +23,7 @@ function Register() {
       setMessage("Passwords don't match")
     }
     else {
-      axios.post('http://localhost:3999/user/register',
+      axios.post('https://astrostore.io/api/user/register',
         {username: user, password: pass2}).then(res => {
           if (res.data.success === true) {
             localStorage.setItem('JWT', res.data.token);
@@ -57,7 +57,7 @@ function Register() {
           aria-labelledby="Registration Form"
           elevation={24}
           onKeyPress={(e) => e.charCode === 13 && register()}
-          transitionDuration={100}
+          transitionDuration={250}
         >
           <div className="modalHeader">Register</div>
           <div className="modalMessage" >{message}</div>

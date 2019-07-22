@@ -1,6 +1,6 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
-import { ReactComponent as Logo } from '../astronaut.svg';
+import {Redirect} from 'react-router-dom';
+import {ReactComponent as Logo} from '../astronaut.svg';
 import Register from './Register';
 import Login from './Login';
 import Nav from './Nav';
@@ -14,11 +14,14 @@ function Landing() {
   if (user == null || token == null) {
     return (
       <div className='appContainer' >
-        <Nav className="navbar">
+
+        <Nav local='nav-landing'>
           <Register />
           <Login />
         </Nav>
+
         <Logo className="astronaut" />
+
       </div>
     )
   }

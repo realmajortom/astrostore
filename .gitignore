@@ -1,4 +1,8 @@
 node_modules
 
+.env
+server-dev.js
+
+
 app.yaml
 app.flex.yaml

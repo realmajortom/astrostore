@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useReducer} from 'react';
 import {Redirect} from 'react-router-dom';
+import MediaQuery from 'react-responsive';
 import axios from 'axios';
 
 import {ReactComponent as Logo} from '../icon.svg';
@@ -109,7 +110,7 @@ function Home() {
   useEffect(() => {
     const token = localStorage.getItem('JWT');
     if (token !== null) {
-      axios.get('http://localhost:3999/collection/all', {
+      axios.get('https://astrostore.io/api/collection/all', {
         headers: {Authorization: `JWT ${token}`}
       })
         .then(res => {
@@ -152,22 +153,37 @@ function Home() {
           <Token.Provider value={state.token}>
             <Ddl.Provider value={state.ddl}>
 
-              <Nav>
+              <Nav local='nav-home'>
+
                 <AddCollection />
+
                 <AddBookmark
                   buttonType="primary"
                   pTitle={''}
                   id={''}
                 />
+
                 <ChunkyButton
                   text={mainVis ? 'Show Favorites' : 'Show All'}
                   onPress={() => setMainVis(!mainVis)}
                   type={'pink'}
                 />
-                <Logo
-                  className="mainLogo"
-                  onClick={() => dispatch({type: 'toggleSheet'})}
-                />
+
+                <MediaQuery query="(max-width: 592px)">
+                  <ChunkyButton
+                    text='User'
+                    onPress={() => dispatch({type: 'toggleSheet'})}
+                    type={'pink'}
+                  />
+                </MediaQuery>
+
+                <MediaQuery query="(min-width: 593px)">
+                  <Logo
+                    className="mainLogo"
+                    onClick={() => dispatch({type: 'toggleSheet'})}
+                  />
+                </MediaQuery>
+
               </Nav>
 
               <EditUser isVis={state.sheetVis} />
@@ -184,7 +200,7 @@ function Home() {
             </Ddl.Provider>
           </Token.Provider>
         </HomeDispatch.Provider>
-      </div>
+      </div >
     );
   }
 }

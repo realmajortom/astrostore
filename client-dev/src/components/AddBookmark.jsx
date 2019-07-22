@@ -20,7 +20,7 @@ const useStyles = makeStyles({
       background: 'transparent'
     }
   }
-})
+});
 
 function AddBookmark(props) {
   const classes = useStyles();
@@ -34,7 +34,7 @@ function AddBookmark(props) {
   const [url, setUrl] = useState('');
 
   const addBookmark = () => {
-    axios.post('http://localhost:3999/bookmark/create',
+    axios.post('https://astrostore.io/api/bookmark/create',
       {bookmarkTitle: title, bookmarkUrl: url, parentId: parentId},
       {headers: {Authorization: `JWT ${token}`}}
     ).then(res => {
@@ -67,7 +67,7 @@ function AddBookmark(props) {
         aria-labelledby="New Bookmark Form"
         elevation={24}
         onKeyPress={(e) => e.charCode === 13 && addBookmark()}
-        transitionDuration={100}
+        transitionDuration={250}
       >
 
         <div className="modalHeader">New Bookmark</div>

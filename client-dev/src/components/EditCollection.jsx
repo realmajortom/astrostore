@@ -15,7 +15,7 @@ function EditCollection(props) {
   const [isVis, setVis] = useState(false);
 
   const sendUpdate = () => {
-    axios.post(`http://localhost:3999/collection/update/${id}`,
+    axios.post(`https://astrostore.io/api/collection/update/${id}`,
       {title: title},
       {headers: {Authorization: `JWT ${token}`}}
     ).then(res => {
@@ -31,7 +31,7 @@ function EditCollection(props) {
 
   const sendDelete = () => {
     if (window.confirm('Permanently delete this collection and its bookmarks?')) {
-      axios.post(`http://localhost:3999/collection/delete/${id}`,
+      axios.post(`https://astrostore.io/api/collection/delete/${id}`,
         {headers: {Authorization: `JWT ${token}`}}
       ).then(res => {
         if (res.data.success) {
@@ -55,14 +55,14 @@ function EditCollection(props) {
         aria-labelledby='Edit Collection Form'
         elevation={24}
         onKeyPress={(e) => e.charCode === 13 && sendUpdate()}
-        transitionDuration={100}
+        transitionDuration={250}
       >
 
         <div className="modalHeader">Edit Collection</div>
 
         <div className='fieldWrapper'>
           <TextField
-            label="Edit Title:"
+            label="Collection Title:"
             value={title}
             placeholder={props.title}
             onChange={(e) => setTitle(e.target.value)}

@@ -29,7 +29,9 @@ const MaterialInput = withStyles(theme => ({
 const useStyles = makeStyles({
   formControl: {
     margin: 0,
-    width: 288
+    width: '90%',
+    maxWidth: 288,
+    minWidth: 240
   },
   label: {
     fontFamily: ['"Lato"', 'sans-serif'],

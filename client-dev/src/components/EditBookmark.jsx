@@ -28,14 +28,14 @@ function EditBookmark(props) {
         aria-labelledby='Edit Bookmark Form'
         elevation={24}
         onKeyPress={(e) => e.charCode === 13 && sendUpdate()}
-        transitionDuration={100}
+        transitionDuration={250}
       >
 
         <div className="modalHeader">Edit Bookmark</div>
 
         <div className='fieldWrapper'>
           <TextField
-            label="Bookmark Nickname"
+            label="Bookmark Title"
             value={title}
             placeholder={props.title}
             onChange={(e) => setTitle(e.target.value)}

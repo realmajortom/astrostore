@@ -27,11 +27,11 @@
   --loading-transition-speed: 6s;
   --loading-transition-end-speed: 0.3s;
   --transform-speed: 0.15s;
-  --button-primary-color: #2de0c6;
+  --button-primary-color: #00c2cc;
   --button-primary-color-dark: #00c2cc;
   --button-primary-color-light: #ffffff;
-  --button-primary-color-hover: #2de0c6;
-  --button-primary-color-active: #00c2cc;
+  --button-primary-color-hover: #00c2cc;
+  --button-primary-color-active: #2de0c6;
   --button-primary-border: none;
   --button-secondary-color: #7e17ea; /* main  */
   --button-secondary-color-dark: #2a006a; /* border */
@@ -207,8 +207,8 @@ button.aws-btn .aws-btn__wrapper {
     transition: transform calc(var(--transform-speed) * 0.8) ease-out, background calc(var(--transform-speed) * 0.8) ease-out;
     transition: transform calc(var(--transform-speed) * 0.8) ease-out, background calc(var(--transform-speed) * 0.8) ease-out, -webkit-transform calc(var(--transform-speed) * 0.8) ease-out; }
 
-  
-  
+
+
   .aws-btn--primary .aws-btn__wrapper:before {
     background: var(--button-primary-color-dark); }
   .aws-btn--primary .aws-btn__content {
