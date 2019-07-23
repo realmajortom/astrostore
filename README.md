@@ -14,10 +14,15 @@ I designed the app so I could access my bookmarks from any browser at any time, 
 ## Technologies
 - React w/ React Hooks.
   - I initially built the app with class components, but updated it with hooks to improve data congruency between dropdowns, collection lists, and favorites list.  
-- Node server w/ Express framework  
+- Node server w/ Express framework
+- REST APIs
 - MongoDB  
 - Google Cloud App Engine  
 
 ## Design Credits
-  - Buttons: react-awesome-button
-  - Dialogs & Input Fields: Google Material UI
+  - Buttons: react-awesome-button 
+        https://github.com/rcaferati/react-awesome-button
+  - Dialogs & Input Fields: Material UI 
+        https://material-ui.com/
+  - Icons: Purchased licenses through FlatIcon. 
+        https://www.flaticon.com/packs/space-90
