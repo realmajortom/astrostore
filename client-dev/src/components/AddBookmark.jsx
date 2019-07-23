@@ -75,13 +75,13 @@ function AddBookmark(props) {
         <div className='fieldWrapper'>
           <TextField
             label='Bookmark Title'
-            placeholder='The Cat in The Hat'
+            placeholder='How To Act Human'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <TextField
             label='Bookmark Url'
-            placeholder='cat.in.hat'
+            placeholder='definitelyhuman.com'
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />

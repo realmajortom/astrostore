@@ -65,7 +65,7 @@ function Register() {
           <div className='fieldWrapper'>
             <TextField
               label='Username'
-              placeholder='Sam I Am'
+              placeholder='REALHUMAN'
               value={user}
               onChange={(e) => setUser(e.target.value)}
             />
@@ -73,7 +73,7 @@ function Register() {
             <TextField
               type='password'
               label='Password'
-              placeholder='greenEggs&Ham'
+              placeholder='REALHUMANSDOMINATE-EARTH!'
               value={pass1}
               onChange={(e) => setPass1(e.target.value)}
             />
@@ -81,7 +81,7 @@ function Register() {
             <TextField
               type="password"
               label="Confirm Password"
-              placeholder="greenEggs&Ham"
+              placeholder="REALHUMANSDOMINATE-EARTH!"
               value={pass2}
               onChange={(e) => setPass2(e.target.value)}
             />

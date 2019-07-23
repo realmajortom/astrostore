@@ -17,7 +17,7 @@ function EditUser(props) {
   const [currentPass, setCurrentPass] = useState('');
   const [newPass1, setNewPass1] = useState('');
   const [newPass2, setNewPass2] = useState('');
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState("How are you, fellow human?")
 
   const logout = () => {
     axios.get('https://astrostore.io/api/user/logout',

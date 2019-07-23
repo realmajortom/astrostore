@@ -51,7 +51,7 @@ function AddCollection() {
         <div className='fieldWrapper'>
           <TextField
             label="Collection Title"
-            placeholder="Sarah Cynthia Sylvia Stout..."
+            placeholder="Realistic Human Outfits"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
