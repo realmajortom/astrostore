@@ -17,7 +17,7 @@ function Collection(props) {
 
   const toggleList = () => {
     setVis(!isVis)
-    axios.post(`https://astrostore.io/api/collapse/${id}`,
+    axios.post(`https://astrostore.io/api/collection/collapse/${id}`,
       {isVis: !isVis},
       {headers: {Authorization: `JWT ${token}`}}
     )
