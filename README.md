@@ -7,9 +7,7 @@ Firstly, this repo contains the app as hosted on Google's App Engine. Full devel
 I designed the app so I could access my bookmarks from any browser at any time, without depending one browser's proprietary sync tools.  The app doesn't require any information from users besides a unique username and password--which is encrypted and securely stored in a Mongo NoSQL database.  
 
 ## Upcoming Features & Fixes
-- Optimize css for mobile use. Navbar and collection gallery should just need a couple small adjustments to their flexbox configurations.
-- Center heart buttons in non-chromium browsers
-- Rearrangement of collections and bookmarks.
+- Allow rearrangement of collections and bookmarks.
 - Allow users to delete their accounts and data.
 - Night mode  
 
