@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "start-dev": "concurrently \"nodemon server-dev\" \"cd client-dev && yarn start\""
+    "start-dev": "concurrently \"nodemon server-dev\" \"cd client-dev && yarn start\"",
+    "start-beta": "concurrently \"nodemon server-dev\" \"cd client-dev/build && serve -s\""
   },
   "repository": "https://github.com/tggir1/astrostore.git",
   "author": "Thomas Girgenti <thomasg@disroot.org>",
