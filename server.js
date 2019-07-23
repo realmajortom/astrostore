@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 const limiter = require('./auth/rateLimiter');
 
 const app = express();
-const API_PORT = process.env.API_PORT || 3999;
+const API_PORT = process.env.API_PORT;
 app.use(express.static(path.join(__dirname, 'build')));
 
 
