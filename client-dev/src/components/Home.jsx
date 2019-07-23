@@ -39,7 +39,9 @@ const reducer = (state, action) => {
     case 'updateC':
       let colls = state.collections;
       let cIndex = colls.findIndex(c => c._id === action.id)
-      colls[cIndex].collectionTitle = action.title
+      action.sub === 'title'
+        ? colls[cIndex].collectionTitle = action.title
+        : colls[cIndex].isVis = !state.collections[cIndex].isVis
       return {...state, collections: colls};
 
 

@@ -20,7 +20,7 @@ function EditCollection(props) {
       {headers: {Authorization: `JWT ${token}`}}
     ).then(res => {
       if (res.data.success) {
-        dispatch({type: 'updateC', id: id, title: title});
+        dispatch({type: 'updateC', sub: 'title', id: id, title: title});
         props.liftUpdate(title);
         setVis(false);
       } else {

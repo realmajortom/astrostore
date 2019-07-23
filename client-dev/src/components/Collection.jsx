@@ -20,7 +20,8 @@ function Collection(props) {
     axios.post(`https://astrostore.io/api/collapse/${id}`,
       {isVis: !isVis},
       {headers: {Authorization: `JWT ${token}`}}
-    );
+    )
+    dispatch({type: 'updateC', sub: 'vis', id: id})
   };
 
   const deleteBookmark = (parent, date, id) => {
