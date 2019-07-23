@@ -337,15 +337,12 @@
   .nav-home {
     width: 525px;
   }
-  .appTitle {
-    font-size: 22pt;
-  }
   .listContainer {
     height: calc(100vh - 91px);
     margin-top: 81px;
   }
   .astronaut {
-    margin-top: 44vh;
+    margin-top: 15vh;
     height: 80vw;
     width: 80vw;
   }
