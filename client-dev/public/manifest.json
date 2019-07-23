@@ -3,12 +3,17 @@
   "name": "AstroStore Bookmark",
   "icons": [
     {
-      "src": "/astronaut-192.png",
+      "src": "favicon.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/astronaut-512.png",
+      "src": "apple-naut.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "astronaut-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
