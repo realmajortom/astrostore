@@ -338,8 +338,8 @@
     width: 525px;
   }
   .listContainer {
-    height: calc(100vh - 91px);
-    margin-top: 81px;
+    height: calc(100vh - 111px);
+    margin-top: 111px;
   }
   .astronaut {
     margin-top: 15vh;
@@ -368,7 +368,7 @@
   .nav-home {
     flex-wrap: wrap;
     width: 335px;
-    height: 80px;
+    height: 100px;
   }
   .nav-landing {
     flex-direction: column;
@@ -389,6 +389,19 @@
   }
   .bookRow .controls {
     visibility: visible;
+  }
+  .bookTitle {
+    font-size: 13pt;
+  }
+  .collTitleText {
+    font-size: 16pt;
+  }
+  .plusButton {
+    font-size: 22pt;
+    color: #c7c7c7;
+  }
+  .editButton {
+    font-size: 12pt;
   }
 }
 
