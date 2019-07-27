@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
-import axios from 'axios';
-import Dialog from '@material-ui/core/Dialog';
-import ChunkyButton from './ChunkyButton';
-import {TextField} from './Inputs';
+import axios from 'axios/index';
+import Dialog from '@material-ui/core/Dialog/index';
+import ChunkyButton from '../inputs/ChunkyButton';
+import {TextField} from '../inputs/MaterialInputs';
 
 
 function Register() {
-  const [isVis, setVis] = useState(false);
+  const [vis, setVis] = useState(false);
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState('');
   const [user, setUser] = useState('');
@@ -51,7 +51,7 @@ function Register() {
         />
 
         <Dialog
-          open={isVis}
+          open={vis}
           onClose={() => setVis(false)}
           classes={{paper: "modalBody"}}
           aria-labelledby="Registration Form"

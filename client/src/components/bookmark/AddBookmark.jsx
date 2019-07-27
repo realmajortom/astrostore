@@ -1,11 +1,11 @@
 import React, {useState, useContext} from 'react';
-import axios from 'axios';
-import {HomeDispatch, Token, Ddl} from './Home';
-import {makeStyles} from '@material-ui/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import Dialog from '@material-ui/core/Dialog';
-import {Dropdown, TextField} from './Inputs';
-import ChunkyButton from './ChunkyButton';
+import axios from 'axios/index';
+import {HomeDispatch, Token, Ddl} from '../home/Home';
+import {makeStyles} from '@material-ui/styles/index';
+import MenuItem from '@material-ui/core/MenuItem/index';
+import Dialog from '@material-ui/core/Dialog/index';
+import {Dropdown, TextField} from '../inputs/MaterialInputs';
+import ChunkyButton from '../inputs/ChunkyButton';
 
 const useStyles = makeStyles({
   root: {
@@ -29,13 +29,13 @@ function AddBookmark(props) {
   const ddl = useContext(Ddl);
 
   const [parentId, setParent] = useState(props.id);
-  const [isVis, setVis] = useState(false);
+  const [vis, setVis] = useState(false);
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
 
   const addBookmark = () => {
     axios.post('https://astrostore.io/api/bookmark/create',
-      {bookmarkTitle: title, bookmarkUrl: url, parentId: parentId},
+      {title: title, url: url, parentId: parentId},
       {headers: {Authorization: `JWT ${token}`}}
     ).then(res => {
       if (res.data.success) {
@@ -61,7 +61,7 @@ function AddBookmark(props) {
       }
 
       <Dialog
-        open={isVis}
+        open={vis}
         onClose={() => setVis(false)}
         classes={{paper: 'modalBody'}}
         aria-labelledby="New Bookmark Form"
@@ -112,7 +112,7 @@ function AddBookmark(props) {
 
     </div>
   );
-};
+}
 
 
 export default AddBookmark;

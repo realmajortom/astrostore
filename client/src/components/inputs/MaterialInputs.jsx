@@ -1,9 +1,9 @@
 import React from 'react';
-import {makeStyles, withStyles} from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputBase from '@material-ui/core/InputBase';
-import Select from '@material-ui/core/Select';
+import {makeStyles, withStyles} from '@material-ui/core/styles/index';
+import FormControl from '@material-ui/core/FormControl/index';
+import InputLabel from '@material-ui/core/InputLabel/index';
+import InputBase from '@material-ui/core/InputBase/index';
+import Select from '@material-ui/core/Select/index';
 
 
 const MaterialInput = withStyles(theme => ({

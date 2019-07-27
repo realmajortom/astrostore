@@ -1,9 +1,9 @@
 import React, {useState, useContext} from 'react';
-import axios from 'axios';
-import {HomeDispatch, Token} from './Home';
-import Dialog from '@material-ui/core/Dialog';
-import ChunkyButton from './ChunkyButton';
-import {TextField} from './Inputs';
+import axios from 'axios/index';
+import {HomeDispatch, Token} from '../home/Home';
+import Dialog from '@material-ui/core/Dialog/index';
+import ChunkyButton from '../inputs/ChunkyButton';
+import {TextField} from '../inputs/MaterialInputs';
 
 
 function AddCollection() {
@@ -11,11 +11,11 @@ function AddCollection() {
   const token = useContext(Token);
 
   const [title, setTitle] = useState('');
-  const [isVis, setVis] = useState(false);
+  const [vis, setVis] = useState(false);
 
   const addCollection = () => {
     axios.post('https://astrostore.io/api/collection/create',
-      {collectionTitle: title},
+      {title: title},
       {headers: {Authorization: `JWT ${token}`}})
       .then(res => {
         if (res.data.success) {
@@ -31,14 +31,14 @@ function AddCollection() {
     <div>
 
       <ChunkyButton
-        onPress={() => setVis(!isVis)}
+        onPress={() => setVis(!vis)}
         text={'New Collection'}
         type={'secondary'}
       />
 
       <Dialog
-        open={isVis}
-        onClose={() => setVis(!isVis)}
+        open={vis}
+        onClose={() => setVis(!vis)}
         classes={{paper: 'modalBody modalSmall'}}
         aria-labelledby="New Collection Form"
         elevation={24}

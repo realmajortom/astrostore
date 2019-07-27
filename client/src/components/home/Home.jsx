@@ -1,18 +1,18 @@
 import React, {useState, useEffect, useReducer} from 'react';
 import {Redirect} from 'react-router-dom';
 import MediaQuery from 'react-responsive';
-import axios from 'axios';
+import axios from 'axios/index';
 
-import {ReactComponent as Logo} from '../icon.svg';
-import AddCollection from './AddCollection';
-import ChunkyButton from './ChunkyButton';
-import AddBookmark from './AddBookmark';
-import Collection from './Collection';
-import Bookmark from './Bookmark';
+import {ReactComponent as Logo} from '../../icon.svg';
+import AddCollection from '../collection/AddCollection';
+import ChunkyButton from '../inputs/ChunkyButton';
+import AddBookmark from '../bookmark/AddBookmark';
+import Collection from '../collection/Collection';
+import Bookmark from '../bookmark/Bookmark';
 import EditUser from './EditUser';
 import List from './List';
-import Nav from './Nav';
-import '../App.css';
+import Nav from '../Nav';
+import '../../App.css';
 
 
 const initialState = {
@@ -40,8 +40,8 @@ const reducer = (state, action) => {
       let colls = state.collections;
       let cIndex = colls.findIndex(c => c._id === action.id)
       action.sub === 'title'
-        ? colls[cIndex].collectionTitle = action.title
-        : colls[cIndex].isVis = !state.collections[cIndex].isVis
+        ? colls[cIndex].title = action.title
+        : colls[cIndex].vis = !state.collections[cIndex].vis;
       return {...state, collections: colls};
 
 
@@ -62,7 +62,7 @@ const reducer = (state, action) => {
       let tempColls3 = state.collections;
       const index3 = tempColls3.findIndex(c => c._id === action.pId);
       const bookIndex = tempColls3[index3].bookmarks.findIndex(b => b._id === action.payload.id);
-      const newBook = {...tempColls3[index3].bookmarks[bookIndex], bookmarkTitle: action.payload.title, bookmarkUrl: action.payload.url}
+      const newBook = {...tempColls3[index3].bookmarks[bookIndex], title: action.payload.title, url: action.payload.url};
       tempColls3[index3].bookmarks[bookIndex] = newBook;
       return {...state, collections: tempColls3};
 
@@ -80,8 +80,8 @@ const reducer = (state, action) => {
     case 'updateFave':
       let tempFaves = state.faves;
       const index4 = tempFaves.findIndex(b => b._id === action.payload.id);
-      tempFaves[index4].bookmarkTitle = action.payload.title;
-      tempFaves[index4].bookmarkUrl = action.payload.url;
+      tempFaves[index4].title = action.payload.title;
+      tempFaves[index4].url = action.payload.url;
       return {...state, faves: tempFaves};
 
 
@@ -133,10 +133,10 @@ function Home() {
       let favorites = [];
       for (let i = 0; i < state.collections.length; i++) {
         state.collections[i].bookmarks.forEach(b =>
-          b.bookmarkFav === true && favorites.push(b)
+          b.fave === true && favorites.push(b)
         );
       }
-      let ddl = state.collections.map((c) => ({id: c._id, title: c.collectionTitle}));
+      let ddl = state.collections.map((c) => ({id: c._id, title: c.title}));
       dispatch({type: 'setFaves', payload: favorites});
       dispatch({type: 'setDdl', payload: ddl});
     }
@@ -188,13 +188,11 @@ function Home() {
 
               </Nav>
 
-              <EditUser isVis={state.sheetVis} />
+              <EditUser vis={state.sheetVis} />
 
               <List mainVis={mainVis}>
                 {mainVis
-                  ? (state.collections.map(c =>
-                    <Collection c={c} key={c._id} />
-                  ))
+                  ? (state.collections.map(c => <Collection c={c} key={c._id} />))
                   : (state.faves.map(b => <Bookmark bookmark={b} key={b._id} />))
                 }
               </List>

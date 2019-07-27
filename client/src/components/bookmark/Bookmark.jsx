@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
-import axios from 'axios';
-import {Token, HomeDispatch} from './Home';
+import axios from 'axios/index';
+import {Token, HomeDispatch} from '../home/Home';
 import HeartCheckbox from 'react-heart-checkbox';
 import EditBookmark from './EditBookmark';
 
@@ -9,36 +9,36 @@ function Bookmark(props) {
   const dispatch = useContext(HomeDispatch);
   const token = useContext(Token);
   let book = props.bookmark;
-  const date = book.bookmarkMakeDate;
+  const date = book.addDate;
   const parent = book.parentId;
   const id = book._id;
 
-  const [title, setTitle] = useState(book.bookmarkTitle);
-  const [url, setUrl] = useState(book.bookmarkUrl);
-  const [fav, setFav] = useState(book.bookmarkFav);
+  const [title, setTitle] = useState(book.title);
+  const [url, setUrl] = useState(book.url);
+  const [fave, setFave] = useState(book.fave);
 
-  const favChange = () => {
-    axios.post('https://astrostore.io/api/bookmark/fav',
-      {p: parent, d: date, f: !fav},
+  const faveChange = () => {
+    axios.post('https://astrostore.io/api/bookmark/fave',
+      {parentId: parent, addDate: date, fave: !fave},
       {headers: {Authorization: `JWT ${token}`}}
     );
-    book.bookmarkFav = !book.bookmarkFav
-    fav
+    book.fave = !book.fave;
+    fave
       ? dispatch({type: 'deleteFave', id: id})
-      : dispatch({type: 'addFave', payload: book})
-    setFav(!fav);
+      : dispatch({type: 'addFave', payload: book});
+    setFave(!fave);
   };
 
   const updateBookmark = (someTitle, someUrl) => {
     axios.post('https://astrostore.io/api/bookmark/update',
-      {p: parent, d: date, t: someTitle, u: someUrl},
+      {parentId: parent, addDate: date, title: someTitle, url: someUrl},
       {headers: {Authorization: `JWT ${token}`}}
     ).then(res => {
       if (res.data.success === true) {
         setTitle(someTitle);
         setUrl(someUrl);
         dispatch({type: 'updateBook', pId: parent, payload: {title: someTitle, url: someUrl, id: id}});
-        if (fav) {
+        if (fave) {
           dispatch({type: 'updateFave', payload: {id: id, title: someTitle, url: someUrl}});
         }
       };
@@ -64,8 +64,8 @@ function Bookmark(props) {
         </div>
         <div className="favColumn">
           <HeartCheckbox
-            checked={fav}
-            onClick={() => favChange()}
+            checked={fave}
+            onClick={() => faveChange()}
             className="heart"
           />
         </div>

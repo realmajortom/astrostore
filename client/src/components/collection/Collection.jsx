@@ -1,9 +1,9 @@
-import React, {useState, useContext} from 'react';
-import axios from 'axios';
-import {Token, HomeDispatch} from './Home';
+import React, {useContext, useState} from 'react';
+import axios from 'axios/index';
+import {HomeDispatch, Token} from '../home/Home';
 import EditCollection from './EditCollection';
-import AddBookmark from './AddBookmark';
-import Bookmark from './Bookmark';
+import AddBookmark from '../bookmark/AddBookmark';
+import Bookmark from '../bookmark/Bookmark';
 
 
 function Collection(props) {
@@ -12,31 +12,30 @@ function Collection(props) {
   let bookmarks = props.c.bookmarks;
   const id = props.c._id;
 
-  const [title, setTitle] = useState(props.c.collectionTitle);
-  const [isVis, setVis] = useState(props.c.isVis);
+  const [title, setTitle] = useState(props.c.title);
+  const [vis, setVis] = useState(props.c.vis);
 
   const toggleList = () => {
-    setVis(!isVis)
+    setVis(!vis);
     axios.post(`https://astrostore.io/api/collection/collapse/${id}`,
-      {isVis: !isVis},
+      {vis: !vis},
       {headers: {Authorization: `JWT ${token}`}}
-    )
+    );
     dispatch({type: 'updateC', sub: 'vis', id: id})
   };
 
   const deleteBookmark = (parent, date, id) => {
     axios.post('https://astrostore.io/api/bookmark/delete',
-      {parentId: parent, bookmarkMakeDate: date},
+      {parentId: parent, addDate: date},
       {headers: {Authorization: `JWT ${token}`}}
     ).then(res => {
       if (res.data.success) {
         dispatch({type: 'deleteFave', id: id});
-        dispatch({type: 'deleteBook', pId: parent, id: id})
-        const newMarks = bookmarks.filter(b => b._id !== id);
-        bookmarks = newMarks;
+        dispatch({type: 'deleteBook', pId: parent, id: id});
+        bookmarks = bookmarks.filter(b => b._id !== id);
       } else {
         window.alert(res.data.message);
-      };
+      }
     });
   };
 
@@ -47,7 +46,7 @@ function Collection(props) {
 
         <div className="collTitleText" onClick={() => toggleList()}>{title}</div>
 
-        {isVis &&
+        {vis &&
           <div className='controls'>
             <EditCollection
               title={title}
@@ -55,7 +54,7 @@ function Collection(props) {
               liftUpdate={setTitle}
             />
           </div>}
-        {isVis &&
+        {vis &&
           <div className='controls'>
             <AddBookmark id={id} pTitle={title} />
           </div>}
@@ -64,7 +63,7 @@ function Collection(props) {
 
 
       <div className="bookList">
-        {isVis
+        {vis
           && bookmarks.map(b =>
             <Bookmark
               bookmark={b}

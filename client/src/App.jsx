@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import Landing from './components/Landing';
-import Login from './components/Login';
-import Home from './components/Home';
+import Landing from './components/landing/Landing';
+import Login from './components/landing/Login';
+import Home from './components/home/Home';
 
 const App = () => (
   <div className="App">

@@ -1,11 +1,11 @@
 import React, {useState, useContext} from 'react';
-import axios from 'axios';
+import axios from 'axios/index';
 import {HomeDispatch, Token} from './Home';
-import Drawer from '@material-ui/core/Drawer';
+import Drawer from '@material-ui/core/Drawer/index';
 import MediaQuery from 'react-responsive';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import ChunkyButton from './ChunkyButton';
-import {TextField} from './Inputs';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer/index';
+import ChunkyButton from '../inputs/ChunkyButton';
+import {TextField} from '../inputs/MaterialInputs';
 
 
 function EditUser(props) {
@@ -29,7 +29,7 @@ function EditUser(props) {
           dispatch({type: 'redirect'})
         } else {
           setMessage('Yikes! Looks like there was an issue logging out.')
-        };
+        }
       });
   };
 
@@ -90,7 +90,7 @@ function EditUser(props) {
       <MediaQuery query="(max-width: 887px)" >
         <SwipeableDrawer
           anchor='right'
-          open={props.isVis}
+          open={props.vis}
           onClose={() => dispatch({type: 'toggleSheet'})}
           classes={{paper: 'paper'}}
           elevation={24}
@@ -169,7 +169,7 @@ function EditUser(props) {
       <MediaQuery query="(min-width: 888px)" >
         <Drawer
           anchor='right'
-          open={props.isVis}
+          open={props.vis}
           onClose={() => dispatch({type: 'toggleSheet'})}
           classes={{paper: 'paper'}}
           elevation={24}

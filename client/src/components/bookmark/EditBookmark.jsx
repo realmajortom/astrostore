@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
-import Dialog from '@material-ui/core/Dialog';
-import ChunkyButton from './ChunkyButton'
-import {TextField} from './Inputs';
+import Dialog from '@material-ui/core/Dialog/index';
+import ChunkyButton from '../inputs/ChunkyButton'
+import {TextField} from '../inputs/MaterialInputs';
 
 
 function EditBookmark(props) {
   const [title, setTitle] = useState(props.title);
   const [url, setUrl] = useState(props.url);
-  const [isVis, setVis] = useState(false);
+  const [vis, setVis] = useState(false);
 
   const sendUpdate = () => {
     props.update(title, url);
     setVis(false);
-  }
+  };
 
   return (
     <div>
@@ -22,7 +22,7 @@ function EditBookmark(props) {
         </button>
 
       <Dialog
-        open={isVis}
+        open={vis}
         onClose={() => setVis(false)}
         classes={{paper: 'modalBody'}}
         aria-labelledby='Edit Bookmark Form'

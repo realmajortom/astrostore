@@ -1,9 +1,9 @@
 import React, {useState, useContext} from 'react';
-import axios from 'axios';
-import {Token, HomeDispatch} from './Home';
-import Dialog from '@material-ui/core/Dialog';
-import ChunkyButton from './ChunkyButton';
-import {TextField} from './Inputs';
+import axios from 'axios/index';
+import {Token, HomeDispatch} from '../home/Home';
+import Dialog from '@material-ui/core/Dialog/index';
+import ChunkyButton from '../inputs/ChunkyButton';
+import {TextField} from '../inputs/MaterialInputs';
 
 
 function EditCollection(props) {
@@ -12,7 +12,7 @@ function EditCollection(props) {
   const id = props.id;
 
   const [title, setTitle] = useState(props.title);
-  const [isVis, setVis] = useState(false);
+  const [vis, setVis] = useState(false);
 
   const sendUpdate = () => {
     axios.post(`https://astrostore.io/api/collection/update/${id}`,
@@ -49,7 +49,7 @@ function EditCollection(props) {
       <button onClick={() => setVis(true)} className="editButton">Edit</button>
 
       <Dialog
-        open={isVis}
+        open={vis}
         onClose={() => setVis(false)}
         classes={{paper: 'modalBody modalMedium'}}
         aria-labelledby='Edit Collection Form'
