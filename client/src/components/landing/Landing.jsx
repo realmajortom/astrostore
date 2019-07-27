@@ -3,7 +3,7 @@ import {Redirect} from 'react-router-dom';
 import {ReactComponent as Logo} from '../../astronaut.svg';
 import Register from './Register';
 import Login from './Login';
-import Nav from '../Nav';
+import Nav from '../home/Nav';
 
 
 function Landing() {

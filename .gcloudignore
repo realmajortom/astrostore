@@ -1,20 +1,16 @@
 
-.gcloudignore
-
-.git
-.gitignore
-
-node_modules/
-node_modules
-
 cert/
-cert
 
-client-dev/
-client-dev
+client/
 
-server-dev.js
+.DS_Store
 
 .env
 
-.DS_Store
+.gcloudignore
+
+.git
+
+.gitignore
+
+node_modules/

@@ -1,4 +1,3 @@
-// flex
 const mongoose = require('mongoose');
 
 function safety(val) {

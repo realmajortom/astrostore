@@ -1,4 +1,3 @@
-// flex
 const rateLimit = require('express-rate-limit');
 const mongoStore = require('rate-limit-mongo');
 
@@ -6,7 +5,7 @@ const mongoStore = require('rate-limit-mongo');
 const regOp = rateLimit({
   store: new mongoStore({
     uri: process.env.MONGO_URI,
-    collectionName: 'limiter-registration'
+    collectionName: 'reg_rate'
   }),
   windowMs: 24 * 60 * 60 * 1000,
   max: 5,
@@ -18,7 +17,7 @@ const regOp = rateLimit({
 const loginOp = rateLimit({
   store: new mongoStore({
     uri: process.env.MONGO_URI,
-    collectionName: 'limiter-login'
+    collectionName: 'login_rate'
   }),
   windowMs: 60 * 60 * 1000,
   max: 10,
@@ -30,9 +29,9 @@ const loginOp = rateLimit({
 const collectionOp = rateLimit({
   store: new mongoStore({
     uri: process.env.MONGO_URI,
-    collectionName: 'limiter-collections'
+    collectionName: 'collection_rate'
   }),
-  windowMS: 60 * 60 * 10000,
+  windowMS: 60 * 60 * 1000,
   max: 100,
   headers: false
 })
@@ -42,7 +41,7 @@ const collectionOp = rateLimit({
 const bookmarkOp = rateLimit({
   store: new mongoStore({
     uri: process.env.MONGO_URI,
-    collectionName: 'limiter-bookmarks'
+    collectionName: 'bookmark_rate'
   }),
   windowMs: 60 * 60 * 1000,
   max: 200,

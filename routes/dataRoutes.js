@@ -1,4 +1,3 @@
-// flex
 const passport = require('passport');
 const Bookmark = require('../models/bookmarkModel');
 const Collection = require('../models/collectionModel');
@@ -9,11 +8,9 @@ module.exports = (app) => {
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
       Collection.find({'owner': req.user.id}, (err, collections) => {
-        if (err) {
-          res.send({message: 'Could not find collections'});
-        } else {
-          res.json(collections);
-        };
+        err
+          ? res.status(400).send({message: 'Could not find collections'})
+          : res.status(200).json(collections);
       });
     });
 
@@ -23,7 +20,7 @@ module.exports = (app) => {
       Collection.create(
         {
           owner: req.user.id,
-          collectionTitle: req.body.collectionTitle
+          title: req.body.title
         }, (err, collection) =>
           err
             ? res.status(400).send({message: 'Could not create collection', success: false})
@@ -43,7 +40,7 @@ module.exports = (app) => {
   app.post('/api/collection/update/:id',
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
-      Collection.findByIdAndUpdate(req.params.id, {collectionTitle: req.body.title}, err =>
+      Collection.findByIdAndUpdate(req.params.id, {title: req.body.title}, err =>
         err
           ? res.status(400).send({message: 'Could not update collection', success: false})
           : res.status(200).send({title: req.body.title, success: true})
@@ -53,7 +50,7 @@ module.exports = (app) => {
   app.post('/api/collection/collapse/:id',
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
-      Collection.findByIdAndUpdate(req.params.id, {isVis: req.body.isVis}, err =>
+      Collection.findByIdAndUpdate(req.params.id, {vis: req.body.vis}, err =>
         err
           ? res.status(400).send({message: 'Error updating collapse state', success: false})
           : res.status(200).send({message: 'Successfully updated collapse sate', success: true})
@@ -64,10 +61,10 @@ module.exports = (app) => {
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
       const newBookmark = new Bookmark({
-        bookmarkTitle: req.body.bookmarkTitle,
-        bookmarkUrl: req.body.bookmarkUrl,
+        title: req.body.title,
+        url: req.body.url,
         parentId: req.body.parentId,
-        bookmarkMakeDate: new Date()
+        addDate: new Date()
       });
       Collection.findByIdAndUpdate(req.body.parentId, {$push: {bookmarks: newBookmark}}, {new: true}, (err, collection) =>
         err
@@ -79,10 +76,10 @@ module.exports = (app) => {
   app.post('/api/bookmark/update',
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
-      Collection.findOneAndUpdate({'_id': req.body.p, 'bookmarks.bookmarkMakeDate': req.body.d}, {
+      Collection.findOneAndUpdate({'_id': req.body.parentId, 'bookmarks.addDate': req.body.addDate}, {
         $set: {
-          'bookmarks.$.bookmarkTitle': req.body.t,
-          'bookmarks.$.bookmarkUrl': req.body.u
+          'bookmarks.$.title': req.body.title,
+          'bookmarks.$.url': req.body.url
         }
       }, err =>
           err
@@ -91,17 +88,17 @@ module.exports = (app) => {
       );
     });
 
-  app.post('/api/bookmark/fav',
+  app.post('/api/bookmark/fave',
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
-      Collection.findOneAndUpdate({'_id': req.body.p, 'bookmarks.bookmarkMakeDate': req.body.d}, {
+      Collection.findOneAndUpdate({'_id': req.body.parentId, 'bookmarks.addDate': req.body.addDate}, {
         $set: {
-          'bookmarks.$.bookmarkFav': req.body.f
+          'bookmarks.$.fave': req.body.fave
         }
       }, err =>
           err
             ? res.status(400).send({message: 'Could not update favorite state', success: false})
-            : res.status(200).json({message: 'Succesfully updated bookmark!', success: true})
+            : res.status(200).json({message: 'Successfully updated bookmark!', success: true})
       );
     });
 
@@ -110,12 +107,12 @@ module.exports = (app) => {
     (req, res) => {
       Collection.findOneAndUpdate({'_id': req.body.parentId}, {
         $pull: {
-          'bookmarks': {'bookmarkMakeDate': req.body.bookmarkMakeDate}
+          'bookmarks': {'addDate': req.body.addDate}
         }
       }, err =>
           err
             ? res.status(400).send({message: 'Could not delete bookmark', success: false})
-            : res.status(200).json({message: 'Bookmark succesfully deleted', success: true})
+            : res.status(200).json({message: 'Bookmark successfully deleted', success: true})
       );
     });
 };

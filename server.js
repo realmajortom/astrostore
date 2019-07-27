@@ -1,4 +1,3 @@
-// flex
 require('dotenv').config();
 const cors = require('cors');
 const path = require('path');
@@ -48,7 +47,6 @@ app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 });
 
-
-app.listen(API_PORT, () => console.log('Patiently listening for gentle whispers in the wind'));
+app.listen(API_PORT, () => console.log('Server live and listening'));
 
 module.exports = app;

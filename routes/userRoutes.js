@@ -1,4 +1,3 @@
-// flex
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -11,20 +10,27 @@ module.exports = (app) => {
   app.post('/api/user/login',
     (req, res, next) => {
       passport.authenticate('login', (err, user, info) => {
-        if (err) {return res.json({error: err})};
-        if (!user) {return res.json({message: info.message});};
-        req.logIn(user, () => {
-          User.findOne({username: req.body.username}).then((user) => {
-            const token = jwt.sign({
-              sub: user.id,
-              exp: Math.floor(Date.now() / 1000) + (3600 * 168)
-            }, process.env.SECRET);
-            return res.json({
-              success: true,
-              message: 'user found & logged in',
-              token: token
+        if (err) {return res.status(400).send({message: 'Auth error. Please report here: https://github.com/tggir1/astrostore/issues'})};
+        if (!user) {return res.status(400).send({message: info.message})};
+        req.logIn(user, (err) => {
+          if (err) {return res.status(400).send({message: 'Login error. Please report here: https://github.com/tggir1/astrostore/issues'})}
+          else {
+            User.findOne({username: req.body.username}).then((err, user) => {
+              if (err) {
+                res.status(400).send({message: 'Database error. Please report here: https://github.com/tggir1/astrostore/issues'});
+              }
+              else {
+                const token = jwt.sign({
+                  sub: user.id,
+                  exp: Math.floor(Date.now() / 1000) + (3600 * 168)
+                }, process.env.SECRET);
+                return res.status(200).json({
+                  success: true,
+                  token: token
+                });
+              }
             });
-          });
+          }
         });
       })(req, res, next);
     });
@@ -32,18 +38,18 @@ module.exports = (app) => {
   app.post('/api/user/updatePassword',
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
-      bcrypt.compare(req.body.currentPass, req.user.password).then(response => {
-        if (response == false) {
-          res.send({message: 'Error. Password not updated.', success: false})
+      bcrypt.compare(req.body.currentPass, req.user.password).then(match => {
+        if (match == false) {
+          res.status(401).send({message: 'Passwords must match', success: false})
         } else {
           bcrypt.hash(req.body.newPass, 12, (err, hash) => {
             if (err) {
-              res.send({message: 'Error. Password not updated.', success: true})
+              res.status(400).send({message: 'Error saving new password. Password not updated.', success: false})
             } else {
               User.findByIdAndUpdate(req.user.id, {password: hash}, err =>
                 err
-                  ? res.send({message: 'Error, Password not updated.', success: false})
-                  : res.send({message: 'Update successful!', success: true})
+                  ? res.status(400).send({message: 'Database error. Password not updated.', success: false})
+                  : res.status(200).send({message: 'Update successful!', success: true})
               );
             };
           });
@@ -57,11 +63,9 @@ module.exports = (app) => {
     (req, res) => {
       User.findByIdAndUpdate(req.user.id,
         {username: req.body.newName}, (err, user) => {
-          if (err) {
-            res.send({message: 'Error updating username', success: false});
-          } else {
-            res.send({message: 'Updated username!', success: true});
-          };
+          err
+            ? res.status(400).send({message: 'Error updating username', success: false})
+            : res.status(200).send({message: 'Update successful!', success: true})
         }
       );
     }
@@ -70,7 +74,7 @@ module.exports = (app) => {
   app.get('/api/user/logout',
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
-      res.send({success: true});
+      res.status(200).send({success: true});
     }
   );
 
@@ -78,9 +82,9 @@ module.exports = (app) => {
     (req, res) => {
       User.findOne({username: req.body.username}, (err, user) => {
         if (err) {
-          res.send({error: err})
+          res.status(400).send({message: 'Error adding user to database. Please try again.', success: false})
         } else if (user) {
-          res.send({message: 'username taken', success: false});
+          res.status(400).send({message: 'Username not available', success: false});
         } else {
           bcrypt.hash(req.body.password, 12).then(hash => {
             User.create({
@@ -88,7 +92,7 @@ module.exports = (app) => {
               password: hash
             }, (err, user) => {
               if (err) {
-                res.send({message: 'error creating user', success: false});
+                res.status(400).send({message: 'error creating user', success: false});
               } else {
                 req.logIn(user, () => {
                   User.findOne({username: user.username}).then(user => {
@@ -101,15 +105,18 @@ module.exports = (app) => {
                       collectionTitle: 'Unsorted'
                     }, err =>
                         err
-                          ? res.send({message: 'user created, please continue to log in form', success: false})
-                          : res.send({success: true, token: token})
+                          ? res.status(400).send({message: 'user created, please continue to log in form', success: false})
+                          : res.status(200).send({success: true, token: token})
                     );
                   });
                 });
-              };
+              }
             });
-          });
+          }).catch(err => res.status(400).send({message: 'Error saving password. Please try again', success: false}));
         };
       });
-    });
+    }
+  );
+
+
 };

@@ -1,11 +1,14 @@
-.env
-
-cert
-
-server-dev.js
-
-node_modules
 
 app.flex.yaml
 
+cert/
+
+.DS_store
+
+.env
+
 .gcloudignore
+
+.idea
+
+node_modules

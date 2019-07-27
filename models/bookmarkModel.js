@@ -1,14 +1,13 @@
-// flex
 const mongoose = require('mongoose');
 
 const bookmarkSchema = new mongoose.Schema({
-  bookmarkTitle: {
+  title: {
     type: String,
     required: true,
     minLength: 1,
     maxLength: 50
   },
-  bookmarkUrl: {
+  url: {
     type: String,
     required: true,
     minLength: 1,
@@ -19,8 +18,8 @@ const bookmarkSchema = new mongoose.Schema({
     required: true,
     maxLength: 24
   },
-  bookmarkFav: {type: Boolean, default: false},
-  bookmarkMakeDate: Number
+  isFave: {type: Boolean, default: false},
+  addDate: Number
 },
   {timestamps: true}
 );

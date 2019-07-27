@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReactComponent as Logo} from '../icon.svg';
+import {ReactComponent as Logo} from '../../icon.svg';
 
 function Nav(props) {
   return (

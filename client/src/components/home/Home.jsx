@@ -11,7 +11,7 @@ import Collection from '../collection/Collection';
 import Bookmark from '../bookmark/Bookmark';
 import EditUser from './EditUser';
 import List from './List';
-import Nav from '../Nav';
+import Nav from './Nav';
 import '../../App.css';
 
 

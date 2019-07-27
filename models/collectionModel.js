@@ -1,4 +1,3 @@
-// flex
 const mongoose = require('mongoose');
 
 function arrayLimit(val) {
@@ -11,15 +10,19 @@ const collectionSchema = new mongoose.Schema({
     required: true,
     maxlength: 24
   },
-  collectionTitle: {
+  title: {
     type: String,
     required: true,
     minlength: 1,
     maxlength: 50
   },
-  isVis: {
+  vis: {
     type: Boolean,
     default: true
+  },
+  sequence: {
+    type: Number,
+    default: 1
   },
   bookmarks: {
     type: Array,
