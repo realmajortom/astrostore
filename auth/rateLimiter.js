@@ -34,7 +34,7 @@ const collectionOp = rateLimit({
   windowMS: 60 * 60 * 1000,
   max: 100,
   headers: false
-})
+});
 
 
 // 200 bookmark ops/hr/IP

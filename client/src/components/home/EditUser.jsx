@@ -17,20 +17,12 @@ function EditUser(props) {
   const [currentPass, setCurrentPass] = useState('');
   const [newPass1, setNewPass1] = useState('');
   const [newPass2, setNewPass2] = useState('');
-  const [message, setMessage] = useState("How are you, fellow human?")
+  const [message, setMessage] = useState("How are you, fellow human?");
 
   const logout = () => {
-    axios.get('https://astrostore.io/api/user/logout',
-      {headers: {Authorization: `JWT ${token}`}})
-      .then(res => {
-        if (res.data.success) {
-          localStorage.removeItem('JWT');
-          localStorage.removeItem('user');
-          dispatch({type: 'redirect'})
-        } else {
-          setMessage('Yikes! Looks like there was an issue logging out.')
-        }
-      });
+    localStorage.removeItem('JWT');
+    localStorage.removeItem('user');
+    dispatch({type: 'redirect'});
   };
 
   const updateUsername = () => {
@@ -52,7 +44,7 @@ function EditUser(props) {
             setNewUser('');
           }
         });
-    };
+    }
   };
 
   const updatePassword = () => {
@@ -76,9 +68,9 @@ function EditUser(props) {
             dispatch({type: 'redirect'});
           } else {
             setMessage(res.data.message);
-          };
+          }
         });
-    };
+    }
   };
 
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);

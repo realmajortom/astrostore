@@ -1,11 +1,7 @@
 
 app.flex.yaml
 
-cert/
-
 .DS_store
-
-.env
 
 .gcloudignore
 

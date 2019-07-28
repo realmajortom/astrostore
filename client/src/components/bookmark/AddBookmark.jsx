@@ -43,7 +43,7 @@ function AddBookmark(props) {
         setVis(false);
       } else {
         window.alert(res.data.message);
-      };
+      }
     });
   };
 
@@ -75,13 +75,13 @@ function AddBookmark(props) {
         <div className='fieldWrapper'>
           <TextField
             label='Bookmark Title'
-            placeholder='How To Act Human'
+            placeholder='Top 10 Steak Preparation Techniques'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <TextField
             label='Bookmark Url'
-            placeholder='definitelyhuman.com'
+            placeholder='humansarefood-notfriends.com'
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />

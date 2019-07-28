@@ -31,9 +31,9 @@ function Register() {
             setSuccess(true);
           } else {
             setMessage(res.data.message)
-          };
+          }
         });
-    };
+    }
   };
 
   if (success === true) {
@@ -65,7 +65,7 @@ function Register() {
           <div className='fieldWrapper'>
             <TextField
               label='Username'
-              placeholder='REALHUMAN'
+              placeholder='REALHUMAN1'
               value={user}
               onChange={(e) => setUser(e.target.value)}
             />
@@ -73,7 +73,7 @@ function Register() {
             <TextField
               type='password'
               label='Password'
-              placeholder='REALHUMANSDOMINATE-EARTH!'
+              placeholder='ROBOTS_UNITE'
               value={pass1}
               onChange={(e) => setPass1(e.target.value)}
             />
@@ -81,7 +81,7 @@ function Register() {
             <TextField
               type="password"
               label="Confirm Password"
-              placeholder="REALHUMANSDOMINATE-EARTH!"
+              placeholder="ROBOTS_UNITE"
               value={pass2}
               onChange={(e) => setPass2(e.target.value)}
             />
@@ -99,7 +99,7 @@ function Register() {
 
       </div>
     );
-  };
-};
+  }
+}
 
 export default Register;

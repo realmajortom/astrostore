@@ -65,7 +65,7 @@ function Login() {
           <div className='fieldWrapper'>
             <TextField
               label='Username'
-              placeholder='NOTROBOT'
+              placeholder='REALHUMAN1'
               value={user}
               onChange={(e) => setUser(e.target.value)}
             />
@@ -73,7 +73,7 @@ function Login() {
             <TextField
               type='password'
               label='Password'
-              placeholder='VERYHUMANPASSWORD'
+              placeholder='ROBOTS_UNITE'
               value={pass}
               onChange={(e) => setPass(e.target.value)}
             />
@@ -90,7 +90,7 @@ function Login() {
         </Dialog>
       </div>
     );
-  };
-};
+  }
+}
 
 export default Login

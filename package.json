@@ -7,9 +7,7 @@
     "node": ">=12.6.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "test-on-live": "concurrently \\\"nodemon server-dev\\\" \\\"cd client && yarn start\\\"",
-    "test-on-local": "concurrently \"nodemon server-dev\" \"cd client-tester && yarn start\""
+    "start": "node server.js"
   },
   "repository": "https://github.com/tggir1/astrostore.git",
   "author": "Thomas Girgenti <thomasg@disroot.org>",

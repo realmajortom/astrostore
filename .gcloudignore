@@ -1,13 +1,8 @@
 
-cert/
 
 client/
 
 .DS_Store
-
-.env
-
-.gcloudignore
 
 .git
 
