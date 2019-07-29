@@ -8,27 +8,22 @@ import Nav from '../home/Nav';
 
 function Landing() {
 
-  const user = localStorage.getItem('user');
-  const token = localStorage.getItem('JWT');
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('JWT');
 
-  if (user == null || token == null) {
-    return (
-      <div className='appContainer' >
+    if (user == null || token == null) {
+        return (
+            <div className='appContainer'>
 
-        <Nav local='nav-landing'>
-          <Register />
-          <Login />
-        </Nav>
+                <Nav local='nav-landing'> <Register/> <Login/> </Nav>
 
-        <Logo className="astronaut" />
+                <Logo className="astronaut"/>
 
-      </div>
-    )
-  }
-
-  else {
-    return <Redirect to={`/${user}`} />
-  }
+            </div>
+        );
+    } else {
+        return <Redirect to={`/${user}`}/>;
+    }
 }
 
 export default Landing;

@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 function safety(val) {
   return !(/[^\w\d]/i.test(val));
-};
-
+}
 const userSchema = new mongoose.Schema({
   username: {
     type: String,

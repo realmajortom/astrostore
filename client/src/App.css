@@ -1,9 +1,9 @@
-
 /************ app body ************/
 .appContainer {
-    font-family: "Lato" , sans-serif;
+    font-family: "Lato", sans-serif;
     padding: 1px 0 0 50px;
 }
+
 .navbar {
     width: 90vw;
     padding: 10px 50px 0 0;
@@ -13,6 +13,7 @@
     justify-content: flex-start;
     position: fixed;
 }
+
 .nav-home {
     display: flex;
     flex-direction: row;
@@ -20,6 +21,7 @@
     justify-content: space-between;
     width: 700px;
 }
+
 .nav-landing {
     display: flex;
     flex-flow: row;
@@ -27,6 +29,7 @@
     align-items: baseline;
     justify-content: space-between;
 }
+
 .appTitle {
     font-family: "Roboto", sans-serif;
     font-size: 38pt;
@@ -39,14 +42,21 @@
     align-items: baseline;
     flex-wrap: nowrap;
 }
+
 .tinyLogo {
     height: 12px;
     width: 12px;
 }
+
 @keyframes spin {
-    from {transform:rotate(0deg);}
-    to {transform:rotate(3600deg);}
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(3600deg);
+    }
 }
+
 .mainLogo {
     height: 45px;
     width: 45px;
@@ -54,6 +64,7 @@
     margin: 0;
     border-radius: 50%;
 }
+
 .mainLogo:hover {
     cursor: pointer;
     animation-name: spin;
@@ -78,6 +89,7 @@
     flex-flow: column wrap;
     align-content: flex-start;
 }
+
 .favTitle {
     margin: 25px 0 5px 0;
     font-size: 15pt;
@@ -90,28 +102,32 @@
 .collectionContainer {
     margin: 25px 50px 15px 0;
 }
+
 .collTitleContainer {
     width: 250px;
     display: flex;
     flex-direction: row;
     align-items: baseline;
 }
+
 .collTitleText {
     font-size: 15pt;
     user-select: none;
     white-space: nowrap;
 }
+
 .collTitleContainer .controls {
     visibility: hidden;
     transition-property: visibility;
     transition-delay: .2s;
 }
+
 .collTitleContainer:hover .controls {
     visibility: visible;
 }
 
 /**** list actions ****/
-.editButton{
+.editButton {
     border: none;
     background-color: transparent;
     color: #9b9b9b;
@@ -120,10 +136,12 @@
     padding: 0;
     user-select: none;
 }
+
 .editButton:hover {
     color: #2de0c6;
     cursor: pointer;
 }
+
 .plusButton {
     border: none;
     background-color: transparent;
@@ -133,6 +151,7 @@
     margin: 0;
     user-select: none;
 }
+
 .plusButton:hover {
     color: #2de0c6;
     cursor: pointer;
@@ -142,6 +161,7 @@
 .bookList {
     margin-top: 5px;
 }
+
 .bookRow {
     cursor: default;
     width: 320px;
@@ -149,36 +169,44 @@
     flex-direction: row;
     align-items: baseline;
 }
+
 .borderCont {
     border-bottom: 1px solid #eee;
     display: flex;
     flex-direction: row;
     padding: 8px;
 }
+
 .titleColumn {
     width: 250px;
 }
+
 .bookTitle {
     text-decoration: none;
     color: #1d1d1d;
     font-size: 11pt;
 }
+
 .bookTitle:hover {
-    color:#7e17ea;
+    color: #7e17ea;
 }
+
 .bookRow .controls {
     visibility: hidden;
     transition-property: visibility;
     transition-delay: .2s;
 }
-.bookRow:hover .controls{
+
+.bookRow:hover .controls {
     visibility: visible;
 }
+
 .favColumn {
     padding-right: 2px;
     color: #8b8b8b;
     font-size: 10pt;
 }
+
 .editCol {
     border: none;
 }
@@ -197,6 +225,7 @@
     transition: all .1s;
     cursor: default;
 }
+
 .heart-checkbox::before {
     content: "";
     display: block;
@@ -211,6 +240,7 @@
     background-color: #eee;
     transition: all .3s;
 }
+
 .heart-checkbox::after {
     content: "";
     display: block;
@@ -225,9 +255,11 @@
     background-color: #eee;
     transition: all .3s;
 }
-.heart-checkbox.checked, .heart-checkbox.checked::before, .heart-checkbox.checked::after  {
+
+.heart-checkbox.checked, .heart-checkbox.checked::before, .heart-checkbox.checked::after {
     background-color: #f4afff;
 }
+
 .favColumn {
     display: flex;
     flex-direction: column;
@@ -244,27 +276,33 @@
     align-items: center;
     background-color: #fff;
     border-radius: 4px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
+
 .modalSmall {
     height: 230px;
 }
+
 .modalMedium {
     height: 300px;
 }
+
 .modalHeader {
     font-family: "Roboto", sans-serif;
     color: #313131;
     font-size: 24pt;
     margin-top: 20px;
 }
+
 .modalMessage {
     margin-bottom: 15px;
 }
+
 .collectionSelection {
     margin: 12px 0 36px 0;
     width: 80%;
 }
+
 .fieldWrapper {
     display: flex;
     flex-flow: column nowrap;
@@ -272,9 +310,11 @@
     justify-content: space-around;
     flex-grow: 1;
 }
+
 .submitWrapper {
     margin: 30px 0;
 }
+
 .deleteWrapper {
     margin-bottom: 30px;
 }
@@ -283,17 +323,20 @@
 .paper {
     width: 35vw;
 }
+
 .userContainer {
-    font-family: "Lato" , sans-serif;
+    font-family: "Lato", sans-serif;
     font-size: 14pt;
     color: #313131;
     margin: 3vh 4vw;
 }
+
 .welcomeHome {
     font-family: "Roboto", sans-serif;
     font-size: 38pt;
     margin-bottom: 4vh;
 }
+
 .userForm {
     height: 15vh;
     border-top: 1px solid #eee;
@@ -303,6 +346,7 @@
     flex-flow: column nowrap;
     justify-content: space-around;
 }
+
 .passForm {
     height: 30vh;
     border-top: 1px solid #eee;
@@ -312,14 +356,17 @@
     flex-flow: column nowrap;
     justify-content: space-around;
 }
+
 .deleteWrapperUser {
     border-top: 1px solid #eee;
     margin-top: 1.5vh;
     padding: 40px 0;
 }
+
 .footer {
     font-size: 11pt;
 }
+
 .footerLink {
     text-decoration: none;
     color: #2de0c6
@@ -332,21 +379,26 @@
         flex-direction: column;
         align-items: baseline;
     }
+
     .nav-home {
         width: 525px;
     }
+
     .listContainer {
         height: calc(100vh - 111px);
         margin-top: 111px;
     }
+
     .astronaut {
         margin-top: 15vh;
         height: 80vw;
         width: 80vw;
     }
+
     .paper {
         width: 60vw;
     }
+
     .welcomeHome {
         font-size: 22pt;
     }
@@ -356,6 +408,7 @@
     .paper {
         width: 80vw;
     }
+
     .navbar {
         width: 335px;
         padding-right: 0;
@@ -363,41 +416,51 @@
         background-color: #fff;
         position: unset;
     }
+
     .nav-home {
         flex-wrap: wrap;
         width: 335px;
         height: 100px;
     }
+
     .nav-landing {
         flex-direction: column;
         height: 90px;
         margin-top: 15px;
     }
+
     .listContainer {
         height: 100%;
         margin-top: 0;
         padding-bottom: 200px;
     }
+
     .collectionContainer {
         margin-bottom: 0;
         margin-right: 0;
     }
+
     .collTitleContainer .controls {
         visibility: visible;
     }
+
     .bookRow .controls {
         visibility: visible;
     }
+
     .bookTitle {
         font-size: 13pt;
     }
+
     .collTitleText {
         font-size: 16pt;
     }
+
     .plusButton {
         font-size: 22pt;
         color: #c7c7c7;
     }
+
     .editButton {
         font-size: 12pt;
     }
@@ -407,6 +470,7 @@
     .appContainer {
         padding-left: 20px;
     }
+
     .listContainer {
         padding-left: 10px;
     }
@@ -417,10 +481,12 @@
         width: calc(100vw - 40px);
         min-width: 305px;
     }
+
     .nav-home {
         width: calc(100vw - 40px);
         min-width: 305px;
     }
+
     .listContainer {
         padding-left: 0;
     }
@@ -430,15 +496,19 @@
     .appContainer {
         padding-left: 10px;
     }
+
     .modalBody {
         min-width: 300px;
     }
+
     .editButton {
         margin-right: 0;
     }
+
     .bookRow {
         width: 310px;
     }
+
     .borderCont {
         padding-right: 0;
         width: 240px;

@@ -19,8 +19,9 @@ module.exports = (app) => {
     (req, res) => {
       Collection.create(
         {
-          owner: req.user.id,
-          title: req.body.title
+            owner: req.user.id,
+            title: req.body.title,
+            sequence: req.body.sequence
         }, (err, collection) =>
           err
             ? res.status(400).send({message: 'Could not create collection', success: false})
