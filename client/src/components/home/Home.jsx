@@ -120,7 +120,7 @@ const reducer = (state, action) => {
 export const HomeDispatch = React.createContext(null);
 export const Token = React.createContext(null);
 export const Ddl = React.createContext(null);
-export const Length = React.createContext(0);
+export const Length = React.createContext(null);
 
 function Home() {
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -173,7 +173,9 @@ function Home() {
 
                             <Nav local='nav-home'>
 
-                                <AddCollection/>
+                                <Length.Provider value={state.listLength}>
+                                    <AddCollection/>
+                                </Length.Provider>
 
                                 <AddBookmark buttonType="primary" pTitle={''} id={''}/>
 
@@ -195,16 +197,14 @@ function Home() {
 
                             <EditUser vis={state.sheetVis}/>
 
-                            <Length.Provider value={state.listLength}>
-                                <List mainVis={mainVis}>
-                                    {mainVis
-                                     ? (state.collections.map(c =>
-                                            <Collection c={c} key={c._id}/>))
-                                     : (state.faves.map(b =>
-                                            <Bookmark bookmark={b} key={b._id}/>))
-                                    }
-                                </List>
-                            </Length.Provider>
+                            <List mainVis={mainVis}>
+                                {mainVis
+                                 ? (state.collections.map(c =>
+                                        <Collection c={c} key={c._id}/>))
+                                 : (state.faves.map(b =>
+                                        <Bookmark bookmark={b} key={b._id}/>))
+                                }
+                            </List>
 
                          </Ddl.Provider>
                     </Token.Provider>
