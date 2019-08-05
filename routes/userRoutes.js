@@ -10,8 +10,9 @@ module.exports = (app) => {
   app.post('/api/user/login',
       (req, res, next) => {
         passport.authenticate('login', (err, user, info) => {
-          if (err) {return res.status(400).send({message: 'Auth error. Please report here: https://github.com/tggir1/astrostore/issues'})}
-          if (!user) {return res.status(400).send({message: info.message})}
+          if (err) {return res.status(400).json({message: 'Auth error. Please'
+                                                       + ' report here: https://github.com/tggir1/astrostore/issues'})}
+          if (!user) {return res.status(400).json({message: info.message})}
           req.logIn(user, () => {
             User.findOne({username: req.body.username}).then((user) => {
               const token = jwt.sign({
