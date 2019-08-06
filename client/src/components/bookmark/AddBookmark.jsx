@@ -86,7 +86,7 @@ function AddBookmark(props) {
                         onChange={(e) => setUrl(e.target.value)}
                     />
                     <Dropdown
-                        label={props.pTitle === null ? 'Collection' : props.pTitle}
+                        label='Collection'
                         value={parentId}
                         onChange={(e) => setParent(e.target.value)}
                     >

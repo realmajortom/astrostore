@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import axios from 'axios/index';
 import {Token, HomeDispatch} from '../home/Home';
 import Dialog from '@material-ui/core/Dialog/index';
@@ -11,8 +11,12 @@ function EditCollection(props) {
     const token = useContext(Token);
     const id = props.id;
 
-    const [title, setTitle] = useState(props.title);
+    const [title, setTitle] = useState('');
     const [vis, setVis] = useState(false);
+
+    useEffect(() => {
+        setTitle(props.title);
+    }, [props.title]);
 
     const sendUpdate = () => {
         axios.post(`https://astrostore.io/api/collection/update/${id}`,
@@ -58,18 +62,22 @@ function EditCollection(props) {
                 <div className="modalHeader">Edit Collection</div>
 
                 <div className='fieldWrapper'>
-                    <TextField label="Collection Title:" value={title}
-                               placeholder={props.title}
-                               onChange={(e) => setTitle(e.target.value)}/>
+                    <TextField label="Collection Title:"
+                               value={title}
+                               placeholder=''
+                               onChange={(e) => setTitle(e.target.value)}
+                    />
                 </div>
 
                 <div className='submitWrapper'>
-                    <ChunkyButton onPress={() => sendUpdate()} text={'Update'}
+                    <ChunkyButton onPress={() => sendUpdate()}
+                                  text={'Update'}
                                   type={'primary'}/>
                 </div>
 
                 <div className='deleteWrapper'>
-                    <ChunkyButton onPress={() => sendDelete()} text={'Delete'}
+                    <ChunkyButton onPress={() => sendDelete()}
+                                  text={'Delete'}
                                   type={'red'}/>
                 </div>
 

@@ -56,7 +56,7 @@ export function TextField(props) {
             {props.label}
         </InputLabel> <MaterialInput type={props.type}
                                      placeholder={props.placeholder}
-                                     value={props.val}
+                                     value={props.value}
                                      onChange={props.onChange}/> </FormControl>
     );
 }
