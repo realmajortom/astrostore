@@ -62,6 +62,7 @@ function Collection(props) {
                           pTitle={title}
                       />
                   </div>}
+
             </div>
 
             <div className="bookList">

@@ -16,7 +16,7 @@ const MaterialInput = withStyles(theme => ({
         fontSize: 13,
         paddingLeft: '10px',
         transition: theme.transitions.create(['border-color']),
-        fontFamily: ['"Lato"', 'sans-serif'].join(','),
+        fontFamily: ['Lato', 'sans-serif'].join(','),
         '&:focus': {
             borderRadius: 4,
             borderColor: '#80bdff',
@@ -34,9 +34,17 @@ const useStyles = makeStyles({
         minWidth: 240
     },
     label: {
-        fontFamily: ['"Lato"', 'sans-serif'],
+        fontFamily: ['Lato', 'sans-serif'],
         fontSize: 20,
         color: '#415a70!important'
+    },
+    labelDark: {
+        fontFamily: ['Lato', 'sans-serif'],
+        fontSize: 20,
+        color: '#b3b3b3!important'
+    },
+    innerDark: {
+        color: '#ffffff!important'
     },
     dropdownPaper: {
         borderRadius: 3
@@ -51,28 +59,44 @@ const useStyles = makeStyles({
 export function TextField(props) {
     const classes = useStyles();
     return (
-        <FormControl classes={{root: classes.formControl}}> <InputLabel
-            classes={{root: classes.label}} shrink={true}>
-            {props.label}
-        </InputLabel> <MaterialInput type={props.type}
-                                     placeholder={props.placeholder}
-                                     value={props.value}
-                                     onChange={props.onChange}/> </FormControl>
+        <FormControl classes={{root: classes.formControl}}>
+
+            <InputLabel classes={{root: (props.dark ? classes.labelDark : classes.label)}} shrink={true}>
+                {props.label}
+            </InputLabel>
+
+            <MaterialInput
+                type={props.type}
+                placeholder={props.placeholder}
+                value={props.value}
+                onChange={props.onChange}
+                classes={{root: (props.dark ? classes.innerDark : null)}}
+            />
+
+        </FormControl>
     );
 }
 
 export function Dropdown(props) {
     const classes = useStyles();
     return (
-        <FormControl classes={{root: classes.formControl}}> <InputLabel
-            classes={{root: classes.label}} shrink={true}>
-            {props.label}
-        </InputLabel> <Select value={props.value} onChange={props.onChange}
-                              input={<MaterialInput/>} MenuProps={{
-            transitionDuration: 50,
-            classes: {paper: classes.dropdownPaper, list: classes.dropdownList}
-        }}>
-            {props.children}
-        </Select> </FormControl>
+        <FormControl classes={{root: classes.formControl}}>
+
+            <InputLabel classes={{root: (props.dark ? classes.labelDark : classes.label)}} shrink={true}>
+                {props.label}
+            </InputLabel>
+
+            <Select
+                value={props.value}
+                onChange={props.onChange}
+                input={<MaterialInput classes={{root: (props.dark ? classes.innerDark : null)}}/>}
+                MenuProps={{
+                    transitionDuration: 50,
+                    classes: {paper: classes.dropdownPaper, list: classes.dropdownList}
+            }}>
+                {props.children}
+            </Select>
+
+        </FormControl>
     );
 }

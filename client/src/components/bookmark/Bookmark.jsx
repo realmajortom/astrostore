@@ -1,13 +1,18 @@
 import React, {useState, useContext} from 'react';
 import axios from 'axios/index';
-import {Token, HomeDispatch} from '../home/Home';
-import HeartCheckbox from 'react-heart-checkbox';
+import {Token, HomeDispatch, DarkMode} from '../home/Home';
 import EditBookmark from './EditBookmark';
 
 
+const darkStyle = {
+    backgroundColor: '#000000'
+};
+
 function Bookmark(props) {
     const dispatch = useContext(HomeDispatch);
+    const darkMode = useContext(DarkMode);
     const token = useContext(Token);
+
     let book = props.bookmark;
     const date = book.addDate;
     const parent = book.parentId;
@@ -57,24 +62,36 @@ function Bookmark(props) {
     };
 
     return (
-        <div className="bookRow">
+        <div className="bookRow" >
 
-            <div className="borderCont">
-                <div className="titleColumn">
-                    <a className="bookTitle" href={url} target="_blank"
-                       rel="noopener noreferrer">
+            <div className={"borderCont " + (darkMode && 'darkBorder')}>
+
+                <div className='titleColumn'>
+                    <a className={"bookTitle " + (darkMode && 'darkGlow')}
+                       href={url}
+                       target="_blank"
+                       rel="noopener noreferrer"
+                    >
                         {title}
                     </a>
                 </div>
-                <div className="favColumn">
-                    <HeartCheckbox checked={fave} onClick={() => faveChange()}
-                                   className="heart"/>
+
+                <div className="favColumn" onClick={() => faveChange()}>
+                    <img className={'faveIcon ' + (!fave && 'unFave ')}
+                         src={require('./moon.png')}
+                         alt='Dark Mode Indicator'
+                    />
                 </div>
+
             </div>
 
             <div className="controls">
-                <EditBookmark title={title} url={url} update={updateBookmark}
-                              delete={bookDelete}/>
+                <EditBookmark
+                    title={title}
+                    url={url}
+                    update={updateBookmark}
+                    delete={bookDelete}
+                />
             </div>
 
         </div>

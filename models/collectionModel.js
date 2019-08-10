@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
 
-function arrayLimit(val) {
-  return val.length <= 40;
-}
-
 const collectionSchema = new mongoose.Schema({
   owner: {
     type: String,
@@ -14,7 +10,7 @@ const collectionSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 1,
-    maxlength: 50
+    maxlength: 100
   },
   vis: {
     type: Boolean,
@@ -22,11 +18,10 @@ const collectionSchema = new mongoose.Schema({
   },
   sequence: {
     type: Number,
-    default: 1
+    default: 0
   },
   bookmarks: {
-    type: Array,
-    validate: arrayLimit
+    type: Array
   }
 },
   {

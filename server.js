@@ -33,7 +33,7 @@ db.on('error', console.error.bind(console, 'Database connection error'));
 app.use('/api/user/register', limiter.regOp);
 app.use('/api/user/login', limiter.loginOp);
 app.use('/api/collection', limiter.collectionOp);
-app.use('/api/boomark', limiter.bookmarkOp);
+app.use('/api/bookmark', limiter.bookmarkOp);
 
 
 // api routes

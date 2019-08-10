@@ -1,9 +1,7 @@
 import React, {useState, useEffect, useReducer} from 'react';
 import {Redirect} from 'react-router-dom';
-import MediaQuery from 'react-responsive';
 import axios from 'axios/index';
 
-import {ReactComponent as Logo} from '../../icon.svg';
 import AddCollection from '../collection/AddCollection';
 import ChunkyButton from '../inputs/ChunkyButton';
 import AddBookmark from '../bookmark/AddBookmark';
@@ -13,6 +11,7 @@ import EditUser from './EditUser';
 import List from './List';
 import Nav from './Nav';
 import '../../App.css';
+import '../../dark.css';
 
 
 const initialState = {
@@ -22,6 +21,7 @@ const initialState = {
     ddl: [],
     faves: [],
     sheetVis: false,
+    darkMode: false,
     redirect: false
 };
 
@@ -48,8 +48,8 @@ const reducer = (state, action) => {
             let colls = state.collections;
             let cIndex = colls.findIndex(c => c._id === action.id);
             action.sub === 'title'
-            ? colls[cIndex].title = action.title
-            : colls[cIndex].vis = !state.collections[cIndex].vis;
+                ? colls[cIndex].title = action.title
+                : colls[cIndex].vis = !state.collections[cIndex].vis;
             return {...state, collections: colls};
 
         case 'setLength':
@@ -103,30 +103,41 @@ const reducer = (state, action) => {
 
 
         // Other UI actions
+        case 'redirect':
+            return {...state, redirect: !state.redirect};
+
         case 'setDdl':
             return {...state, ddl: action.payload};
 
         case 'toggleSheet':
             return {...state, sheetVis: !state.sheetVis};
 
-        case 'redirect':
-            return {...state, redirect: !state.redirect};
+        case 'darkOn':
+            return {...state, darkMode: true};
+
+        case 'toggleDark':
+            localStorage.setItem('darkMode', JSON.stringify(!state.darkMode));
+            return {...state, darkMode: !state.darkMode};
 
         default:
             return state;
     }
 };
 
-export const HomeDispatch = React.createContext(null);
-export const Token = React.createContext(null);
 export const Ddl = React.createContext(null);
+export const Token = React.createContext(null);
 export const Length = React.createContext(null);
+export const DarkMode = React.createContext(null);
+export const HomeDispatch = React.createContext(null);
+
 
 function Home() {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [mainVis, setMainVis] = useState(true);
 
     useEffect(() => {
+        JSON.parse(localStorage.getItem('darkMode')) && dispatch({type: 'darkOn'});
+
         const token = localStorage.getItem('JWT');
         if (token !== null) {
             axios.get('https://astrostore.io/api/collection/all', {
@@ -166,12 +177,13 @@ function Home() {
         return <Redirect to='/'/>;
     } else {
         return (
-            <div className='appContainer'>
+            <div className={'appContainer ' + (state.darkMode && 'darkHome')}>
                 <HomeDispatch.Provider value={dispatch}>
                     <Token.Provider value={state.token}>
                         <Ddl.Provider value={state.ddl}>
+                            <DarkMode.Provider value={state.darkMode}>
 
-                            <Nav local='nav-home'>
+                            <Nav local='nav-home' dark={state.darkMode} home={true}>
 
                                 <Length.Provider value={state.listLength}>
                                     <AddCollection/>
@@ -180,18 +192,16 @@ function Home() {
                                 <AddBookmark buttonType="primary" pTitle={''} id={''}/>
 
                                 <ChunkyButton
+                                    type={state.darkMode ? 'pinkDark' : 'pink'}
                                     text={mainVis ? 'Show Favorites' : 'Show All'}
-                                    onPress={() => setMainVis(!mainVis)} type={'pink'}/>
+                                    onPress={() => setMainVis(!mainVis)}
+                                />
 
-                                <MediaQuery query="(max-width: 592px)"> <ChunkyButton
+                                <ChunkyButton
+                                    type={state.darkMode ? 'pinkDark' : 'pink'}
                                     text='User'
                                     onPress={() => dispatch({type: 'toggleSheet'})}
-                                    type={'pink'}/> </MediaQuery>
-
-                                <MediaQuery query="(min-width: 593px)"> <Logo
-                                    className="mainLogo"
-                                    onClick={() => dispatch({type: 'toggleSheet'})}/>
-                                </MediaQuery>
+                                />
 
                             </Nav>
 
@@ -206,6 +216,7 @@ function Home() {
                                 }
                             </List>
 
+                            </DarkMode.Provider>
                          </Ddl.Provider>
                     </Token.Provider>
                 </HomeDispatch.Provider>

@@ -1,4 +1,3 @@
-/* eslint-disable */
 
 .aws-btn {
     --button-default-height: 44px;
@@ -6,8 +5,6 @@
     --button-default-line-height: 24px;
     --button-default-border-radius: 2px;
     --button-default-placeholder-width: 120px;
-    --button-icon-width: 44px;
-    --button-icon-height: 44px;
     --button-small-width: 88px;
     --button-small-height: 44px;
     --button-medium-width: 115px;
@@ -24,55 +21,59 @@
     --button-raise-level: 2px;
     --button-hover-pressure: 1;
     --loading-transition-timing: ease-out;
-    --loading-transition-speed: 6s;
-    --loading-transition-end-speed: 0.3s;
     --transform-speed: 0.15s;
-    --button-primary-color: #00c2cc;
-    --button-primary-color-dark: #00c2cc;
+
+    --button-primary-color: #0aceb1;
+    --button-primary-color-dark: #096599;
     --button-primary-color-light: #ffffff;
-    --button-primary-color-hover: #00c2cc;
-    --button-primary-color-active: #2de0c6;
+    --button-primary-color-hover: #0aceb1;
+    --button-primary-color-active: #0acc89;
     --button-primary-border: none;
+
     --button-secondary-color: #7e17ea; /* main  */
     --button-secondary-color-dark: #2a006a; /* border */
     --button-secondary-color-light: #ffffff; /* text */
     --button-secondary-color-hover: #7e17ea; /* main-hover */
     --button-secondary-color-active: #5100cb; /* main-click */
     --button-secondary-border: none;
+
     --button-red-color: #f4594e;
     --button-red-color-dark: #ba160a;
     --button-red-color-light: white;
     --button-red-color-hover: #f4594e;
     --button-red-color-active: #ea1c0d;
+
     --button-pink-color: #f089ff;
     --button-pink-color-dark: #d900f9;
     --button-pink-color-light: white;
     --button-pink-color-hover: #f089ff;
     --button-pink-color-active: #e667f9;
-}
 
-/* --button-primary-color: #95d44a;
---button-primary-color-dark: #52a934;
---button-primary-color-light: #154504;
---button-primary-color-hover: #89cf35;
---button-primary-color-active: #7cbe2d;
---button-primary-border: none;
---button-secondary-color: #E8EAF6;
---button-secondary-color-dark: #8c96d2;
---button-secondary-color-light: #1d276b;
---button-secondary-color-hover: #d6d9ef;
---button-secondary-color-active: #c3c9e8;
---button-secondary-border: none;
---button-red-color: #F44336;
---button-red-color-dark: #ba160a;
---button-red-color-light: white;
---button-red-color-hover: #f3382a;
---button-red-color-active: #ea1c0d;
---button-pink-color: #ff6e88;
---button-pink-color-dark: #9d0a25;
---button-pink-color-light: white;
---button-pink-color-hover: #e53151;
---button-pink-color-active: #e53151; */
+
+    --button-primaryDark-color: #1ac8ae;
+    --button-primaryDark-color-dark: #3269d1;
+    --button-primaryDark-color-light: #000000;
+    --button-primaryDark-color-hover: #1ac8ae;
+    --button-primaryDark-color-active: #17c88b;
+
+    --button-secondaryDark-color: #8f66cc;
+    --button-secondaryDark-color-dark: #4b366b;
+    --button-secondaryDark-color-light: #ffffff;
+    --button-secondaryDark-color-hover: #8f66cc;
+    --button-secondaryDark-color-active: #871bc0;
+
+    --button-redDark-color: #f4594e;
+    --button-redDark-color-dark: #ba160a;
+    --button-redDark-color-light: #ffffff;
+    --button-redDark-color-hover: #f4594e;
+    --button-redDark-color-active: #ea1c0d;
+
+    --button-pinkDark-color: #c179cc;
+    --button-pinkDark-color-dark: #862395;
+    --button-pinkDark-color-light: #ffffff;
+    --button-pinkDark-color-hover: #c179cc;
+    --button-pinkDark-color-active: #b730cc;
+}
 
 
 .aws-btn .aws-btn__wrapper:before, .aws-btn .aws-btn__wrapper:after, .aws-btn .aws-btn__content:after, .aws-btn--progress .aws-btn__progress:before, .aws-btn--progress .aws-btn__progress:after, .aws-btn--progress .aws-btn__content:after {
@@ -230,25 +231,20 @@ button.aws-btn .aws-btn__wrapper {
 .aws-btn--primary .aws-btn__wrapper:before {
     background: var(--button-primary-color-dark);
 }
-
 .aws-btn--primary .aws-btn__content {
     background: var(--button-primary-color);
     color: var(--button-primary-color-light);
     border: var(--button-primary-border);
 }
-
 .aws-btn--primary .aws-btn__content path {
     fill: var(--button-primary-color-light);
 }
-
 .aws-btn--primary .aws-btn__wrapper:hover .aws-btn__content {
     background: var(--button-primary-color-hover);
 }
-
 .aws-btn--primary.aws-btn--active .aws-btn__wrapper .aws-btn__content {
     background: var(--button-primary-color-active);
 }
-
 .aws-btn--primary.aws-btn--progress .aws-btn__content > span {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -262,33 +258,28 @@ button.aws-btn .aws-btn__wrapper {
     -ms-flex-pack: center;
     justify-content: center;
 }
-
 .aws-btn--primary.aws-btn--progress .aws-btn__progress:before, .aws-btn--primary.aws-btn--progress .aws-btn__progress:after {
     color: var(--button-primary-color-light);
 }
 
+
 .aws-btn--secondary .aws-btn__wrapper:before {
     background: var(--button-secondary-color-dark);
 }
-
 .aws-btn--secondary .aws-btn__content {
     background: var(--button-secondary-color);
     color: var(--button-secondary-color-light);
     border: var(--button-secondary-border);
 }
-
 .aws-btn--secondary .aws-btn__content path {
     fill: var(--button-secondary-color-light);
 }
-
 .aws-btn--secondary .aws-btn__wrapper:hover .aws-btn__content {
     background: var(--button-secondary-color-hover);
 }
-
 .aws-btn--secondary.aws-btn--active .aws-btn__wrapper .aws-btn__content {
     background: var(--button-secondary-color-active);
 }
-
 .aws-btn--secondary.aws-btn--progress .aws-btn__content > span {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -302,7 +293,6 @@ button.aws-btn .aws-btn__wrapper {
     -ms-flex-pack: center;
     justify-content: center;
 }
-
 .aws-btn--secondary.aws-btn--progress .aws-btn__progress:before, .aws-btn--secondary.aws-btn--progress .aws-btn__progress:after {
     color: var(--button-secondary-color-light);
 }
@@ -311,25 +301,20 @@ button.aws-btn .aws-btn__wrapper {
 .aws-btn--pink .aws-btn__wrapper:before {
     background: var(--button-pink-color-dark);
 }
-
 .aws-btn--pink .aws-btn__content {
     background: var(--button-pink-color);
     color: var(--button-pink-color-light);
     border: var(--button-pink-border);
 }
-
 .aws-btn--pink .aws-btn__content path {
     fill: var(--button-pink-color-light);
 }
-
 .aws-btn--pink .aws-btn__wrapper:hover .aws-btn__content {
     background: var(--button-pink-color-hover);
 }
-
 .aws-btn--pink.aws-btn--active .aws-btn__wrapper .aws-btn__content {
     background: var(--button-pink-color-active);
 }
-
 .aws-btn--pink.aws-btn--progress .aws-btn__content > span {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -343,7 +328,6 @@ button.aws-btn .aws-btn__wrapper {
     -ms-flex-pack: center;
     justify-content: center;
 }
-
 .aws-btn--pink.aws-btn--progress .aws-btn__progress:before, .aws-btn--pink.aws-btn--progress .aws-btn__progress:after {
     color: var(--button-pink-color-light);
 }
@@ -352,25 +336,20 @@ button.aws-btn .aws-btn__wrapper {
 .aws-btn--red .aws-btn__wrapper:before {
     background: var(--button-red-color-dark);
 }
-
 .aws-btn--red .aws-btn__content {
     background: var(--button-red-color);
     color: var(--button-red-color-light);
     border: var(--button-red-border);
 }
-
 .aws-btn--red .aws-btn__content path {
     fill: var(--button-red-color-light);
 }
-
 .aws-btn--red .aws-btn__wrapper:hover .aws-btn__content {
     background: var(--button-red-color-hover);
 }
-
 .aws-btn--red.aws-btn--active .aws-btn__wrapper .aws-btn__content {
     background: var(--button-red-color-active);
 }
-
 .aws-btn--red.aws-btn--progress .aws-btn__content > span {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -384,35 +363,29 @@ button.aws-btn .aws-btn__wrapper {
     -ms-flex-pack: center;
     justify-content: center;
 }
-
 .aws-btn--red.aws-btn--progress .aws-btn__progress:before, .aws-btn--red.aws-btn--progress .aws-btn__progress:after {
     color: var(--button-red-color-light);
 }
 
 
-.aws-btn--link .aws-btn__wrapper:before {
-    background: var(--button-anchor-color-dark);
+.aws-btn--primaryDark .aws-btn__wrapper:before {
+    background: var(--button-primaryDark-color-dark);
 }
-
-.aws-btn--link .aws-btn__content {
-    background: var(--button-anchor-color);
-    color: var(--button-anchor-color-light);
-    border: var(--button-anchor-border);
+.aws-btn--primaryDark .aws-btn__content {
+    background: var(--button-primaryDark-color);
+    color: var(--button-primaryDark-color-light);
+    border: var(--button-primaryDark-border);
 }
-
-.aws-btn--link .aws-btn__content path {
-    fill: var(--button-anchor-color-light);
+.aws-btn--primaryDark .aws-btn__content path {
+    fill: var(--button-primaryDark-color-light);
 }
-
-.aws-btn--link .aws-btn__wrapper:hover .aws-btn__content {
-    background: var(--button-anchor-color-hover);
+.aws-btn--primaryDark .aws-btn__wrapper:hover .aws-btn__content {
+    background: var(--button-primaryDark-color-hover);
 }
-
-.aws-btn--link.aws-btn--active .aws-btn__wrapper .aws-btn__content {
-    background: var(--button-anchor-color-active);
+.aws-btn--primaryDark.aws-btn--active .aws-btn__wrapper .aws-btn__content {
+    background: var(--button-primaryDark-color-active);
 }
-
-.aws-btn--link.aws-btn--progress .aws-btn__content > span {
+.aws-btn--primaryDark.aws-btn--progress .aws-btn__content > span {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -425,34 +398,29 @@ button.aws-btn .aws-btn__wrapper {
     -ms-flex-pack: center;
     justify-content: center;
 }
-
-.aws-btn--link.aws-btn--progress .aws-btn__progress:before, .aws-btn--link.aws-btn--progress .aws-btn__progress:after {
-    color: var(--button-anchor-color-light);
+.aws-btn--primaryDark.aws-btn--progress .aws-btn__progress:before, .aws-btn--primaryDark.aws-btn--progress .aws-btn__progress:after {
+    color: var(--button-primaryDark-color-light);
 }
 
-.aws-btn--disabled .aws-btn__wrapper:before {
-    background: var(--button-disabled-color-dark);
-}
 
-.aws-btn--disabled .aws-btn__content {
-    background: var(--button-disabled-color);
-    color: var(--button-disabled-color-light);
-    border: var(--button-disabled-border);
+.aws-btn--secondaryDark .aws-btn__wrapper:before {
+    background: var(--button-secondaryDark-color-dark);
 }
-
-.aws-btn--disabled .aws-btn__content path {
-    fill: var(--button-disabled-color-light);
+.aws-btn--secondaryDark .aws-btn__content {
+    background: var(--button-secondaryDark-color);
+    color: var(--button-secondaryDark-color-light);
+    border: var(--button-secondaryDark-border);
 }
-
-.aws-btn--disabled .aws-btn__wrapper:hover .aws-btn__content {
-    background: var(--button-disabled-color-hover);
+.aws-btn--secondaryDark .aws-btn__content path {
+    fill: var(--button-secondaryDark-color-light);
 }
-
-.aws-btn--disabled.aws-btn--active .aws-btn__wrapper .aws-btn__content {
-    background: var(--button-disabled-color-active);
+.aws-btn--secondaryDark .aws-btn__wrapper:hover .aws-btn__content {
+    background: var(--button-secondaryDark-color-hover);
 }
-
-.aws-btn--disabled.aws-btn--progress .aws-btn__content > span {
+.aws-btn--secondaryDark.aws-btn--active .aws-btn__wrapper .aws-btn__content {
+    background: var(--button-secondaryDark-color-active);
+}
+.aws-btn--secondaryDark.aws-btn--progress .aws-btn__content > span {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -465,9 +433,78 @@ button.aws-btn .aws-btn__wrapper {
     -ms-flex-pack: center;
     justify-content: center;
 }
+.aws-btn--secondaryDark.aws-btn--progress .aws-btn__progress:before, .aws-btn--secondaryDark.aws-btn--progress .aws-btn__progress:after {
+    color: var(--button-secondaryDark-color-light);
+}
 
-.aws-btn--disabled.aws-btn--progress .aws-btn__progress:before, .aws-btn--disabled.aws-btn--progress .aws-btn__progress:after {
-    color: var(--button-disabled-color-light);
+
+.aws-btn--pinkDark .aws-btn__wrapper:before {
+    background: var(--button-pinkDark-color-dark);
+}
+.aws-btn--pinkDark .aws-btn__content {
+    background: var(--button-pinkDark-color);
+    color: var(--button-pinkDark-color-light);
+    border: var(--button-pinkDark-border);
+}
+.aws-btn--pinkDark .aws-btn__content path {
+    fill: var(--button-pinkDark-color-light);
+}
+.aws-btn--pinkDark .aws-btn__wrapper:hover .aws-btn__content {
+    background: var(--button-pinkDark-color-hover);
+}
+.aws-btn--pinkDark.aws-btn--active .aws-btn__wrapper .aws-btn__content {
+    background: var(--button-pinkDark-color-active);
+}
+.aws-btn--pinkDark.aws-btn--progress .aws-btn__content > span {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.aws-btn--pinkDark.aws-btn--progress .aws-btn__progress:before, .aws-btn--pinkDark.aws-btn--progress .aws-btn__progress:after {
+    color: var(--button-pinkDark-color-light);
+}
+
+
+.aws-btn--redDark .aws-btn__wrapper:before {
+    background: var(--button-redDark-color-dark);
+}
+.aws-btn--redDark .aws-btn__content {
+    background: var(--button-redDark-color);
+    color: var(--button-redDark-color-light);
+    border: var(--button-redDark-border);
+}
+.aws-btn--redDark .aws-btn__content path {
+    fill: var(--button-redDark-color-light);
+}
+.aws-btn--redDark .aws-btn__wrapper:hover .aws-btn__content {
+    background: var(--button-redDark-color-hover);
+}
+.aws-btn--redDark.aws-btn--active .aws-btn__wrapper .aws-btn__content {
+    background: var(--button-redDark-color-active);
+}
+.aws-btn--redDark.aws-btn--progress .aws-btn__content > span {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.aws-btn--redDark.aws-btn--progress .aws-btn__progress:before, .aws-btn--redDark.aws-btn--progress .aws-btn__progress:after {
+    color: var(--button-redDark-color-light);
 }
 
 .aws-btn--placeholder .aws-btn__wrapper:before {

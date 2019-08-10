@@ -1,10 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Dialog from '@material-ui/core/Dialog/index';
 import ChunkyButton from '../inputs/ChunkyButton';
 import {TextField} from '../inputs/MaterialInputs';
+import {DarkMode} from '../home/Home';
 
 
 function EditBookmark(props) {
+    const darkMode = useContext(DarkMode);
     const [title, setTitle] = useState(props.title);
     const [url, setUrl] = useState(props.url);
     const [vis, setVis] = useState(false);
@@ -27,39 +29,43 @@ function EditBookmark(props) {
             <button onClick={() => setVis(true)} className="editButton">Edit
             </button>
 
-            <Dialog open={vis} onClose={() => setVis(false)}
-                    classes={{paper: 'modalBody'}}
+            <Dialog open={vis}
+                    onClose={() => setVis(false)}
+                    classes={{paper: 'modalBody ' + (darkMode && 'darkDialog')}}
                     aria-labelledby='Edit Bookmark Form' elevation={24}
                     onKeyPress={(e) => e.charCode === 13 && sendUpdate()}
                     transitionDuration={250}>
 
-                <div className="modalHeader">Edit Bookmark</div>
+                <div className={"modalHeader " + (darkMode && 'darkBook')}>Edit Bookmark</div>
 
                 <div className='fieldWrapper'>
+
                     <TextField label="Bookmark Title"
                                value={title}
                                placeholder={props.title}
                                onChange={(e) => setTitle(e.target.value)}
+                               dark={darkMode}
                     />
 
                     <TextField label="Bookmark Url"
                                value={url}
                                placeholder={props.url}
                                onChange={(e) => setUrl(e.target.value)}
+                               dark={darkMode}
                     />
                 </div>
 
                 <div className='submitWrapper'>
                     <ChunkyButton onPress={() => sendUpdate()}
                                   text={'Update'}
-                                  type={'primary'}
+                                  type={darkMode ? 'primaryDark' : 'primary'}
                     />
                 </div>
 
                 <div className='deleteWrapper'>
                     <ChunkyButton onPress={() => props.delete()}
                                   text={'Delete'}
-                                  type={'red'}
+                                  type={darkMode ? 'redDark' : 'red'}
                     />
                 </div>
 

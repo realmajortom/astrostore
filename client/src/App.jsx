@@ -8,11 +8,13 @@ import Home from './components/home/Home';
 
 const App = () => (
     <div className="App">
-        <Router> <Switch> <Route exact path='/' component={Landing}/> <Route
-            exact path='/login' component={Login}/> <Route exact
-                                                           path="/:username"
-                                                           component={Home}/>
-        </Switch> </Router>
+        <Router>
+            <Switch>
+                <Route exact path='/' component={Landing}/>
+                <Route exact path='/login' component={Login}/>
+                <Route exact path="/:username" component={Home}/>
+            </Switch>
+        </Router>
     </div>
 );
 

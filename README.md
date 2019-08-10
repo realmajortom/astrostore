@@ -15,8 +15,7 @@ AstroStore doesn't request any identifying information from users. An account on
 - Google Cloud App Engine  
 
 ## Upcoming Features & Fixes
-- Allow rearrangement of collections and bookmarks
-- Dark mode
+- User rearrangement of collections & bookmarks
 - Capability for users to delete their accounts and all corresponding bookmarks
 
 ## Design Credits

@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 import axios from 'axios/index';
-import {HomeDispatch, Token, Ddl} from '../home/Home';
+import {HomeDispatch, Token, Ddl, DarkMode} from '../home/Home';
 import {makeStyles} from '@material-ui/styles/index';
 import MenuItem from '@material-ui/core/MenuItem/index';
 import Dialog from '@material-ui/core/Dialog/index';
@@ -24,6 +24,7 @@ const useStyles = makeStyles({
 
 function AddBookmark(props) {
     const classes = useStyles();
+    const darkMode = useContext(DarkMode);
     const dispatch = useContext(HomeDispatch);
     const token = useContext(Token);
     const ddl = useContext(Ddl);
@@ -54,7 +55,7 @@ function AddBookmark(props) {
                 ? <ChunkyButton
                     onPress={() => setVis(true)}
                     text={'New Bookmark'}
-                    type={'secondary'} />
+                    type={darkMode ? 'secondaryDark' : 'secondary'} />
                 : <button
                     onClick={() => setVis(true)}
                     className="plusButton">+</button>
@@ -63,49 +64,56 @@ function AddBookmark(props) {
             <Dialog
                 open={vis}
                 onClose={() => setVis(false)}
-                classes={{paper: 'modalBody'}}
+                classes={{paper: 'modalBody ' + (darkMode && 'darkDialog')}}
                 aria-labelledby="New Bookmark Form"
                 elevation={24}
                 onKeyPress={(e) => e.charCode === 13 && addBookmark()}
                 transitionDuration={250}
             >
 
-                <div className="modalHeader">New Bookmark</div>
+                <div className={"modalHeader " + (darkMode && 'darkBook')}>New Bookmark</div>
 
                 <div className='fieldWrapper'>
                     <TextField
                         label='Bookmark Title'
-                        placeholder='Top 10 Steak Preparation Techniques'
+                        placeholder='World Domination in 10 Quick Steps'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
+                        dark={darkMode}
                     />
+
                     <TextField
                         label='Bookmark Url'
-                        placeholder='humansarefood-notfriends.com'
+                        placeholder='wearetheworld-robots.com'
                         value={url}
                         onChange={(e) => setUrl(e.target.value)}
+                        dark={darkMode}
                     />
+
                     <Dropdown
                         label='Collection'
                         value={parentId}
                         onChange={(e) => setParent(e.target.value)}
+                        dark={darkMode}
                     >
-                        {
-                            ddl.map(c =>
-                                <MenuItem value={c.id} key={c.id} className={classes.root} >
-                                    {c.title}
-                                </MenuItem>
-                            )
-                        }
+
+                        {ddl.map(c =>
+                            <MenuItem value={c.id} key={c.id} className={classes.root} >
+                                {c.title}
+                            </MenuItem>
+                        )}
+
                     </Dropdown>
                 </div>
 
                 <div className='submitWrapper'>
+
                     <ChunkyButton
                         onPress={() => addBookmark()}
                         text={'Submit'}
-                        type={'primary'}
+                        type={darkMode ? 'primaryDark' : 'primary'}
                     />
+
                 </div>
 
             </Dialog>

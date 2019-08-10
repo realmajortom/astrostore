@@ -1,12 +1,13 @@
 import React, {useState, useContext, useEffect} from 'react';
 import axios from 'axios/index';
-import {Token, HomeDispatch} from '../home/Home';
+import {Token, HomeDispatch, DarkMode} from '../home/Home';
 import Dialog from '@material-ui/core/Dialog/index';
 import ChunkyButton from '../inputs/ChunkyButton';
 import {TextField} from '../inputs/MaterialInputs';
 
 
 function EditCollection(props) {
+    const darkMode = useContext(DarkMode);
     const dispatch = useContext(HomeDispatch);
     const token = useContext(Token);
     const id = props.id;
@@ -53,32 +54,33 @@ function EditCollection(props) {
             <button onClick={() => setVis(true)} className="editButton">Edit
             </button>
 
-            <Dialog open={vis} onClose={() => setVis(false)}
-                    classes={{paper: 'modalBody modalMedium'}}
+            <Dialog open={vis}
+                    onClose={() => setVis(false)}
+                    classes={{paper: 'modalBody modalMedium ' + (darkMode && 'darkDialog')}}
                     aria-labelledby='Edit Collection Form' elevation={24}
                     onKeyPress={(e) => e.charCode === 13 && sendUpdate()}
                     transitionDuration={250}>
 
-                <div className="modalHeader">Edit Collection</div>
+                <div className={"modalHeader " + (darkMode && 'darkBook')}>Edit Collection</div>
 
                 <div className='fieldWrapper'>
                     <TextField label="Collection Title:"
                                value={title}
                                placeholder=''
-                               onChange={(e) => setTitle(e.target.value)}
-                    />
+                               dark={darkMode}
+                               onChange={(e) => setTitle(e.target.value)} />
                 </div>
 
                 <div className='submitWrapper'>
                     <ChunkyButton onPress={() => sendUpdate()}
                                   text={'Update'}
-                                  type={'primary'}/>
+                                  type={darkMode ? 'primaryDark' : 'primary'}/>
                 </div>
 
                 <div className='deleteWrapper'>
                     <ChunkyButton onPress={() => sendDelete()}
                                   text={'Delete'}
-                                  type={'red'}/>
+                                  type={darkMode ? 'redDark' : 'red'}/>
                 </div>
 
             </Dialog>

@@ -41,37 +41,27 @@
     display: flex;
     align-items: baseline;
     flex-wrap: nowrap;
-}
-
-.tinyLogo {
-    height: 12px;
-    width: 12px;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(3600deg);
-    }
-}
-
-.mainLogo {
-    height: 45px;
-    width: 45px;
-    padding: 0;
-    margin: 0;
-    border-radius: 50%;
-}
-
-.mainLogo:hover {
     cursor: pointer;
-    animation-name: spin;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
+    user-select: none;
+}
+.tinyLogo {
+    height: 16px;
 }
 
+@keyframes swing {
+    15% {transform: translateX(7px);}
+    30% {transform: translateX(-3px);}
+    50% {transform: translateX(5px);}
+    65% {transform: translateX(0px);}
+    80% {transform: translateX(2px);}
+    90% {transform: translateX(0);}
+    100% {transform: translateX(0);}
+}
+
+.appTitle:hover {
+    animation: swing 1.25s ease;
+    animation-iteration-count: 2;
+}
 
 /************ landing intro ************/
 .astronaut {
@@ -211,60 +201,21 @@
     border: none;
 }
 
-/***** hearts *****/
-.heart-checkbox {
-    box-sizing: border-box;
-    width: 8px;
-    height: 8px;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    background-color: #eee;
-    transform: rotate(135deg);
-    transition: all .1s;
-    cursor: default;
-}
-
-.heart-checkbox::before {
-    content: "";
-    display: block;
-    position: relative;
-    right: 4px;
-    width: 8px;
-    height: 8px;
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    border-radius: 50%;
-    background-color: #eee;
-    transition: all .3s;
-}
-
-.heart-checkbox::after {
-    content: "";
-    display: block;
-    position: relative;
-    bottom: 4px;
-    width: 8px;
-    height: 8px;
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    border-radius: 50%;
-    background-color: #eee;
-    transition: all .3s;
-}
-
-.heart-checkbox.checked, .heart-checkbox.checked::before, .heart-checkbox.checked::after {
-    background-color: #f4afff;
-}
-
 .favColumn {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    cursor: pointer;
 }
+
+.faveIcon {
+    height: 14px;
+}
+
+.unFave {
+    filter: opacity(15%) grayscale(1);
+}
+
 
 /************ dialogs ************/
 .modalBody {
@@ -274,7 +225,7 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    background-color: #fff;
+    background: #1D1D1D;
     border-radius: 4px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
@@ -369,7 +320,7 @@
 
 .footerLink {
     text-decoration: none;
-    color: #2de0c6
+    color: #7e17ea
 }
 
 

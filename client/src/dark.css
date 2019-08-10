@@ -1,0 +1,29 @@
+
+.darkHome {
+	color: #b3b3b3;
+	background-color: #121212;
+}
+.darkNav {
+	color: #b3b3b3;
+}
+.darkBorder {
+	border-bottom-color: #1d1d1d;
+}
+.darkBook {
+	color: #ffffff;
+}
+.darkGlow {
+	color: #ffffff
+}
+.darkGlow:hover {
+	color: #2DE0C6;
+}
+.darkDialog {
+	background-color: #212121!important;
+}
+.darkText {
+	color: #ffffff
+}
+.darkLink {
+	color: #2de0c6;
+}
