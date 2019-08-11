@@ -2,6 +2,7 @@
 .appContainer {
     font-family: "Lato", sans-serif;
     padding: 1px 0 0 50px;
+    overflow: auto;
 }
 
 .navbar {
@@ -289,20 +290,22 @@
 }
 
 .userForm {
+    min-height: 130px;
     height: 15vh;
     border-top: 1px solid #eee;
     margin-top: 30px;
-    padding: 1vh 0;
+    padding: 3vh 0;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
 }
 
 .passForm {
+    min-height: 260px;
     height: 30vh;
     border-top: 1px solid #eee;
     margin-top: 1.5vh;
-    padding: 1.5vh 0;
+    padding: 3vh 0;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
@@ -325,20 +328,22 @@
 
 
 /****** mobile adjustments *******/
-@media (max-width: 887px) {
+@media (max-width: 1009px) {
     .navbar {
         flex-direction: column;
         align-items: baseline;
     }
-
     .nav-home {
-        width: 525px;
+        padding-top: 10px;
+        width: 650px;
     }
-
     .listContainer {
         height: calc(100vh - 111px);
         margin-top: 111px;
     }
+}
+
+@media (max-width: 887px) {
 
     .astronaut {
         margin-top: 15vh;
@@ -355,6 +360,23 @@
     }
 }
 
+@media(max-width: 710px) {
+    .navbar {
+        width: 335px;
+        padding-right: 0;
+        z-index: 1000;
+    }
+    .nav-home {
+        flex-wrap: wrap;
+        width: 335px;
+        height: 100px;
+    }
+    .listContainer {
+        height: calc(100vh - 170px);
+        margin-top: 170px;
+    }
+}
+
 @media (max-width: 592px) {
     .paper {
         width: 80vw;
@@ -364,7 +386,6 @@
         width: 335px;
         padding-right: 0;
         z-index: 1000;
-        background-color: #fff;
         position: unset;
     }
 

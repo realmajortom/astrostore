@@ -2,8 +2,6 @@ import React, {useState, useContext} from 'react';
 import axios from 'axios/index';
 import {HomeDispatch, Token, DarkMode} from './Home';
 import Drawer from '@material-ui/core/Drawer/index';
-import MediaQuery from 'react-responsive';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer/index';
 import ChunkyButton from '../inputs/ChunkyButton';
 import {TextField} from '../inputs/MaterialInputs';
 
@@ -72,238 +70,119 @@ function EditUser(props) {
         }
     };
 
-    const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
     return (
         <div>
+            <Drawer
+                anchor='right'
+                open={props.vis}
+                onClose={() => dispatch({type: 'toggleSheet'})}
+                classes={{paper: 'paper ' + (darkMode && 'darkDialog')}}
+                elevation={24}
+                transitionDuration={250}
+            >
 
-            <MediaQuery query="(max-width: 887px)"> {/*mobile drawer*/}
-                <SwipeableDrawer
-                    anchor='right'
-                    open={props.vis}
-                    onClose={() => dispatch({type: 'toggleSheet'})}
-                    classes={{paper: 'paper ' + (darkMode && 'darkDialog')}}
-                    elevation={24}
-                    transitionDuration={250}
-                    disableBackdropTransition={!iOS}
-                    disableDiscovery={iOS}
-                >
-                    <div className='userContainer'>
+                <div className='userContainer'>
 
-                        <div className={'welcomeHome ' + (darkMode && 'darkBook')}>Hello, {user}!</div>
+                    <div className={'welcomeHome ' + (darkMode && 'darkBook')}>Hello, {user}!</div>
 
-                        <div className={darkMode ? 'darkText' : null}>{message}</div>
+                    <div className={darkMode ? 'darkText' : null}>{message}</div>
 
-                        <div className='userForm'>
-                            <TextField
-                                label='New Username'
-                                placeholder={user}
-                                value={newUser}
-                                onChange={(e) => setNewUser(e.target.value)}
-                                dark={darkMode}
-                            />
-                            <ChunkyButton
-                                onPress={() => updateUsername()}
-                                text="Update Username"
-                                type={darkMode ? 'primaryDark' : 'primary'} />
-                        </div>
-
-                        <div className='passForm'>
-                            <TextField
-                                type='password'
-                                label='Current Password'
-                                placeholder=''
-                                value={currentPass}
-                                onChange={(e) => setCurrentPass(e.target.value)}
-                                dark={darkMode}
-                            />
-                            <TextField
-                                type='password'
-                                label='New Password'
-                                placeholder=''
-                                value={newPass1}
-                                onChange={(e) => setNewPass1(e.target.value)}
-                                dark={darkMode}
-                            />
-                            <TextField
-                                type='password'
-                                label='Confirm New Password'
-                                placeholder=''
-                                value={newPass2}
-                                onChange={(e) => setNewPass2(e.target.value)}
-                                dark={darkMode}
-                            />
-                            <ChunkyButton
-                                onPress={() => updatePassword()}
-                                text='Update Password'
-                                type={darkMode ? 'primaryDark' : 'primary'} />
-                        </div>
-
-                        <div className='deleteWrapperUser'>
-                            <ChunkyButton
-                                onPress={() => logout()}
-                                text='Log Out'
-                                type={darkMode ? 'redDark' : 'red'} />
-                        </div>
-
-                        <div className="footer">
-                            <p>
-                                <a
-                                    className={'footerLink ' + (darkMode && 'darkLink')}
-                                    rel='noopener noreferrer'
-                                    target='_blank'
-                                    href='https://chrome.google.com/webstore/detail/astrostore-quick-add/papafaajgpnblabjapiibkhdfjaghnhg'>
-                                    View Chrome Extension
-                                </a>
-                            </p>
-                            <p>
-                                <a
-                                    className={'footerLink ' + (darkMode && 'darkLink')}
-                                    rel='noopener noreferrer'
-                                    target='_blank'
-                                    href='https://github.com/tggir1/astrostore'>
-                                    View Source Code on Github
-                                </a>
-                            </p>
-                            <p className={darkMode ? 'darkText' : null}>
-                                I hope you're enjoying the app! If you have any questions, comments, or issues please feel free to reach out on
-                                <span> </span>
-                                <a
-                                    href='https://twitter.com/tggir1'
-                                    className={'footerLink ' + (darkMode && 'darkLink')}
-                                    rel="noopener noreferrer"
-                                    target="_blank">
-                                    Twitter
-                                </a>
-                                <span> </span>
-                                or
-                                <span> </span>
-                                <a
-                                    href='https://github.com/tggir1'
-                                    className={'footerLink ' + (darkMode && 'darkLink')}
-                                    rel="noopener noreferrer"
-                                    target="_blank">
-                                    Github
-                                </a>.
-                            </p>
-                        </div>
+                    <div className={'userForm ' + (darkMode && 'darkUserForm')}>
+                        <TextField
+                            label='New Username'
+                            placeholder={user}
+                            value={newUser}
+                            onChange={(e) => setNewUser(e.target.value)}
+                            dark={darkMode}
+                        />
+                        <ChunkyButton
+                            onPress={() => updateUsername()}
+                            text="Update Username"
+                            type={darkMode ? 'primaryDark' : 'primary'} />
                     </div>
-                </SwipeableDrawer>
-            </MediaQuery>
 
-            <MediaQuery query="(min-width: 888px)"> {/* desktop drawer */}
-                <Drawer
-                    anchor='right'
-                    open={props.vis}
-                    onClose={() => dispatch({type: 'toggleSheet'})}
-                    classes={{paper: 'paper ' + (darkMode && 'darkDialog')}}
-                    elevation={24}
-                    transitionDuration={250}
-                >
-
-                    <div className='userContainer'>
-
-                        <div className={'welcomeHome ' + (darkMode && 'darkBook')}>Hello, {user}!</div>
-
-                        <div className={darkMode ? 'darkText' : null}>{message}</div>
-
-                        <div className='userForm'>
-                            <TextField
-                                label='New Username'
-                                placeholder={user}
-                                value={newUser}
-                                onChange={(e) => setNewUser(e.target.value)}
-                                dark={darkMode}
-                            />
-                            <ChunkyButton
-                                onPress={() => updateUsername()}
-                                text="Update Username"
-                                type={darkMode ? 'primaryDark' : 'primary'} />
-                        </div>
-
-                        <div className='passForm'>
-                            <TextField
-                                type='password'
-                                label='Current Password'
-                                placeholder=''
-                                value={currentPass}
-                                onChange={(e) => setCurrentPass(e.target.value)}
-                                dark={darkMode}
-                            />
-                            <TextField
-                                type='password'
-                                label='New Password'
-                                placeholder=''
-                                value={newPass1}
-                                onChange={(e) => setNewPass1(e.target.value)}
-                                dark={darkMode}
-                            />
-                            <TextField
-                                type='password'
-                                label='Confirm New Password'
-                                placeholder=''
-                                value={newPass2}
-                                onChange={(e) => setNewPass2(e.target.value)}
-                                dark={darkMode}
-                            />
-                            <ChunkyButton
-                                onPress={() => updatePassword()}
-                                text='Update Password'
-                                type={darkMode ? 'primaryDark' : 'primary'} />
-                        </div>
-
-                        <div className='deleteWrapperUser'>
-                            <ChunkyButton
-                                onPress={() => logout()}
-                                text='Log Out'
-                                type={darkMode ? 'redDark' : 'red'} />
-                        </div>
-
-                        <div className="footer">
-                            <p>
-                                <a
-                                    className={'footerLink ' + (darkMode && 'darkLink')}
-                                    rel='noopener noreferrer'
-                                    target='_blank'
-                                    href='https://chrome.google.com/webstore/detail/astrostore-quick-add/papafaajgpnblabjapiibkhdfjaghnhg'>
-                                    View Chrome Extension
-                                </a>
-                            </p>
-                            <p>
-                                <a
-                                    className={'footerLink ' + (darkMode && 'darkLink')}
-                                    rel='noopener noreferrer'
-                                    target='_blank'
-                                    href='https://github.com/tggir1/astrostore'>
-                                    View Source Code on Github
-                                </a>
-                            </p>
-                            <p className={darkMode ? 'darkText' : null}>
-                                I hope you're enjoying the app! If you have any questions, comments, or issues please feel free to reach out on
-                                <span> </span>
-                                <a
-                                    href='https://twitter.com/tggir1'
-                                    className={'footerLink ' + (darkMode && 'darkLink')}
-                                    rel="noopener noreferrer"
-                                    target="_blank">
-                                    Twitter
-                                </a>
-                                <span> </span>
-                                or
-                                <span> </span>
-                                <a
-                                    href='https://github.com/tggir1'
-                                    className={'footerLink ' + (darkMode && 'darkLink')}
-                                    rel="noopener noreferrer"
-                                    target="_blank">
-                                    Github
-                                </a>.
-                            </p>
-                        </div>
+                    <div className={'passForm ' + (darkMode && 'darkUserForm')}>
+                        <TextField
+                            type='password'
+                            label='Current Password'
+                            placeholder=''
+                            value={currentPass}
+                            onChange={(e) => setCurrentPass(e.target.value)}
+                            dark={darkMode}
+                        />
+                        <TextField
+                            type='password'
+                            label='New Password'
+                            placeholder=''
+                            value={newPass1}
+                            onChange={(e) => setNewPass1(e.target.value)}
+                            dark={darkMode}
+                        />
+                        <TextField
+                            type='password'
+                            label='Confirm New Password'
+                            placeholder=''
+                            value={newPass2}
+                            onChange={(e) => setNewPass2(e.target.value)}
+                            dark={darkMode}
+                        />
+                        <ChunkyButton
+                            onPress={() => updatePassword()}
+                            text='Update Password'
+                            type={darkMode ? 'primaryDark' : 'primary'} />
                     </div>
-                </Drawer>
-            </MediaQuery>
 
+                    <div className={'deleteWrapperUser ' + (darkMode && 'darkUserForm') }>
+                        <ChunkyButton
+                            onPress={() => logout()}
+                            text='Log Out'
+                            type={darkMode ? 'redDark' : 'red'} />
+                    </div>
+
+                    <div className="footer">
+                        <p>
+                            <a
+                                className={'footerLink ' + (darkMode && 'darkLink')}
+                                rel='noopener noreferrer'
+                                target='_blank'
+                                href='https://chrome.google.com/webstore/detail/astrostore-quick-add/papafaajgpnblabjapiibkhdfjaghnhg'>
+                                View Chrome Extension
+                            </a>
+                        </p>
+                        <p>
+                            <a
+                                className={'footerLink ' + (darkMode && 'darkLink')}
+                                rel='noopener noreferrer'
+                                target='_blank'
+                                href='https://github.com/tggir1/astrostore'>
+                                View Source Code on Github
+                            </a>
+                        </p>
+                        <p className={darkMode ? 'darkText' : null}>
+                            I hope you're enjoying the app! If you have any questions, comments, or issues please feel free to reach out on
+                            <span> </span>
+                            <a
+                                href='https://twitter.com/tggir1'
+                                className={'footerLink ' + (darkMode && 'darkLink')}
+                                rel="noopener noreferrer"
+                                target="_blank">
+                                Twitter
+                            </a>
+                            <span> </span>
+                            or
+                            <span> </span>
+                            <a
+                                href='https://github.com/tggir1'
+                                className={'footerLink ' + (darkMode && 'darkLink')}
+                                rel="noopener noreferrer"
+                                target="_blank">
+                                Github
+                            </a>.
+                        </p>
+                    </div>
+                </div>
+            </Drawer>
         </div>
     );
 }

@@ -4,10 +4,6 @@ import {Token, HomeDispatch, DarkMode} from '../home/Home';
 import EditBookmark from './EditBookmark';
 
 
-const darkStyle = {
-    backgroundColor: '#000000'
-};
-
 function Bookmark(props) {
     const dispatch = useContext(HomeDispatch);
     const darkMode = useContext(DarkMode);

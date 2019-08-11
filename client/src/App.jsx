@@ -4,10 +4,10 @@ import {Switch, Route, BrowserRouter as Router} from 'react-router-dom';
 import Landing from './components/landing/Landing';
 import Login from './components/landing/Login';
 import Home from './components/home/Home';
-
+import './dark.css';
 
 const App = () => (
-    <div className="App">
+    <div className={localStorage.getItem('darkMode' ? 'darkApp' : null)}>
         <Router>
             <Switch>
                 <Route exact path='/' component={Landing}/>

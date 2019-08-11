@@ -27,3 +27,11 @@
 .darkLink {
 	color: #2de0c6;
 }
+
+.darkApp {
+	background-color: #121212;
+}
+
+.darkUserForm {
+	border-top-color: #4d4d4d;
+}
