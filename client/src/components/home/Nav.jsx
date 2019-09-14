@@ -7,8 +7,8 @@ function Nav(props) {
     const dispatch = useContext(HomeDispatch);
 
     return (
-        <nav className='navbar'>
-            <div className={"appTitle " + (darkMode && 'darkNav')} onClick={props.home && (() => dispatch({type: 'toggleDark'}))}>
+        <nav className={'navbar ' + (darkMode && 'darkHome')}>
+            <div className={'appTitle ' + (darkMode && 'darkNavText')} onClick={props.home && (() => dispatch({type: 'toggleDark'}))}>
                 Astro
                 <img className='tinyLogo' src={require('./planet.png')} alt='Dark Mode Indicator'/>
                 Store

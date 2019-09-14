@@ -6,6 +6,7 @@
 }
 
 .navbar {
+	z-index: 10;
     width: 90vw;
     padding: 10px 50px 0 0;
     display: flex;
@@ -13,6 +14,8 @@
     align-items: center;
     justify-content: flex-start;
     position: fixed;
+	margin-top: -1px;
+	background-color: #fff;
 }
 
 .nav-home {
