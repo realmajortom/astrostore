@@ -16,7 +16,7 @@ function EditUser(props) {
     const [currentPass, setCurrentPass] = useState('');
     const [newPass1, setNewPass1] = useState('');
     const [newPass2, setNewPass2] = useState('');
-    const [message, setMessage] = useState("How are you, fellow human?");
+    const [message, setMessage] = useState('');
 
     const logout = () => {
         localStorage.removeItem('JWT');
@@ -86,7 +86,7 @@ function EditUser(props) {
 
                     <div className={'welcomeHome ' + (darkMode && 'darkBook')}>Hello, {user}!</div>
 
-                    <div className={darkMode ? 'darkText' : null}>{message}</div>
+                    <div className={(message !== '' && 'userMessage ') + (darkMode && 'darkText')}>{message}</div>
 
                     <div className={'userForm ' + (darkMode && 'darkUserForm')}>
                         <TextField
@@ -141,15 +141,26 @@ function EditUser(props) {
                     </div>
 
                     <div className="footer">
+	                    <p>
+		                    <a
+			                    className={'footerLink ' + (darkMode && 'darkLink')}
+			                    rel='noopener noreferrer'
+			                    target='_blank'
+			                    href='https://addons.mozilla.org/en-US/firefox/addon/astrostore/'>
+		                        Firefox Extension
+		                    </a>
+	                    </p>
+
                         <p>
                             <a
                                 className={'footerLink ' + (darkMode && 'darkLink')}
                                 rel='noopener noreferrer'
                                 target='_blank'
                                 href='https://chrome.google.com/webstore/detail/astrostore-quick-add/papafaajgpnblabjapiibkhdfjaghnhg'>
-                                View Chrome Extension
+                                Chrome Extension
                             </a>
                         </p>
+
                         <p>
                             <a
                                 className={'footerLink ' + (darkMode && 'darkLink')}
