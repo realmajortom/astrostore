@@ -47,9 +47,11 @@ const reducer = (state, action) => {
         case 'updateC':
             let colls = state.collections;
             let cIndex = colls.findIndex(c => c._id === action.id);
-            action.sub === 'title'
-                ? colls[cIndex].title = action.title
-                : colls[cIndex].vis = !state.collections[cIndex].vis;
+            if (action.sub === 'title') {
+	            colls[cIndex].title = action.title;
+            } else {
+	            colls[cIndex].vis = !state.collections[cIndex].vis;
+            }
             return {...state, collections: colls};
 
         case 'setLength':
@@ -136,40 +138,47 @@ function Home() {
     const [mainVis, setMainVis] = useState(true);
 
     useEffect(() => {
+
         JSON.parse(localStorage.getItem('darkMode')) && dispatch({type: 'darkOn'});
 
         const token = localStorage.getItem('JWT');
+
         if (token !== null) {
-            axios.get('https://astrostore.io/api/collection/all', {
-                headers: {Authorization: `JWT ${token}`}
-            }).then(res => {
-                if (res.status === 200) {
-                    dispatch({type: 'setC', payload: res.data, auth: token});
-                } else {
-                    window.alert(res.data.message);
-                }
-            });
+            axios.get('https://astrostore.io/api/collection/all',
+	            {headers: {Authorization: `JWT ${token}`}})
+                 .then(res =>
+	                res.status === 200
+	                    ? dispatch({type: 'setC', payload: res.data, auth: token})
+	                    : window.alert(res.data.message)
+                 );
         } else {
             dispatch({type: 'redirect'});
         }
+
     }, []);
 
     useEffect(() => {
+
         if (state.collections.length > 0) {
+
             let favorites = [];
+
             for (let i = 0; i < state.collections.length; i++) {
                 state.collections[i].bookmarks.forEach(b =>
                     b.fave === true && favorites.push(b)
                 );
             }
+
             let ddl = state.collections.map((c) => ({
                 id: c._id,
                 title: c.title
             }));
+
             dispatch({type: 'setFaves', payload: favorites});
             dispatch({type: 'setDdl', payload: ddl});
             dispatch({type: 'setLength', payload: state.collections.length});
         }
+
     }, [state.collections]);
 
 
@@ -183,38 +192,42 @@ function Home() {
                         <Ddl.Provider value={state.ddl}>
                             <DarkMode.Provider value={state.darkMode}>
 
-                            <Nav local='nav-home' dark={state.darkMode} home={true}>
+	                            <Nav local='navHome' dark={state.darkMode} home={true}>
 
-                                <Length.Provider value={state.listLength}>
-                                    <AddCollection/>
-                                </Length.Provider>
+	                                <Length.Provider value={state.listLength}>
+	                                    <AddCollection/>
+	                                </Length.Provider>
 
-                                <AddBookmark buttonType="primary" pTitle={''} id={''}/>
+	                                <AddBookmark buttonType="primary" pTitle={''} id={''}/>
 
-                                <ChunkyButton
-                                    type={state.darkMode ? 'pinkDark' : 'pink'}
-                                    text={mainVis ? 'Show Favorites' : 'Show All'}
-                                    onPress={() => setMainVis(!mainVis)}
-                                />
+	                                <ChunkyButton
+	                                    type={state.darkMode ? 'pinkDark' : 'pink'}
+	                                    text={mainVis ? 'Show Favorites' : 'Show All'}
+	                                    onPress={() => setMainVis(!mainVis)}
+	                                />
 
-                                <ChunkyButton
-                                    type={state.darkMode ? 'pinkDark' : 'pink'}
-                                    text='User'
-                                    onPress={() => dispatch({type: 'toggleSheet'})}
-                                />
+	                                <ChunkyButton
+	                                    type={state.darkMode ? 'pinkDark' : 'pink'}
+	                                    text='User'
+	                                    onPress={() => dispatch({type: 'toggleSheet'})}
+	                                />
 
-                            </Nav>
+                                </Nav>
 
-                            <EditUser vis={state.sheetVis}/>
+                                <EditUser vis={state.sheetVis}/>
 
-                            <List mainVis={mainVis}>
-                                {mainVis
-                                 ? (state.collections.map(c =>
-                                        <Collection c={c} key={c._id}/>))
-                                 : (state.faves.map(b =>
-                                        <Bookmark bookmark={b} key={b._id}/>))
-                                }
-                            </List>
+	                            <List mainVis={mainVis}>
+	                                {mainVis
+	                                    ? (
+	                                    	state.collections.map(c => <Collection c={c} key={c._id}/>)
+	                                    )
+	                                    : (
+	                                    	<div className='favCollection'>
+			                                    {state.faves.map(b => <Bookmark bookmark={b} key={b._id}/>)}
+		                                    </div>
+	                                    )
+	                                }
+	                            </List>
 
                             </DarkMode.Provider>
                          </Ddl.Provider>

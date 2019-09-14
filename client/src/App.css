@@ -1,32 +1,35 @@
 /************ app body ************/
 .appContainer {
     font-family: "Lato", sans-serif;
-    padding: 1px 0 0 50px;
+    padding: 0;
     overflow: auto;
 }
 
 .navbar {
 	z-index: 10;
-    width: 90vw;
-    padding: 10px 50px 0 0;
+    width: 100vw;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     position: fixed;
-	margin-top: -1px;
+	top: 0;
+	left: 0;
+	padding-top: 10px;
 	background-color: #fff;
 }
 
-.nav-home {
+.navHome {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 700px;
+    width: 800px;
+	margin: 0 3vw;
 }
 
-.nav-landing {
+.navLanding {
+	margin-left: 40px;
     display: flex;
     flex-flow: row;
     width: 320px;
@@ -39,15 +42,15 @@
     font-size: 38pt;
     text-decoration: none;
     color: #313131;
-    margin: 0 4vw 0 0;
-    padding: 0;
     width: 248px;
     display: flex;
     align-items: baseline;
     flex-wrap: nowrap;
     cursor: pointer;
     user-select: none;
+	padding-left: 3vw;
 }
+
 .tinyLogo {
     height: 16px;
 }
@@ -67,6 +70,10 @@
     animation-iteration-count: 2;
 }
 
+.aws-btn {
+	margin: 5px;
+}
+
 /************ landing intro ************/
 .astronaut {
     margin-top: 20vh;
@@ -77,24 +84,28 @@
 /************ list container ************/
 .listContainer {
     height: calc(100vh - 71px);
-    margin: 71px 0 0 0;
-    padding: 0;
+    margin-top: 71px;
+    padding: 0 calc(3vw - 25px);
     display: flex;
     flex-flow: column wrap;
     align-content: flex-start;
 }
 
 .favTitle {
-    margin: 25px 0 5px 0;
+	padding: 25px 0 5px 25px;
     font-size: 15pt;
     user-select: none;
     white-space: nowrap;
 }
 
+.favCollection {
+	padding-left: 25px;
+}
+
 
 /************ collection container ************/
 .collectionContainer {
-    margin: 25px 50px 15px 0;
+    padding: 25px;
 }
 
 .collTitleContainer {
@@ -195,17 +206,14 @@
     visibility: visible;
 }
 
-.favColumn {
-    padding-right: 2px;
-    color: #8b8b8b;
-    font-size: 10pt;
-}
-
 .editCol {
     border: none;
 }
 
 .favColumn {
+	padding-right: 2px;
+	color: #8b8b8b;
+	font-size: 10pt;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -340,157 +348,143 @@
         flex-direction: column;
         align-items: baseline;
     }
-    .nav-home {
+    .navHome {
         padding-top: 10px;
-        width: 650px;
+        width: 94vw;
+    }
+    .navLanding {
+	    /*margin-left: 0;*/
+	    margin-left: calc(3vw - 5px);
     }
     .listContainer {
         height: calc(100vh - 111px);
         margin-top: 111px;
     }
+	.astronaut {
+		margin-top: 15vh;
+	}
+	.paper {
+		width: 60vw;
+	}
+	.welcomeHome {
+		font-size: 22pt;
+	}
 }
 
-@media (max-width: 887px) {
+@media(max-width: 680px) {
+	.navbar {
+		align-items: center;
+		padding-top: 0;
+		position: relative;
+	}
+	.navHome {
+		width: 320px;
+		flex-wrap: wrap;
+		padding-top: 0;
+	}
+	.navLanding {
+		margin-left: 0;
+	}
+	.appTitle {
+		padding: 0;
+	}
+	.astronaut {
+		height: 94vw;
+		width: 94vw;
+		margin-left: 3vw;
+	}
+	.paper {
+		width: 80vw;
+	}
+	.favTitle {
+		padding-left: 0;
+	 }
+	.favCollection {
+		padding-left: 0;
+	}
+	.listContainer {
+		width: 100vw;
+		margin: 0;
+		height: 100%;
+		display: flex;
+		flex-flow: column nowrap;
+		align-items: center;
+	}
+	.collectionContainer {
+		margin: 0;
+		padding: 25px 0;
+		min-width: 320px;
+	}
+	.collTitleContainer .controls, .bookRow .controls {
+		visibility: visible;
+	}
 
-    .astronaut {
-        margin-top: 15vh;
-        height: 80vw;
-        width: 80vw;
-    }
-
-    .paper {
-        width: 60vw;
-    }
-
-    .welcomeHome {
-        font-size: 22pt;
-    }
-}
-
-@media(max-width: 710px) {
-    .navbar {
-        width: 335px;
-        padding-right: 0;
-        z-index: 1000;
-    }
-    .nav-home {
-        flex-wrap: wrap;
-        width: 335px;
-        height: 100px;
-    }
-    .listContainer {
-        height: calc(100vh - 170px);
-        margin-top: 170px;
-    }
-}
-
-@media (max-width: 592px) {
-    .paper {
-        width: 80vw;
-    }
-
-    .navbar {
-        width: 335px;
-        padding-right: 0;
-        z-index: 1000;
-        position: unset;
-    }
-
-    .nav-home {
-        flex-wrap: wrap;
-        width: 335px;
-        height: 100px;
-    }
-
-    .nav-landing {
-        flex-direction: column;
-        height: 90px;
-        margin-top: 15px;
-    }
-
-    .listContainer {
-        height: 100%;
-        margin-top: 0;
-        padding-bottom: 200px;
-    }
-
-    .collectionContainer {
-        margin-bottom: 0;
-        margin-right: 0;
-    }
-
-    .collTitleContainer .controls {
-        visibility: visible;
-    }
-
-    .bookRow .controls {
-        visibility: visible;
-    }
-
-    .bookTitle {
-        font-size: 13pt;
-    }
-
-    .collTitleText {
-        font-size: 16pt;
-    }
-
-    .plusButton {
-        font-size: 22pt;
-        color: #c7c7c7;
-    }
-
-    .editButton {
-        font-size: 12pt;
-    }
-}
-
-@media (max-width: 410px) {
-    .appContainer {
-        padding-left: 20px;
-    }
-
-    .listContainer {
-        padding-left: 10px;
-    }
-}
-
-@media (max-width: 374px) {
-    .navbar {
-        width: calc(100vw - 40px);
-        min-width: 305px;
-    }
-
-    .nav-home {
-        width: calc(100vw - 40px);
-        min-width: 305px;
-    }
-
-    .listContainer {
-        padding-left: 0;
-    }
-}
-
-@media (max-width: 345px) {
-    .appContainer {
-        padding-left: 10px;
-    }
-
-    .modalBody {
-        min-width: 300px;
-    }
-
-    .editButton {
-        margin-right: 0;
-    }
-
-    .bookRow {
-        width: 310px;
-    }
-
-    .borderCont {
-        padding-right: 0;
-        width: 240px;
-    }
+	.bookTitle {
+		font-size: 13pt;
+	}
+	.collTitleText {
+		font-size: 18pt;
+		/*margin-right: 20px;*/
+	}
+	.plusButton {
+		display: none;
+	}
+	.editButton {
+		font-size: 14pt;
+		color: #cccccc;
+	}
+	.titleColumn {
+		width: 240px;
+	}
 
 }
+
+@media (max-width: 359px) {
+	.bookTitle {
+		font-size: 11pt;
+	}
+	.collTitleText {
+		font-size: 14pt;
+	}
+	.plusButton {
+		font-size: 14pt;
+		color: #c7c7c7;
+		margin-right: 0;
+	}
+	.editButton {
+		font-size: 12pt;
+	}
+	.modalBody {
+		min-width: 300px;
+	}
+	.collectionContainer {
+		min-width: 300px;
+	}
+	.bookRow {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		width: 290px;
+		/*width: 90vw;*/
+	}
+	.titleColumn {
+		/*width: 80vw;*/
+		width: 220px;
+	}
+}
+
+/*@media (max-width: 345px) {*/
+/*    .appContainer {*/
+/*        padding-left: 10px;*/
+/*    }*/
+
+/*    .bookRow {*/
+/*        width: 310px;*/
+/*    }*/
+
+/*    .borderCont {*/
+/*        padding-right: 0;*/
+/*        width: 240px;*/
+/*    }*/
+
+/*}*/
