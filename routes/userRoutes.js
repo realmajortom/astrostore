@@ -52,15 +52,30 @@ module.exports = (app) => {
   );
 
   app.post('/api/user/updateName',
-      passport.authenticate('jwt', {session: false}),
-      (req, res) => {
-        User.findByIdAndUpdate(req.user.id,
-            {username: req.body.newName}, (err, user) => {
-              err
-                  ? res.status(400).send({message: 'Error updating username', success: false})
-                  : res.status(200).send({message: 'Update successful!', success: true})
-            }
-        );
+      passport.authenticate('jwt', {session: false}), (req, res) => {
+  	    User.findOne({username: req.body.newName}, (err, user) => {
+  	    	if (err) {
+  	    		res.status(400).send({message: 'Error updating username', success: false});
+	        } else if (user) {
+  	    		res.send({message: 'Username not available', success: false});
+	        } else {
+		        User.findByIdAndUpdate(req.user.id,
+			        {username: req.body.newName}, (err, user) => {
+				        err
+				        ? res.status(400)
+				             .send({
+					             message: 'Error updating username',
+					             success: false
+				             })
+				        : res.status(200)
+				             .send({
+					             message: 'Update successful!',
+					             success: true
+				             })
+			        }
+		        );
+	        }
+        })
       }
   );
 

@@ -7,7 +7,7 @@ const express = require('express');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const limiter = require('./auth/rateLimiter');
+const limiter = require('./security/rateLimiter');
 
 const app = express();
 const API_PORT = process.env.API_PORT;
@@ -37,7 +37,7 @@ app.use('/api/bookmark', limiter.bookmarkOp);
 
 
 // api routes
-require('./auth/auth');
+require('./security/auth');
 require('./routes/userRoutes')(app);
 require('./routes/dataRoutes')(app);
 
