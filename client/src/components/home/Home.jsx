@@ -192,7 +192,7 @@ function Home() {
                         <Ddl.Provider value={state.ddl}>
                             <DarkMode.Provider value={state.darkMode}>
 
-	                            <Nav local='navHome' dark={state.darkMode} home={true}>
+	                            <Nav local='navHome' dark={state.darkMode} >
 
 	                                <Length.Provider value={state.listLength}>
 	                                    <AddCollection/>

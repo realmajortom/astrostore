@@ -9,7 +9,7 @@ function Nav(props) {
     return (
         <nav className={'navbar ' + (darkMode && 'darkHome')}>
 
-            <div className={'appTitle ' + (darkMode && 'darkNavText')} onClick={props.home && (() => dispatch({type: 'toggleDark'}))}>
+            <div className={'appTitle ' + (darkMode && 'darkNavText')} onClick={props.local === 'navHome' && (() => dispatch({type: 'toggleDark'}))}>
                 Astro
                 <img className='tinyLogo' src={require('./planet.png')} alt='Dark Mode Indicator'/>
                 Store

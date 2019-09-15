@@ -15,7 +15,10 @@ function Landing() {
         return (
             <div className='appContainer'>
 
-                <Nav local='navLanding' home={false}> <Register/> <Login/> </Nav>
+                <Nav local='navLanding'>
+	                <Register/>
+	                <Login/>
+                </Nav>
 
                 <Logo className="astronaut"/>
 
