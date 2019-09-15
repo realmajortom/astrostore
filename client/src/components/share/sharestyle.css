@@ -1,0 +1,10 @@
+.container {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	height: 360px;
+	width: 100vw;
+}
+.fieldWrapper {
+	width: 320px;
+}
