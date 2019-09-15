@@ -1,11 +1,23 @@
 {
   "short_name": "AstroStore",
   "name": "AstroStore Bookmark Tool",
-  "categories": ["utilities", "productivity"],
   "description": "Open source, cross-platform bookmark manager hosted in the cloud.",
   "lang": "en-US",
-  "orientation": "portrait",
+  "categories": [
+    "utilities",
+    "productivity"
+  ],
   "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
     {
       "src": "icon-192.png",
       "sizes": "192x192",
@@ -19,9 +31,7 @@
   ],
   "start_url": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "theme_color": "#3c3c3c",
-  "background_color": "#3c3c3c",
-  "serviceworker": {
-    "src": "./service-worker.js"
-  }
+  "background_color": "#3c3c3c"
 }
