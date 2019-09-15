@@ -11,10 +11,19 @@ const limiter = require('./security/rateLimiter');
 
 const app = express();
 const API_PORT = process.env.API_PORT;
+
+app.enable('trust proxy');
+
+app.use((req, res, next) => {
+	if (req.secure) {
+		next()
+	} else {
+		res.redirect('https://' + req.headers.host + req.url);
+	}
+});
+
 app.use(express.static(path.join(__dirname, 'build')));
 
-
-// middlewarez
 app.use(cors());
 app.use(helmet());
 app.use(logger('short'));
