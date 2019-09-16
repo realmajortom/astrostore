@@ -30,7 +30,7 @@ function ShareBookmark(props) {
 	const [dropItems, setDropItems] = useState([]);
 
 	const [title, setTitle] = useState(queryString.parse(props.location.search).title);
-	const [url, setUrl] = useState(queryString.parse(props.location.search).url);
+	const [url, setUrl] = useState(queryString.parse(props.location.search).text);
 	const [message, setMessage] = useState('');
 	const [parentId, setParent] = useState('');
 

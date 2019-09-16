@@ -1,6 +1,6 @@
 {
   "short_name": "AstroStore",
-  "name": "AstroStore Bookmark Tool",
+  "name": "AstroStore.io",
   "description": "Open source, cross-platform bookmark manager hosted in the cloud.",
   "lang": "en-US",
   "categories": [
@@ -34,7 +34,7 @@
     "action": "/share",
     "params": {
       "title": "title",
-      "url": "url"
+      "text": "text"
     }
   },
   "display": "standalone",
