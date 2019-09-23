@@ -9,8 +9,10 @@ import Bookmark from '../bookmark/Bookmark';
 function Collection(props) {
     const dispatch = useContext(HomeDispatch);
     const token = useContext(Token);
-    let bookmarks = props.c.bookmarks;
+
     const id = props.c._id;
+
+	let bookmarks = props.c.bookmarks;
 
     const [title, setTitle] = useState(props.c.title);
     const [vis, setVis] = useState(props.c.vis);
@@ -39,44 +41,47 @@ function Collection(props) {
     };
 
     return (
-        <div className="collectionContainer">
+			    <div className="collectionContainer">
 
-            <div className="collTitleContainer">
-                <div className="collTitleText" onClick={() => toggleList()}>
-                    {title}
-                </div>
+		            <div className="collTitleContainer">
 
-                {vis &&
-                     <div className='controls'>
-                         <EditCollection
-                             title={title}
-                             id={id}
-                             liftUpdate={setTitle}
-                         />
-                     </div>}
+		                <div
+			                className="collTitleText"
+			                onClick={() => toggleList()}>
+		                    {title}
+		                </div>
 
-                 {vis &&
-                  <div className='controls'>
-                      <AddBookmark
-                          id={id}
-                          pTitle={title}
-                      />
-                  </div>}
+			            {vis &&
+			             <div className='controls'>
+		                         <EditCollection
+			                         title={title}
+			                         id={id}
+			                         liftUpdate={setTitle}
+		                         />
+		                     </div>}
 
-            </div>
+			            {vis &&
+			             <div className='controls'>
+		                      <AddBookmark
+			                      id={id}
+			                      pTitle={title}
+		                      />
+		                  </div>}
 
-            <div className="bookList">
-                {vis
-                 && bookmarks.map(b =>
-                    <Bookmark
-                        bookmark={b}
-                        key={b._id}
-                        delete={deleteBookmark}
-                    />)
-                }
-            </div>
+		            </div>
 
-        </div>
+		            <div className="bookList">
+		                {vis
+		                 && bookmarks.map(b =>
+			                <Bookmark
+				                bookmark={b}
+				                key={b._id}
+				                delete={deleteBookmark}
+			                />)
+		                }
+		            </div>
+
+	            </div>
     );
 }
 

@@ -9,10 +9,13 @@ import Nav from '../home/Nav';
 function Landing() {
 
     const user = localStorage.getItem('user');
+
     const token = localStorage.getItem('JWT');
 
     if (user == null || token == null) {
+
         return (
+
             <div className='appContainer'>
 
                 <Nav local='navLanding'>
@@ -24,6 +27,7 @@ function Landing() {
 
             </div>
         );
+
     } else {
         return <Redirect to={`/${user}`}/>;
     }

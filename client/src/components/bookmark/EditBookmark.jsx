@@ -7,9 +7,11 @@ import {DarkMode} from '../home/Home';
 
 function EditBookmark(props) {
     const darkMode = useContext(DarkMode);
+
+	const [vis, setVis] = useState(false);
     const [title, setTitle] = useState(props.title);
     const [url, setUrl] = useState(props.url);
-    const [vis, setVis] = useState(false);
+
 
     useEffect(() => {
         setTitle(props.title);
@@ -26,8 +28,8 @@ function EditBookmark(props) {
 
     return (
         <div>
-            <button onClick={() => setVis(true)} className="editButton">Edit
-            </button>
+
+            <button onClick={() => setVis(true)} className="editButton">Edit</button>
 
             <Dialog open={vis}
                     onClose={() => setVis(false)}

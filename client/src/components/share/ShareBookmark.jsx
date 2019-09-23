@@ -1,16 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios/index';
-import {makeStyles} from '@material-ui/styles/index';
-import MenuItem from '@material-ui/core/MenuItem/index';
+
 import {Dropdown, TextField} from '../inputs/MaterialInputs';
 import ChunkyButton from '../inputs/ChunkyButton';
+import MenuItem from '@material-ui/core/MenuItem';
+import {makeStyles} from '@material-ui/styles';
+
 import './sharestyle.css'
+
 
 const queryString = require('query-string');
 
+
 const useStyles = makeStyles({
 	root: {
-		fontFamily: ['"Lato"', 'sans-serif'],
+		fontFamily: ['Lato', 'sans-serif'],
 		fontSize: 13,
 		borderBottom: '1px solid #eeeeee',
 		paddingTop: 0,
@@ -25,12 +29,14 @@ const useStyles = makeStyles({
 
 
 function ShareBookmark(props) {
-	const classes = useStyles();
+
 	const token = localStorage.getItem('JWT');
-	const [dropItems, setDropItems] = useState([]);
+
+	const classes = useStyles();
 
 	const [title, setTitle] = useState(queryString.parse(props.location.search).title);
 	const [url, setUrl] = useState(queryString.parse(props.location.search).text);
+	const [dropItems, setDropItems] = useState([]);
 	const [message, setMessage] = useState('');
 	const [parentId, setParent] = useState('');
 
@@ -46,16 +52,13 @@ function ShareBookmark(props) {
 
 	const addBookmark = () => {
 		axios.post('https://astrostore.io/api/bookmark/create',
-			{
-				title: title,
-				url: url,
-				parentId: parentId
-			},
-			{headers: {Authorization: `JWT ${token}`}}
-		).then(res =>
-			res.data.success
-				? setMessage('Success!')
-				: setMessage('Error Adding Bookmark :(')
+			{title: title, url: url, parentId: parentId},
+			{headers: {Authorization: `JWT ${token}`}})
+
+		     .then(res =>
+				res.data.success
+					? setMessage('Success!')
+					: setMessage('Error Adding Bookmark :(')
 		)
 	};
 
@@ -75,12 +78,14 @@ function ShareBookmark(props) {
 	                value={title}
 	                onChange={(e) => setTitle(e.target.value)}
                 />
+
                 <TextField
 	                label='Bookmark Url'
 	                placeholder=''
 	                value={url}
 	                onChange={(e) => setUrl(e.target.value)}
                 />
+
                 <Dropdown
 	                label='Collection'
 	                value={parentId}
@@ -98,11 +103,9 @@ function ShareBookmark(props) {
             </div>
 
             <div className='submitWrapper'>
-                <ChunkyButton
-	                onPress={() => addBookmark()}
-	                text={'Submit'}
-	                type={'primary'}
-                />
+
+                <ChunkyButton onPress={() => addBookmark()} text={'Submit'} type={'primary'}/>
+
             </div>
 
         </div>

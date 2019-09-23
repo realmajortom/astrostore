@@ -34,18 +34,25 @@ function AddBookmark(props) {
     const [title, setTitle] = useState('');
     const [url, setUrl] = useState('');
 
+    const closeModal = () => {
+    	setVis(false);
+    	setTitle('');
+    	setUrl('');
+    };
+
     const addBookmark = () => {
         axios.post('https://astrostore.io/api/bookmark/create',
             {title: title, url: url, parentId: parentId},
-            {headers: {Authorization: `JWT ${token}`}}
-        ).then(res => {
-            if (res.data.success) {
-                dispatch({type: 'addBook', payload: res.data.bookmarks, id: parentId});
-                setVis(false);
-            } else {
-                window.alert(res.data.message);
-            }
-        });
+            {headers: {Authorization: `JWT ${token}`}})
+
+             .then(res => {
+	            if (res.data.success) {
+	                dispatch({type: 'addBook', payload: res.data.bookmarks, id: parentId});
+	                closeModal();
+	            } else {
+	                window.alert(res.data.message);
+	            }
+             });
     };
 
     return (
@@ -63,7 +70,7 @@ function AddBookmark(props) {
 
             <Dialog
                 open={vis}
-                onClose={() => setVis(false)}
+                onClose={() => closeModal()}
                 classes={{paper: 'modalBody ' + (darkMode && 'darkDialog')}}
                 aria-labelledby="New Bookmark Form"
                 elevation={24}
@@ -76,7 +83,7 @@ function AddBookmark(props) {
                 <div className='fieldWrapper'>
                     <TextField
                         label='Bookmark Title'
-                        placeholder='World Domination in 10 Quick Steps'
+                        placeholder='Very Real Website'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         dark={darkMode}
@@ -84,7 +91,7 @@ function AddBookmark(props) {
 
                     <TextField
                         label='Bookmark Url'
-                        placeholder='wearetheworld-robots.com'
+                        placeholder='https://www.veryrealwebsite.com'
                         value={url}
                         onChange={(e) => setUrl(e.target.value)}
                         dark={darkMode}
