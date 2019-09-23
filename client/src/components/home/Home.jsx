@@ -162,7 +162,7 @@ function Home() {
                  		let order = res.data.order;
 
                  		for (let i = 0; i < order.length; i++) {
-                 			const index = rawColls.findIndex(c => c.id === order[i]);
+                 			const index = rawColls.findIndex(c => c._id === order[i]);
                  			if (index >= 0) {
                  				sortedColls.push(rawColls[index]);
                  				rawColls.splice(index, 1);
