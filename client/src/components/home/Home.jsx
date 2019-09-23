@@ -173,12 +173,13 @@ function Home() {
 
                  			for (let j = 0; j < rawColls.length; j++) {
                  				sortedColls.push(rawColls[j]);
-                 				order.push(rawColls[j].id);
+                 				order.push(rawColls[j]._id);
 		                    }
 
                  			axios.post('https://astrostore.io/api/user/order',
 			                    {order: order},
 			                    {headers: {Authorization: `JWT ${token}`}})
+			                    .then(res => console.log(res.data));
 	                    }
 
 	                    dispatch({
