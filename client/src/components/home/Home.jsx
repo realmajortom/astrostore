@@ -2,6 +2,7 @@ import React, {useState, useEffect, useReducer} from 'react';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios/index';
 
+
 import AddCollection from '../collection/AddCollection';
 import ChunkyButton from '../inputs/ChunkyButton';
 import AddBookmark from '../bookmark/AddBookmark';
@@ -17,20 +18,23 @@ import '../../dark.css';
 const initialState = {
     token: '',
     collections: [],
-    listLength: 0,
     ddl: [],
     faves: [],
     sheetVis: false,
     darkMode: false,
-    redirect: false
+    redirect: false,
+	order: []
 };
 
+
 const reducer = (state, action) => {
+
     switch (action.type) {
-        // collection actions
+
+
+    	// Collections
         case 'setC':
-            let collections = action.payload.sort((a, b) => {return a.sequence - b.sequence});
-            return {...state, collections: collections, token: action.auth};
+            return {...state, collections: action.collections, order: action.order, token: action.auth};
 
         case 'addC':
             return {
@@ -54,10 +58,8 @@ const reducer = (state, action) => {
             }
             return {...state, collections: colls};
 
-        case 'setLength':
-            return {...state, listLength: action.payload};
 
-        // bookmark actions
+        // Bookmarks
         case 'addBook':
             let tempColls = state.collections;
             let index = tempColls.findIndex(c => c._id === action.id);
@@ -83,7 +85,7 @@ const reducer = (state, action) => {
             return {...state, collections: tempColls3};
 
 
-        // favorites list actions
+        // Favorites
         case 'setFaves':
             return {...state, faves: action.payload};
 
@@ -104,7 +106,7 @@ const reducer = (state, action) => {
             return {...state, faves: tempFaves};
 
 
-        // Other UI actions
+        // UI
         case 'redirect':
             return {...state, redirect: !state.redirect};
 
@@ -121,82 +123,127 @@ const reducer = (state, action) => {
             localStorage.setItem('darkMode', JSON.stringify(!state.darkMode));
             return {...state, darkMode: !state.darkMode};
 
+
         default:
             return state;
     }
+
 };
+
 
 export const Ddl = React.createContext(null);
 export const Token = React.createContext(null);
-export const Length = React.createContext(null);
 export const DarkMode = React.createContext(null);
 export const HomeDispatch = React.createContext(null);
 
 
 function Home() {
+
     const [state, dispatch] = useReducer(reducer, initialState);
+
     const [mainVis, setMainVis] = useState(true);
 
     useEffect(() => {
 
+	    const token = localStorage.getItem('JWT');
+
         JSON.parse(localStorage.getItem('darkMode')) && dispatch({type: 'darkOn'});
 
-        const token = localStorage.getItem('JWT');
-
         if (token !== null) {
+
             axios.get('https://astrostore.io/api/collection/all',
 	            {headers: {Authorization: `JWT ${token}`}})
-                 .then(res =>
-	                res.status === 200
-	                    ? dispatch({type: 'setC', payload: res.data, auth: token})
-	                    : window.alert(res.data.message)
-                 );
+                 .then(res => {
+
+                 	if (res.status === 200) {
+
+                 		let rawColls = res.data.collections;
+                 		let sortedColls = [];
+                 		let order = res.data.order;
+
+                 		for (let i = 0; i < order.length; i++) {
+                 			const index = rawColls.findIndex(c => c.id === order[i]);
+                 			if (index >= 0) {
+                 				sortedColls.push(rawColls[index]);
+                 				rawColls.splice(index, 1);
+		                    }
+	                    }
+
+                 		if (rawColls.length > 0) {
+
+                 			for (let j = 0; j < rawColls.length; j++) {
+                 				sortedColls.push(rawColls[j]);
+                 				order.push(rawColls[j].id);
+		                    }
+
+                 			axios.post('https://astrostore.io/api/user/order',
+			                    {order: order},
+			                    {headers: {Authorization: `JWT ${token}`}})
+	                    }
+
+	                    dispatch({
+		                    type: 'setC',
+		                    collections: sortedColls,
+		                    order: order,
+		                    auth: token
+	                    });
+
+                    } else {
+	                    window.alert(res.data.message)
+                    }
+
+                 });
         } else {
             dispatch({type: 'redirect'});
         }
 
     }, []);
 
-    useEffect(() => {
 
-        if (state.collections.length > 0) {
+	useEffect(() => {
 
-            let favorites = [];
+		if (state.collections.length > 0) {
 
-            for (let i = 0; i < state.collections.length; i++) {
-                state.collections[i].bookmarks.forEach(b =>
-                    b.fave === true && favorites.push(b)
-                );
-            }
+			let favorites = [];
 
-            let ddl = state.collections.map((c) => ({
-                id: c._id,
-                title: c.title
-            }));
+			for (let i = 0; i < state.collections.length; i++) {
+				state.collections[i].bookmarks.forEach(b =>
+					b.fave === true && favorites.push(b)
+				);
+			}
 
-            dispatch({type: 'setFaves', payload: favorites});
-            dispatch({type: 'setDdl', payload: ddl});
-            dispatch({type: 'setLength', payload: state.collections.length});
-        }
+			let ddl = state.collections.map((c) => ({
+				id: c._id,
+				title: c.title
+			}));
 
-    }, [state.collections]);
+			dispatch({type: 'setFaves', payload: favorites});
+
+			dispatch({type: 'setDdl', payload: ddl});
+		}
+
+	}, [state.collections]);
 
 
-    if (state.redirect) {
-        return <Redirect to='/'/>;
-    } else {
+    if (state.redirect !== true) {
+
+	    const mainList = (state.collections.map(c => <Collection c={c} key={c._id} />));
+
+	    const favList = (state.faves.map(b => <Bookmark bookmark={b} key={b._id}/>));
+
         return (
+
             <div className={'appContainer ' + (state.darkMode && 'darkHome')}>
+
                 <HomeDispatch.Provider value={dispatch}>
                     <Token.Provider value={state.token}>
                         <Ddl.Provider value={state.ddl}>
                             <DarkMode.Provider value={state.darkMode}>
 
+
 	                            <Nav local='navHome' dark={state.darkMode} >
 
-	                                <Length.Provider value={state.listLength}>
-	                                    <AddCollection/>
-	                                </Length.Provider>
+		                            <AddCollection/>
 
 	                                <AddBookmark buttonType="primary" pTitle={''} id={''}/>
 
@@ -214,27 +261,30 @@ function Home() {
 
                                 </Nav>
 
+
                                 <EditUser vis={state.sheetVis}/>
 
+
 	                            <List mainVis={mainVis}>
-	                                {mainVis
-	                                    ? (
-	                                    	state.collections.map(c => <Collection c={c} key={c._id}/>)
-	                                    )
-	                                    : (
-	                                    	<div className='favCollection'>
-			                                    {state.faves.map(b => <Bookmark bookmark={b} key={b._id}/>)}
-		                                    </div>
-	                                    )
-	                                }
+
+		                            { mainVis
+	                                    ? mainList
+	                                    : <div className='favCollection'> <div className='favTitle'>Favorites</div> {favList} </div> }
+
 	                            </List>
+
 
                             </DarkMode.Provider>
                          </Ddl.Provider>
                     </Token.Provider>
                 </HomeDispatch.Provider>
+
             </div>
+
         );
+
+    } else {
+	    return <Redirect to='/'/>;
     }
 }
 

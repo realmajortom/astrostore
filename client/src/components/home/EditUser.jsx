@@ -88,7 +88,9 @@ function EditUser(props) {
 
                     <div className={(message !== '' && 'userMessage ') + (darkMode && 'darkText')}>{message}</div>
 
+
                     <div className={'userForm ' + (darkMode && 'darkUserForm')}>
+
                         <TextField
                             label='New Username'
                             placeholder={user}
@@ -96,13 +98,16 @@ function EditUser(props) {
                             onChange={(e) => setNewUser(e.target.value)}
                             dark={darkMode}
                         />
+
                         <ChunkyButton
                             onPress={() => updateUsername()}
                             text="Update Username"
                             type={darkMode ? 'primaryDark' : 'primary'} />
                     </div>
 
+
                     <div className={'passForm ' + (darkMode && 'darkUserForm')}>
+
                         <TextField
                             type='password'
                             label='Current Password'
@@ -111,6 +116,7 @@ function EditUser(props) {
                             onChange={(e) => setCurrentPass(e.target.value)}
                             dark={darkMode}
                         />
+
                         <TextField
                             type='password'
                             label='New Password'
@@ -119,6 +125,7 @@ function EditUser(props) {
                             onChange={(e) => setNewPass1(e.target.value)}
                             dark={darkMode}
                         />
+
                         <TextField
                             type='password'
                             label='Confirm New Password'
@@ -127,22 +134,27 @@ function EditUser(props) {
                             onChange={(e) => setNewPass2(e.target.value)}
                             dark={darkMode}
                         />
+
                         <ChunkyButton
                             onPress={() => updatePassword()}
                             text='Update Password'
                             type={darkMode ? 'primaryDark' : 'primary'} />
                     </div>
 
+
                     <div className={'deleteWrapperUser ' + (darkMode && 'darkUserForm') }>
+
                         <ChunkyButton
                             onPress={() => logout()}
                             text='Log Out'
                             type={darkMode ? 'redDark' : 'red'} />
+
                     </div>
 
+
                     <div className="footer">
-	                    <p>
-		                    <a
+
+	                    <p><a
 			                    className={'footerLink ' + (darkMode && 'darkLink')}
 			                    rel='noopener noreferrer'
 			                    target='_blank'
@@ -151,8 +163,7 @@ function EditUser(props) {
 		                    </a>
 	                    </p>
 
-                        <p>
-                            <a
+                        <p><a
                                 className={'footerLink ' + (darkMode && 'darkLink')}
                                 rel='noopener noreferrer'
                                 target='_blank'
@@ -161,8 +172,7 @@ function EditUser(props) {
                             </a>
                         </p>
 
-                        <p>
-                            <a
+                        <p><a
                                 className={'footerLink ' + (darkMode && 'darkLink')}
                                 rel='noopener noreferrer'
                                 target='_blank'
@@ -170,6 +180,8 @@ function EditUser(props) {
                                 View Source Code on Github
                             </a>
                         </p>
+
+
                         <p className={darkMode ? 'darkText' : null}>
                             I hope you're enjoying the app! If you have any questions, comments, or issues please feel free to reach out on
                             <span> </span>

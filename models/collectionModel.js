@@ -16,10 +16,6 @@ const collectionSchema = new mongoose.Schema({
     type: Boolean,
     default: true
   },
-  sequence: {
-    type: Number,
-    default: 0
-  },
   bookmarks: {
     type: Array
   }
