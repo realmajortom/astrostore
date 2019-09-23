@@ -65,7 +65,7 @@ function AddBookmark(props) {
                     type={darkMode ? 'secondaryDark' : 'secondary'} />
                 : <button
                     onClick={() => setVis(true)}
-                    className="plusButton">+</button>
+                    className="plusButton"><img src={require('../../add.png')} alt='Add Bookmark' className='addImg' /></button>
             }
 
             <Dialog

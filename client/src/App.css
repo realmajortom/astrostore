@@ -122,7 +122,7 @@
 }
 
 .collTitleContainer .controls {
-    visibility: hidden;
+	visibility: hidden;
     transition-property: visibility;
     transition-delay: .2s;
 }
@@ -132,34 +132,48 @@
 }
 
 /**** list actions ****/
+
+
 .editButton {
     border: none;
     background-color: transparent;
     color: #9b9b9b;
-    font-size: 11pt;
     margin: 0 15px;
     padding: 0;
     user-select: none;
-}
-
-.editButton:hover {
-    color: #2de0c6;
-    cursor: pointer;
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
 }
 
 .plusButton {
-    border: none;
-    background-color: transparent;
-    color: #9b9b9b;
-    font-size: 15pt;
-    padding: 0;
-    margin: 0;
-    user-select: none;
+	border: none;
+	background-color: transparent;
+	color: #9b9b9b;
+	font-size: 15pt;
+	padding: 0;
+	margin: 0;
+	user-select: none;
 }
 
-.plusButton:hover {
-    color: #2de0c6;
-    cursor: pointer;
+.editImg {
+	width: 18px;
+	margin: 0 0 -2px 0;
+}
+
+.addImg {
+	width: 22px;
+	margin: 0 0 -5px 0;
+}
+
+.addImg, .editImg {
+	filter: invert(55%) sepia(79%) saturate(0%) hue-rotate(258deg) brightness(94%) contrast(98%);
+	padding: 0;
+}
+
+.editImg:hover, .addImg:hover {
+	cursor: pointer;
+	filter: invert(69%) sepia(39%) saturate(736%) hue-rotate(121deg) brightness(100%) contrast(91%);
 }
 
 /***** bookmarks *****/
@@ -424,14 +438,13 @@
 	}
 	.collTitleText {
 		font-size: 18pt;
-		/*margin-right: 20px;*/
 	}
 	.plusButton {
 		display: none;
 	}
-	.editButton {
-		font-size: 14pt;
-		color: #cccccc;
+	.editImg {
+		margin: 0 0 -1px 0;
+		width: 20px;
 	}
 	.titleColumn {
 		width: 240px;

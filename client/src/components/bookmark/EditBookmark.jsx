@@ -29,7 +29,9 @@ function EditBookmark(props) {
     return (
         <div>
 
-            <button onClick={() => setVis(true)} className="editButton">Edit</button>
+            <button onClick={() => setVis(true)} className="editButton">
+	            <img src={require('../../edit.png')} alt='Edit Button' className='editImg'/>
+            </button>
 
             <Dialog open={vis}
                     onClose={() => setVis(false)}

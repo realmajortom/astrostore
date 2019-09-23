@@ -8,8 +8,12 @@ const Collection = require('../models/collectionModel');
 module.exports = (app) => {
 
 	app.post('/api/user/order',
-		passport.authenticate('jwt', {session: false}), (req) => {
-			User.findByIdAndUpdate(req.user.id, {collOrder: req.body.order});
+		passport.authenticate('jwt', {session: false}), (req, res) => {
+			User.findByIdAndUpdate(req.user.id, {collOrder: req.body.order}, err =>
+				err
+					? res.status(400).json({message: 'Error updating collection order', success: false})
+					: res.status(200).json({message: 'Successfully updated collection order', success: true})
+			);
 		});
 
 

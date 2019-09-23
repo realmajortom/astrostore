@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import axios from 'axios/index';
 import {Token, HomeDispatch, DarkMode} from '../home/Home';
 import Dialog from '@material-ui/core/Dialog/index';
@@ -58,9 +58,11 @@ function EditCollection(props) {
     };
 
     return (
-        <div>
+        <div className='editDiv'>
 
-            <button onClick={() => setVis(true)} className="editButton">Edit\</button>
+            <button onClick={() => setVis(true)} className="editButton">
+	            <img src={require('../../edit.png')} alt='Edit Button' className='editImg' />
+            </button>
 
             <Dialog open={vis}
                     onClose={() => setVis(false)}
