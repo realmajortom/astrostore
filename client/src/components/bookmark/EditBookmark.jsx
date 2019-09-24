@@ -27,7 +27,7 @@ function EditBookmark(props) {
     };
 
     return (
-        <div>
+        <div className='editClass'>
 
             <button onClick={() => setVis(true)} className="editButton">
 	            <img src={require('../../edit.png')} alt='Edit Button' className='editImg'/>

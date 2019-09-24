@@ -1,30 +1,32 @@
-
 .darkHome {
-	color: #b3b3b3;
+	color: #eeeeee;
 	background-color: #121212;
 }
-.darkNavText {
-	color: #b3b3b3;
-}
 
-.darkBorder {
-	border-bottom-color: #1d1d1d;
-}
-.darkBook {
+.darkNavText {
 	color: #ffffff;
 }
-.darkGlow {
-	color: #ffffff
+
+.darkBook {
+	color: #fff;
 }
+
+.darkGlow {
+	color: #ccc
+}
+
 .darkGlow:hover {
 	color: #2DE0C6;
 }
+
 .darkDialog {
 	background-color: #212121!important;
 }
+
 .darkText {
-	color: #ffffff
+	color: #fff
 }
+
 .darkLink {
 	color: #2de0c6;
 }
@@ -35,4 +37,8 @@
 
 .darkUserForm {
 	border-top-color: #4d4d4d;
+}
+
+.darkCollection {
+	border-color: #333333;
 }

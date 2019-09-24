@@ -7,7 +7,6 @@ import AddCollection from '../collection/AddCollection';
 import ChunkyButton from '../inputs/ChunkyButton';
 import AddBookmark from '../bookmark/AddBookmark';
 import Collection from '../collection/Collection';
-// import Rearrange from './Rearrange'
 import Bookmark from '../bookmark/Bookmark';
 import EditUser from './EditUser';
 import List from './List';
@@ -22,7 +21,6 @@ const initialState = {
     ddl: [],
     faves: [],
     sheetVis: false,
-	rearrangeVis: false,
     darkMode: false,
     redirect: false,
 	order: []
@@ -270,9 +268,6 @@ function Home() {
 
 
                                 <EditUser vis={state.sheetVis}/>
-
-                                {/*<Rearrange vis={state.rearrangeVis}/>*/}
-
 
 	                            <List mainVis={mainVis}>
 

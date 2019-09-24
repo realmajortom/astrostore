@@ -1,8 +1,8 @@
 /************ app body ************/
 .appContainer {
     font-family: "Lato", sans-serif;
-    padding: 0;
-    overflow: auto;
+	padding: 0;
+	overflow: scroll;
 }
 
 .navbar {
@@ -85,14 +85,15 @@
 .listContainer {
     height: calc(100vh - 71px);
     margin-top: 71px;
-    padding: 0 calc(3vw - 25px);
+    padding: 0 2vw;
     display: flex;
     flex-flow: column wrap;
     align-content: flex-start;
+	overflow: scroll;
 }
 
 .favTitle {
-	padding: 25px 0 5px 25px;
+	padding: 25px 0 5px 0;
     font-size: 15pt;
     user-select: none;
     white-space: nowrap;
@@ -106,6 +107,9 @@
 /************ collection container ************/
 .collectionContainer {
     padding: 25px;
+	border: 1px solid #eeeeee;
+	border-radius: 10px;
+	margin: 10px;
 }
 
 .collTitleContainer {
@@ -131,19 +135,91 @@
     visibility: visible;
 }
 
-/**** list actions ****/
 
+/***** bookmarks *****/
+.bookList {
+	margin-top: 5px;
+}
+
+.borderCont {
+	/*border-bottom: 1px solid #eee;*/
+	cursor: default;
+	display: flex;
+	flex-direction: row;
+	padding: 8px 0;
+}
+
+.borderCont .editClass {
+	height: 100%;
+}
+
+.borderCont .editImg {
+	width: 16px;
+	margin: 0;
+}
+
+.titleColumn {
+	max-width: 270px;
+}
+
+.bookTitle {
+	text-decoration: none;
+	color: #1d1d1d;
+	font-size: 11pt;
+}
+
+.bookTitle:hover {
+	color: #7e17ea;
+}
+
+.bookRow .controls {
+	visibility: hidden;
+	transition-property: visibility;
+	transition-delay: .2s;
+}
+
+.bookRow:hover .controls {
+	visibility: visible;
+}
+
+.editCol {
+	border: none;
+}
+
+.favColumn {
+	margin: 0 10px 0 0;
+	padding: 0;
+	color: #8b8b8b;
+	font-size: 10pt;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	cursor: pointer;
+}
+
+.faveIcon {
+	height: 12px;
+}
+
+.unFave {
+	filter: opacity(15%) grayscale(1);
+}
+
+
+
+/**** bookmark/collection buttons ****/
 
 .editButton {
     border: none;
     background-color: transparent;
     color: #9b9b9b;
-    margin: 0 15px;
+    margin: 0 0 0 15px;
     padding: 0;
     user-select: none;
 	display: flex;
-	align-items: baseline;
+	align-items: center;
 	justify-content: center;
+	height: 100%;
 }
 
 .plusButton {
@@ -152,7 +228,7 @@
 	color: #9b9b9b;
 	font-size: 15pt;
 	padding: 0;
-	margin: 0;
+	margin: 0 0 0 15px;
 	user-select: none;
 }
 
@@ -167,7 +243,7 @@
 }
 
 .addImg, .editImg {
-	filter: invert(55%) sepia(79%) saturate(0%) hue-rotate(258deg) brightness(94%) contrast(98%);
+	filter: invert(86%) sepia(7%) saturate(19%) hue-rotate(152deg) brightness(85%) contrast(95%);
 	padding: 0;
 }
 
@@ -176,71 +252,7 @@
 	filter: invert(69%) sepia(39%) saturate(736%) hue-rotate(121deg) brightness(100%) contrast(91%);
 }
 
-/***** bookmarks *****/
-.bookList {
-    margin-top: 5px;
-}
 
-.bookRow {
-    cursor: default;
-    width: 320px;
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-}
-
-.borderCont {
-    border-bottom: 1px solid #eee;
-    display: flex;
-    flex-direction: row;
-    padding: 8px;
-}
-
-.titleColumn {
-    width: 250px;
-}
-
-.bookTitle {
-    text-decoration: none;
-    color: #1d1d1d;
-    font-size: 11pt;
-}
-
-.bookTitle:hover {
-    color: #7e17ea;
-}
-
-.bookRow .controls {
-    visibility: hidden;
-    transition-property: visibility;
-    transition-delay: .2s;
-}
-
-.bookRow:hover .controls {
-    visibility: visible;
-}
-
-.editCol {
-    border: none;
-}
-
-.favColumn {
-	padding-right: 2px;
-	color: #8b8b8b;
-	font-size: 10pt;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    cursor: pointer;
-}
-
-.faveIcon {
-    height: 14px;
-}
-
-.unFave {
-    filter: opacity(15%) grayscale(1);
-}
 
 
 /************ dialogs ************/
@@ -358,64 +370,80 @@
 
 /****** mobile adjustments *******/
 @media (max-width: 1009px) {
-    .navbar {
-        flex-direction: column;
-        align-items: baseline;
-    }
-    .navHome {
-        padding-top: 10px;
-        width: 94vw;
-    }
-    .navLanding {
-	    /*margin-left: 0;*/
-	    margin-left: calc(3vw - 5px);
-    }
-    .listContainer {
-        height: calc(100vh - 111px);
-        margin-top: 111px;
-    }
+
+	.navbar {
+		flex-direction: column;
+		align-items: baseline;
+	}
+
+	.navHome {
+		padding-top: 10px;
+		width: 94vw;
+	}
+
+	.navLanding {
+		margin-left: calc(3vw - 5px);
+	}
+
+	.listContainer {
+		height: calc(100vh - 111px);
+		margin-top: 131px;
+		padding: 0;
+	}
+
 	.astronaut {
 		margin-top: 15vh;
 	}
+
 	.paper {
 		width: 60vw;
 	}
+
 	.welcomeHome {
 		font-size: 22pt;
 	}
 }
 
 @media(max-width: 680px) {
+
 	.navbar {
 		align-items: center;
 		padding-top: 0;
 		position: relative;
 	}
+
 	.navHome {
 		width: 320px;
 		flex-wrap: wrap;
 		padding-top: 0;
 	}
+
 	.navLanding {
 		margin-left: 0;
 	}
+
 	.appTitle {
-		padding: 0;
+		padding: 10px 0;
 	}
+
 	.astronaut {
 		height: 94vw;
 		width: 94vw;
 		margin-left: 3vw;
 	}
+
 	.paper {
 		width: 80vw;
 	}
+
 	.favTitle {
 		padding-left: 0;
 	 }
+
 	.favCollection {
 		padding-left: 0;
 	}
+
 	.listContainer {
 		width: 100vw;
 		margin: 0;
@@ -424,11 +452,11 @@
 		flex-flow: column nowrap;
 		align-items: center;
 	}
+
 	.collectionContainer {
-		margin: 0;
-		padding: 25px 0;
-		min-width: 320px;
+		width: 293px;
 	}
+
 	.collTitleContainer .controls, .bookRow .controls {
 		visibility: visible;
 	}
@@ -436,68 +464,52 @@
 	.bookTitle {
 		font-size: 13pt;
 	}
+
 	.collTitleText {
 		font-size: 18pt;
 	}
-	.plusButton {
-		display: none;
-	}
+
 	.editImg {
 		margin: 0 0 -1px 0;
 		width: 20px;
 	}
+
 	.titleColumn {
 		width: 240px;
 	}
 
+	.addImg, .editImg {
+		filter: invert(82%) sepia(59%) saturate(1%) hue-rotate(314deg) brightness(89%) contrast(94%);
+	}
+
 }
 
+
 @media (max-width: 359px) {
+
+	.collectionContainer {
+		width: 253px;
+	}
+
 	.bookTitle {
 		font-size: 11pt;
 	}
+
 	.collTitleText {
 		font-size: 14pt;
 	}
+
 	.plusButton {
 		font-size: 14pt;
 		color: #c7c7c7;
 		margin-right: 0;
 	}
-	.editButton {
-		font-size: 12pt;
+
+	.editImg {
+		width: 17px;
 	}
+
 	.modalBody {
 		min-width: 300px;
 	}
-	.collectionContainer {
-		min-width: 300px;
-	}
-	.bookRow {
-		display: flex;
-		flex-flow: row nowrap;
-		justify-content: space-between;
-		width: 290px;
-		/*width: 90vw;*/
-	}
-	.titleColumn {
-		/*width: 80vw;*/
-		width: 220px;
-	}
 }
-
-/*@media (max-width: 345px) {*/
-/*    .appContainer {*/
-/*        padding-left: 10px;*/
-/*    }*/
-
-/*    .bookRow {*/
-/*        width: 310px;*/
-/*    }*/
-
-/*    .borderCont {*/
-/*        padding-right: 0;*/
-/*        width: 240px;*/
-/*    }*/
-
-/*}*/

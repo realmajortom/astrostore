@@ -60,7 +60,15 @@ function Bookmark(props) {
     return (
         <div className="bookRow" >
 
-            <div className={"borderCont " + (darkMode && 'darkBorder')}>
+            <div className="borderCont">
+
+	            <div className="favColumn" onClick={() => faveChange()}>
+                    <img className={'faveIcon ' + (!fave && 'unFave ')}
+                         src={require('./moon.png')}
+                         alt='Dark Mode Indicator'
+                    />
+                </div>
+
 
                 <div className='titleColumn'>
                     <a className={"bookTitle " + (darkMode && 'darkGlow')}
@@ -72,22 +80,15 @@ function Bookmark(props) {
                     </a>
                 </div>
 
-                <div className="favColumn" onClick={() => faveChange()}>
-                    <img className={'faveIcon ' + (!fave && 'unFave ')}
-                         src={require('./moon.png')}
-                         alt='Dark Mode Indicator'
-                    />
+	            <div className="controls">
+	                <EditBookmark
+		                title={title}
+		                url={url}
+		                update={updateBookmark}
+		                delete={bookDelete}
+	                />
                 </div>
 
-            </div>
-
-            <div className="controls">
-                <EditBookmark
-                    title={title}
-                    url={url}
-                    update={updateBookmark}
-                    delete={bookDelete}
-                />
             </div>
 
         </div>

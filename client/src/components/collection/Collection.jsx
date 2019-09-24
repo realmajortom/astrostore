@@ -1,14 +1,16 @@
 import React, {useContext, useState} from 'react';
 import axios from 'axios/index';
-import {HomeDispatch, Token} from '../home/Home';
+import {HomeDispatch, Token, DarkMode} from '../home/Home';
 import EditCollection from './EditCollection';
 import AddBookmark from '../bookmark/AddBookmark';
 import Bookmark from '../bookmark/Bookmark';
 
 
 function Collection(props) {
+
     const dispatch = useContext(HomeDispatch);
     const token = useContext(Token);
+    const darkMode = useContext(DarkMode);
 
     const id = props.c._id;
 
@@ -41,7 +43,7 @@ function Collection(props) {
     };
 
     return (
-			    <div className="collectionContainer">
+			    <div className={"collectionContainer " + (darkMode && 'darkCollection')}>
 
 		            <div className="collTitleContainer">
 
