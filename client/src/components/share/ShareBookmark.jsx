@@ -44,9 +44,38 @@ function ShareBookmark(props) {
 	useEffect(() => {
 		axios.get('https://astrostore.io/api/collection/all', {
 			headers: {Authorization: `JWT ${token}`}
-		}).then(res =>
-			setDropItems(res.data.sort((a, b) => a.sequence - b.sequence))
-		);
+		}).then(res => {
+
+			let rawColls = res.data.collections.map((c) => ({id: c._id, title: c.title}));
+			let order = res.data.order;
+
+			let sortedColls = [];
+
+			for (let i = 0; i < order.length; i++) {
+				const index = rawColls.findIndex(c => c.id === order[i]);
+				if (index >= 0) {
+					sortedColls.push(rawColls[index]);
+					rawColls.splice(index, 1);
+				}
+			}
+
+			if (rawColls.length > 0) {
+				for (let j = 0; j < rawColls.length; j++) {
+					sortedColls.push(rawColls[j]);
+				}
+			}
+
+			let newOrder = sortedColls.map(c => c.id);
+
+			if (newOrder !== order) {
+				axios.post('https://astrostore.io/api/user/order',
+					{order: newOrder},
+					{headers: {Authorization: `JWT ${token}`}})
+				     .then(res => console.log(res.data));
+			}
+
+			setDropItems(sortedColls);
+		});
 	}, [token]);
 
 
@@ -93,7 +122,7 @@ function ShareBookmark(props) {
                 >
                     {
 	                    dropItems.map(c =>
-		                    <MenuItem value={c._id} key={c._id} className={classes.root}>
+		                    <MenuItem value={c.id} key={c.id} className={classes.root}>
                                 {c.title}
                             </MenuItem>
 	                    )

@@ -7,6 +7,7 @@ import AddCollection from '../collection/AddCollection';
 import ChunkyButton from '../inputs/ChunkyButton';
 import AddBookmark from '../bookmark/AddBookmark';
 import Collection from '../collection/Collection';
+// import Rearrange from './Rearrange'
 import Bookmark from '../bookmark/Bookmark';
 import EditUser from './EditUser';
 import List from './List';
@@ -21,6 +22,7 @@ const initialState = {
     ddl: [],
     faves: [],
     sheetVis: false,
+	rearrangeVis: false,
     darkMode: false,
     redirect: false,
 	order: []
@@ -157,35 +159,39 @@ function Home() {
 
                  	if (res.status === 200) {
 
-                 		let rawColls = res.data.collections;
-                 		let sortedColls = [];
-                 		let order = res.data.order;
+	                    let rawColls = res.data.collections;
 
-                 		for (let i = 0; i < order.length; i++) {
-                 			const index = rawColls.findIndex(c => c._id === order[i]);
-                 			if (index >= 0) {
-                 				sortedColls.push(rawColls[index]);
-                 				rawColls.splice(index, 1);
+	                    let order = res.data.order;
+
+	                    let sortedColls = [];
+
+	                    for (let i = 0; i < order.length; i++) {
+		                    const index = rawColls.findIndex(c => c._id === order[i]);
+		                    if (index >= 0) {
+			                    sortedColls.push(rawColls[index]);
+			                    rawColls.splice(index, 1);
 		                    }
 	                    }
 
-                 		if (rawColls.length > 0) {
-
-                 			for (let j = 0; j < rawColls.length; j++) {
-                 				sortedColls.push(rawColls[j]);
-                 				order.push(rawColls[j]._id);
+	                    if (rawColls.length > 0) {
+		                    for (let j = 0; j < rawColls.length; j++) {
+			                    sortedColls.push(rawColls[j]);
 		                    }
+	                    }
 
-                 			axios.post('https://astrostore.io/api/user/order',
-			                    {order: order},
+	                    let newOrder = sortedColls.map(c => c._id);
+
+	                    if (newOrder !== order) {
+		                    axios.post('https://astrostore.io/api/user/order',
+			                    {order: newOrder},
 			                    {headers: {Authorization: `JWT ${token}`}})
-			                    .then(res => console.log(res.data));
+		                         .then(res => console.log(res.data));
 	                    }
 
 	                    dispatch({
 		                    type: 'setC',
 		                    collections: sortedColls,
-		                    order: order,
+		                    order: newOrder,
 		                    auth: token
 	                    });
 
@@ -264,6 +270,8 @@ function Home() {
 
 
                                 <EditUser vis={state.sheetVis}/>
+
+                                {/*<Rearrange vis={state.rearrangeVis}/>*/}
 
 
 	                            <List mainVis={mainVis}>
