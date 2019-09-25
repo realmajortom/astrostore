@@ -121,6 +121,7 @@
 
 .collTitleText {
     font-size: 15pt;
+	font-weight: 700;
     user-select: none;
     white-space: nowrap;
 }
