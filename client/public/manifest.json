@@ -1,12 +1,11 @@
 {
   "short_name": "AstroStore",
-  "name": "AstroStore.io",
-  "description": "Open source, cross-platform bookmark manager hosted in the cloud.",
+  "name": "AstroStore Bookmark Manager",
+  "description": "A cross-platform, open-source bookmark manager.",
   "lang": "en-US",
-  "categories": [
-    "utilities",
-    "productivity"
-  ],
+  "display": "standalone",
+  "theme_color": "#121212",
+  "background_color": "#121212",
   "icons": [
     {
       "src": "icon-192.png",
@@ -19,16 +18,14 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/",
+  "start_url": "https://astrostore.io/",
   "share_target": {
     "action": "/share",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
     "params": {
       "title": "title",
       "text": "text"
     }
-  },
-  "display": "standalone",
-  "orientation": "portrait",
-  "theme_color": "#3c3c3c",
-  "background_color": "#3c3c3c"
+  }
 }

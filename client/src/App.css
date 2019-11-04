@@ -13,10 +13,10 @@
     align-items: center;
     justify-content: flex-start;
     position: fixed;
-	top: 0;
-	left: 0;
-	padding-top: 10px;
-	background-color: #fff;
+		top: 0;
+		left: 0;
+		padding-top: 10px;
+		background-color: #fff;
 }
 
 .navHome {
@@ -25,7 +25,7 @@
     align-items: center;
     justify-content: space-between;
     width: 800px;
-	margin: 0 3vw;
+		margin: 0 3vw;
 }
 
 .navLanding {
@@ -46,28 +46,12 @@
     display: flex;
     align-items: baseline;
     flex-wrap: nowrap;
-    cursor: pointer;
     user-select: none;
-	padding-left: 3vw;
+		padding-left: 3vw;
 }
 
 .tinyLogo {
     height: 16px;
-}
-
-@keyframes swing {
-    15% {transform: translateX(7px);}
-    30% {transform: translateX(-3px);}
-    50% {transform: translateX(5px);}
-    65% {transform: translateX(0px);}
-    80% {transform: translateX(2px);}
-    90% {transform: translateX(0);}
-    100% {transform: translateX(0);}
-}
-
-.appTitle:hover {
-    animation: swing 1.25s ease;
-    animation-iteration-count: 2;
 }
 
 .aws-btn {
@@ -84,12 +68,12 @@
 /************ list container ************/
 .listContainer {
     height: calc(100vh - 71px);
-    margin-top: 71px;
-    padding: 0 2vw;
+    margin: 71px calc(2vw + 10px) 0 2vw;
+    padding: 0;
     display: flex;
     flex-flow: column wrap;
     align-content: flex-start;
-	overflow: scroll;
+		overflow: scroll;
 }
 
 .favTitle {
@@ -106,28 +90,33 @@
 
 /************ collection container ************/
 .collectionContainer {
-    padding: 25px;
-	border: 1px solid #eeeeee;
-	border-radius: 10px;
-	margin: 10px;
+	 	width: 250px;
+  	padding: 25px;
+		border: 1px solid #eeeeee;
+		box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
+		border-radius: 10px;
+		margin: 10px;
 }
 
 .collTitleContainer {
-    width: 250px;
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+		align-items: baseline;
+		justify-content: space-between;
 }
 
 .collTitleText {
     font-size: 15pt;
-	font-weight: 700;
+		font-weight: 700;
     user-select: none;
     white-space: nowrap;
 }
 
+.controlsOuter {
+
+}
 .collTitleContainer .controls {
-	visibility: hidden;
+		visibility: hidden;
     transition-property: visibility;
     transition-delay: .2s;
 }
@@ -136,6 +125,14 @@
     visibility: visible;
 }
 
+.controls {
+	display: flex;
+	align-items: baseline;
+}
+
+.faveTitle {
+	margin-bottom: 5px;
+}
 
 /***** bookmarks *****/
 .bookList {
@@ -159,9 +156,6 @@
 	margin: 0;
 }
 
-.titleColumn {
-	max-width: 270px;
-}
 
 .bookTitle {
 	text-decoration: none;
@@ -214,13 +208,13 @@
     border: none;
     background-color: transparent;
     color: #9b9b9b;
-    margin: 0 0 0 15px;
+    margin: 0 0 0 20px;
     padding: 0;
     user-select: none;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
 }
 
 .plusButton {
@@ -229,7 +223,7 @@
 	color: #9b9b9b;
 	font-size: 15pt;
 	padding: 0;
-	margin: 0 0 0 15px;
+	margin: 0 0 0 20px;
 	user-select: none;
 }
 
@@ -239,7 +233,7 @@
 }
 
 .addImg {
-	width: 22px;
+	width: 26px;
 	margin: 0 0 -5px 0;
 }
 
@@ -278,9 +272,10 @@
 }
 
 .modalHeader {
-    font-family: "Roboto", sans-serif;
-    color: #313131;
-    font-size: 24pt;
+		font-weight: 700;
+    user-select: none;
+    white-space: nowrap;
+    font-size: 22pt;
     margin-top: 20px;
 }
 
@@ -309,6 +304,20 @@
     margin-bottom: 30px;
 }
 
+.collectionsModal {
+    font-family: "Lato", sans-serif;
+    /* height: 400px; */
+		/* min-width: 340px; */
+		width: 90vw;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    background: #1D1D1D;
+    border-radius: 4px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+
 /*********** User Drawer ************/
 .paper {
     width: 35vw;
@@ -324,33 +333,25 @@
 .welcomeHome {
     font-family: "Roboto", sans-serif;
     font-size: 38pt;
-    /*margin-bottom: 4vh;*/
 }
 
 .userMessage {
-	margin-top: 15px;
+	margin-top: 25px;
 }
 
 .userForm {
-    min-height: 130px;
-    height: 15vh;
     border-top: 1px solid #eee;
     margin-top: 30px;
-    padding: 1vh 0;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-around;
+    padding: 10px 0;
 }
 
 .passForm {
-    min-height: 260px;
-    height: 30vh;
     border-top: 1px solid #eee;
-    margin-top: 1.5vh;
-    padding: 1vh 0;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.userFieldWrap {
+	margin: 25px 0;
 }
 
 .deleteWrapperUser {
@@ -368,83 +369,194 @@
     color: #7e17ea
 }
 
+.toggleContainer {
+	margin: 25px 0;
+	width: 160px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.toggleCustom.react-toggle--checked .react-toggle-track {
+  background-color: #d9f0ff;
+}
+
+.toggleCustom.react-toggle--checked:hover .react-toggle-track {
+  background-color: #68c3ff;
+}
+
+
+.reorderModal {
+	padding: 25px 0;
+}
+
+.reorderHeader {
+	margin: 0 0 15px 0;
+	padding: 0;
+	font-weight: 700;
+	user-select: none;
+	white-space: nowrap;
+	font-size: 22pt;
+}
+
+.dropArea {
+	width: 90%;
+	min-height: 60vh;
+	margin: 0 auto;
+}
+
+.collBubbleOuter {
+	padding: 8px 0;
+}
+
+.collBubbleInner {
+  padding: 15px;
+	border: 1px solid #eeeeee;
+	background-color: #ffffff;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
+	border-radius: 10px;
+	transition: box-shadow 150ms ease 0s;
+}
+
+.collBubbleInner:hover {
+		cursor: pointer;
+		box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.20);
+}
+
+.collBubbleTitle {
+    font-size: 15pt;
+		font-weight: 600;
+		margin: 0;
+		padding: 0;
+    user-select: none;
+    white-space: nowrap;
+}
+
+
+.reorderBtnsOuter {
+	margin-top: 20px;
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.reorderBtnsInner {
+	width: 200px;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.reorderCancelBtn {
+	padding: 10px 20px;
+	background-color: transparent;
+	border: none;
+	font-size: 11pt;
+	color: #666666;
+}
+
+.reorderCancelBtn:hover, .reorderCancelBtn:active {
+	color: #f45a4e;
+	cursor: pointer;
+}
+
+.reorderSaveBtn {
+	padding: 10px 20px;
+	background-color: transparent;
+	border: 1px solid #eeeeee;
+	color: #333;
+	font-size: 11pt;
+	font-weight: 700;
+	border-radius: 4px;
+}
+
+.reorderSaveBtn:hover, .reorderSaveBtn:active {
+	cursor: pointer;
+	background-color: #eeeeee;
+}
+
+.darkReorderBtn {
+	background-color: #eeeeee;
+	color: #1d1d1d;
+}
+
+.darkReorderBtn:hover {
+	background-color: #ccc;
+	border-color: #ccc;
+}
+
+
 
 /****** mobile adjustments *******/
 @media (max-width: 1009px) {
-
 	.navbar {
 		flex-direction: column;
 		align-items: baseline;
 	}
-
 	.navHome {
 		padding-top: 10px;
 		width: 94vw;
 	}
-
 	.navLanding {
 		margin-left: calc(3vw - 5px);
 	}
-
 	.listContainer {
 		height: calc(100vh - 111px);
 		margin-top: 131px;
 		padding: 0;
 	}
-
 	.astronaut {
 		margin-top: 15vh;
 	}
-
 	.paper {
 		width: 60vw;
 	}
-
 	.welcomeHome {
 		font-size: 22pt;
 	}
 }
 
-@media(max-width: 680px) {
+@media(max-width: 768px) {
+	.reorderModal {
+		min-width: 90vw;
+	}
+}
 
+@media(max-width: 680px) {
 	.navbar {
 		align-items: center;
 		padding-top: 0;
 		position: relative;
 	}
-
 	.navHome {
 		width: 320px;
 		flex-wrap: wrap;
 		padding-top: 0;
+		margin-bottom: 20px;
 	}
-
 	.navLanding {
 		margin-left: 0;
 	}
-
 	.appTitle {
 		padding: 10px 0;
 	}
-
 	.astronaut {
 		height: 94vw;
 		width: 94vw;
 		margin-left: 3vw;
 	}
-
 	.paper {
 		width: 80vw;
 	}
-
 	.favTitle {
 		padding-left: 0;
 	 }
-
 	.favCollection {
 		padding-left: 0;
 	}
-
 	.listContainer {
 		width: 100vw;
 		margin: 0;
@@ -453,63 +565,55 @@
 		flex-flow: column nowrap;
 		align-items: center;
 	}
-
 	.collectionContainer {
-		width: 293px;
+		width: 80%;
 	}
-
 	.collTitleContainer .controls, .bookRow .controls {
 		visibility: visible;
 	}
-
 	.bookTitle {
 		font-size: 13pt;
 	}
-
 	.collTitleText {
 		font-size: 18pt;
 	}
-
 	.editImg {
 		margin: 0 0 -1px 0;
 		width: 20px;
 	}
-
 	.titleColumn {
-		width: 240px;
+		width: 100%;
 	}
-
 	.addImg, .editImg {
 		filter: invert(82%) sepia(59%) saturate(1%) hue-rotate(314deg) brightness(89%) contrast(94%);
 	}
-
+	.bookList {
+		margin-top: 14px;
+	}
+	.appContainer {
+		padding-bottom: 40px;
+	}
 }
 
 
 @media (max-width: 359px) {
-
 	.collectionContainer {
 		width: 253px;
 	}
-
 	.bookTitle {
 		font-size: 11pt;
 	}
-
 	.collTitleText {
 		font-size: 14pt;
 	}
-
 	.plusButton {
 		font-size: 14pt;
 		color: #c7c7c7;
 		margin-right: 0;
 	}
-
 	.editImg {
 		width: 17px;
 	}
-
 	.modalBody {
 		min-width: 300px;
 	}

@@ -5,28 +5,39 @@ import EditBookmark from './EditBookmark';
 
 
 function Bookmark(props) {
-    const dispatch = useContext(HomeDispatch);
-    const darkMode = useContext(DarkMode);
+
     const token = useContext(Token);
+    const darkMode = useContext(DarkMode);
+    const dispatch = useContext(HomeDispatch);
 
     let book = props.bookmark;
+
+    const id = book._id;
     const date = book.addDate;
     const parent = book.parentId;
-    const id = book._id;
 
     const [title, setTitle] = useState(book.title);
     const [url, setUrl] = useState(book.url);
     const [fave, setFave] = useState(book.fave);
 
     const faveChange = () => {
+
+        // Update favorite status in database
         axios.post('https://astrostore.io/api/bookmark/fave',
             {parentId: parent, addDate: date, fave: !fave},
             {headers: {Authorization: `JWT ${token}`}}
         );
+
+        // Update favorite status in local 'book' object
         book.fave = !book.fave;
-        fave
-        ? dispatch({type: 'deleteFave', id: id})
-        : dispatch({type: 'addFave', payload: book});
+
+        // Update favorite status in the general app state with updated 'book' object
+        if (fave) {
+            dispatch({type: 'deleteFave', id: id});
+        } else {
+            dispatch({type: 'addFave', payload: book});
+        }
+
         setFave(!fave);
     };
 
@@ -62,31 +73,16 @@ function Bookmark(props) {
 
             <div className="borderCont">
 
-	            <div className="favColumn" onClick={() => faveChange()}>
-                    <img className={'faveIcon ' + (!fave && 'unFave ')}
-                         src={require('./moon.png')}
-                         alt='Dark Mode Indicator'
-                    />
+                <div className="favColumn" onClick={() => faveChange()}>
+                    <img className={'faveIcon ' + (!fave && 'unFave ')} src={require('./moon.png')} alt='Dark Mode Indicator' />
                 </div>
-
 
                 <div className='titleColumn'>
-                    <a className={"bookTitle " + (darkMode && 'darkGlow')}
-                       href={url}
-                       target="_blank"
-                       rel="noopener noreferrer"
-                    >
-                        {title}
-                    </a>
+                    <a className={"bookTitle " + (darkMode && 'darkGlow')} href={url} target="_blank" rel="noopener noreferrer" >{title}</a>
                 </div>
 
-	            <div className="controls">
-	                <EditBookmark
-		                title={title}
-		                url={url}
-		                update={updateBookmark}
-		                delete={bookDelete}
-	                />
+                <div className="controls">
+                    <EditBookmark title={title} url={url} update={updateBookmark} delete={bookDelete} />
                 </div>
 
             </div>

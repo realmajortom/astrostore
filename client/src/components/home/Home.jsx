@@ -21,9 +21,8 @@ const initialState = {
     ddl: [],
     faves: [],
     sheetVis: false,
-    darkMode: false,
+    darkMode: JSON.parse(localStorage.getItem('darkMode')),
     redirect: false,
-	order: []
 };
 
 
@@ -31,10 +30,9 @@ const reducer = (state, action) => {
 
     switch (action.type) {
 
-
-    	// Collections
+        /********* Collections *********/
         case 'setC':
-            return {...state, collections: action.collections, order: action.order, token: action.auth};
+            return {...state, collections: action.collections, token: action.token};
 
         case 'addC':
             return {
@@ -52,14 +50,14 @@ const reducer = (state, action) => {
             let colls = state.collections;
             let cIndex = colls.findIndex(c => c._id === action.id);
             if (action.sub === 'title') {
-	            colls[cIndex].title = action.title;
+                colls[cIndex].title = action.title;
             } else {
-	            colls[cIndex].vis = !state.collections[cIndex].vis;
+                colls[cIndex].vis = !state.collections[cIndex].vis;
             }
             return {...state, collections: colls};
 
 
-        // Bookmarks
+        /********* Bookmarks *********/
         case 'addBook':
             let tempColls = state.collections;
             let index = tempColls.findIndex(c => c._id === action.id);
@@ -85,7 +83,7 @@ const reducer = (state, action) => {
             return {...state, collections: tempColls3};
 
 
-        // Favorites
+        /********* Favorites *********/
         case 'setFaves':
             return {...state, faves: action.payload};
 
@@ -106,7 +104,7 @@ const reducer = (state, action) => {
             return {...state, faves: tempFaves};
 
 
-        // UI
+        /********* UI *********/
         case 'redirect':
             return {...state, redirect: !state.redirect};
 
@@ -117,12 +115,22 @@ const reducer = (state, action) => {
             return {...state, sheetVis: !state.sheetVis};
 
         case 'darkOn':
+            localStorage.setItem('darkMode', 'true');
             return {...state, darkMode: true};
 
         case 'toggleDark':
-            localStorage.setItem('darkMode', JSON.stringify(!state.darkMode));
-            return {...state, darkMode: !state.darkMode};
+            let newMode = JSON.stringify((!state.darkMode));
+            let theme = document.querySelector("meta[name=theme-color]");
 
+            if (newMode !== 'true') {
+                theme.setAttribute("content", '#ffffff');
+            } else {
+                theme.setAttribute("content", '#121212');
+            }
+
+            localStorage.setItem('darkMode', newMode);
+
+            return {...state, darkMode: !state.darkMode};
 
         default:
             return state;
@@ -134,161 +142,150 @@ const reducer = (state, action) => {
 export const Ddl = React.createContext(null);
 export const Token = React.createContext(null);
 export const DarkMode = React.createContext(null);
-export const HomeDispatch = React.createContext(null);
+export const HomeDispatch = React.createContext(null)
 
 
 function Home() {
 
     const [state, dispatch] = useReducer(reducer, initialState);
-
     const [mainVis, setMainVis] = useState(true);
 
     useEffect(() => {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            dispatch({type: 'darkOn'});
+        }
+    }, []);
 
-	    const token = localStorage.getItem('JWT');
-
-        JSON.parse(localStorage.getItem('darkMode')) && dispatch({type: 'darkOn'});
+    // Get bookmarks
+    useEffect(() => {
+        const token = localStorage.getItem('token');
 
         if (token !== null) {
-
             axios.get('https://astrostore.io/api/collection/all',
-	            {headers: {Authorization: `JWT ${token}`}})
-                 .then(res => {
+                {headers: {Authorization: `JWT ${token}`}})
+                .then(res => {
+                    if (res.status === 200) {
 
-                 	if (res.status === 200) {
+                        // The rest of the effect is to determine and establish the correct collection order
+                        // They should almost always be in order...but just in case
+                        let collections = res.data.collections;
+                        let order = res.data.order;
+                        let sortedCollections = [];
+                        let newOrder = [];
 
-	                    let rawColls = res.data.collections;
+                        /* For every item in order, check that it exists in the collections array
+                        If found, push the collection to the sortedCollections */
+                        for (let i = 0; i < order.length; i++) {
+                            const index = collections.findIndex(c => c._id === order[i]);
+                            if (index >= 0) {
+                                sortedCollections.push(collections[index]);
+                                newOrder.push(collections[index]._id);
+                                // Remove the found collection from collections array
+                                collections.splice(index, 1);
+                            }
+                        }
 
-	                    let order = res.data.order;
+                        /* To make sure no collections are lost, check that collections array is empty. Any remaining collections were not included in the order array and should be pushed to sortedCollections */
+                        if (collections.length > 0) {
+                            for (let j = 0; j < collections.length; j++) {
+                                sortedCollections.push(collections[j]);
+                                newOrder.push(collections[j]._id);
+                            }
+                        }
 
-	                    let sortedColls = [];
+                        if (order.join('') !== newOrder.join('')) {
+                            axios.post('https://astrostore.io/api/user/order',
+                                {order: newOrder},
+                                {headers: {Authorization: `JWT ${token}`}})
+                                .then(res => console.log(res.data.message));
+                        }
 
-	                    for (let i = 0; i < order.length; i++) {
-		                    const index = rawColls.findIndex(c => c._id === order[i]);
-		                    if (index >= 0) {
-			                    sortedColls.push(rawColls[index]);
-			                    rawColls.splice(index, 1);
-		                    }
-	                    }
-
-	                    if (rawColls.length > 0) {
-		                    for (let j = 0; j < rawColls.length; j++) {
-			                    sortedColls.push(rawColls[j]);
-		                    }
-	                    }
-
-	                    let newOrder = sortedColls.map(c => c._id);
-
-	                    if (newOrder !== order) {
-		                    axios.post('https://astrostore.io/api/user/order',
-			                    {order: newOrder},
-			                    {headers: {Authorization: `JWT ${token}`}})
-		                         .then(res => console.log(res.data));
-	                    }
-
-	                    dispatch({
-		                    type: 'setC',
-		                    collections: sortedColls,
-		                    order: newOrder,
-		                    auth: token
-	                    });
+                        dispatch({
+                            type: 'setC',
+                            collections: sortedCollections,
+                            token: token
+                        });
 
                     } else {
-	                    window.alert(res.data.message)
+                        window.alert(res.data.message)
                     }
 
-                 });
+                });
         } else {
             dispatch({type: 'redirect'});
         }
-
     }, []);
 
 
-	useEffect(() => {
+    useEffect(() => {
+        if (state.collections.length > 0) {
 
-		if (state.collections.length > 0) {
+            let favorites = [];
 
-			let favorites = [];
+            for (let i = 0; i < state.collections.length; i++) {
+                state.collections[i].bookmarks.forEach(b =>
+                    b.fave === true && favorites.push(b)
+                );
+            }
 
-			for (let i = 0; i < state.collections.length; i++) {
-				state.collections[i].bookmarks.forEach(b =>
-					b.fave === true && favorites.push(b)
-				);
-			}
+            let ddl = state.collections.map(c => ({
+                id: c._id,
+                title: c.title
+            }));
 
-			let ddl = state.collections.map((c) => ({
-				id: c._id,
-				title: c.title
-			}));
-
-			dispatch({type: 'setFaves', payload: favorites});
-
-			dispatch({type: 'setDdl', payload: ddl});
-		}
-
-	}, [state.collections]);
+            dispatch({type: 'setFaves', payload: favorites});
+            dispatch({type: 'setDdl', payload: ddl});
+        }
+    }, [state.collections]);
 
 
     if (state.redirect !== true) {
-
-	    const mainList = (state.collections.map(c => <Collection c={c} key={c._id} />));
-
-	    const favList = (state.faves.map(b => <Bookmark bookmark={b} key={b._id}/>));
+        const mainList = (state.collections.map(c => <Collection c={c} key={c._id} />));
+        const favList = (state.faves.map(b => <Bookmark bookmark={b} key={b._id} />));
 
         return (
-
             <div className={'appContainer ' + (state.darkMode && 'darkHome')}>
-
                 <HomeDispatch.Provider value={dispatch}>
                     <Token.Provider value={state.token}>
                         <Ddl.Provider value={state.ddl}>
                             <DarkMode.Provider value={state.darkMode}>
 
 
-	                            <Nav local='navHome' dark={state.darkMode} >
-
-		                            <AddCollection/>
-
-	                                <AddBookmark buttonType="primary" pTitle={''} id={''}/>
-
-	                                <ChunkyButton
-	                                    type={state.darkMode ? 'pinkDark' : 'pink'}
-	                                    text={mainVis ? 'Show Favorites' : 'Show All'}
-	                                    onPress={() => setMainVis(!mainVis)}
-	                                />
-
-	                                <ChunkyButton
-	                                    type={state.darkMode ? 'pinkDark' : 'pink'}
-	                                    text='User'
-	                                    onPress={() => dispatch({type: 'toggleSheet'})}
-	                                />
-
+                                <Nav local='navHome' dark={state.darkMode} >
+                                    <AddCollection />
+                                    <AddBookmark buttonType="primary" pTitle={''} id={''} />
+                                    <ChunkyButton
+                                        type={state.darkMode ? 'pinkDark' : 'pink'}
+                                        text={mainVis ? 'Show Favorites' : 'Show All'}
+                                        onPress={() => setMainVis(!mainVis)}
+                                    />
+                                    <ChunkyButton
+                                        type={state.darkMode ? 'pinkDark' : 'pink'}
+                                        text='User'
+                                        onPress={() => dispatch({type: 'toggleSheet'})}
+                                    />
                                 </Nav>
 
+                                <EditUser vis={state.sheetVis} collections={state.collections} />
 
-                                <EditUser vis={state.sheetVis}/>
-
-	                            <List mainVis={mainVis}>
-
-		                            { mainVis
-	                                    ? mainList
-	                                    : <div className='favCollection'> <div className='favTitle'>Favorites</div> {favList} </div> }
-
-	                            </List>
+                                <List mainVis={mainVis}>
+                                    {mainVis
+                                        ? mainList
+                                        : <div className='collectionContainer favesContainer'>
+                                            <div className='collTitleText faveTitle'>Favorites</div>
+                                            {favList}
+                                        </div>}
+                                </List>
 
 
                             </DarkMode.Provider>
-                         </Ddl.Provider>
+                        </Ddl.Provider>
                     </Token.Provider>
                 </HomeDispatch.Provider>
-
             </div>
-
         );
-
     } else {
-	    return <Redirect to='/'/>;
+        return <Redirect to='/' />;
     }
 }
 

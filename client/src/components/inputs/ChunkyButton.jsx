@@ -1,6 +1,6 @@
 import React from 'react';
-import {AwesomeButton} from "react-awesome-button";
 import './button-theme.css';
+import {AwesomeButton} from "react-awesome-button";
 
 
 const ChunkyButton = (props) => {

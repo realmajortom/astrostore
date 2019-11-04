@@ -1,18 +1,14 @@
-import React, {useContext} from 'react';
-import {HomeDispatch} from './Home';
 import {DarkMode} from './Home';
+import React, {useContext} from 'react';
 
 function Nav(props) {
     const darkMode = useContext(DarkMode);
-    const dispatch = useContext(HomeDispatch);
 
     return (
         <nav className={'navbar ' + (darkMode && 'darkHome')}>
 
-            <div className={'appTitle ' + (darkMode && 'darkNavText')} onClick={props.local === 'navHome' && (() => dispatch({type: 'toggleDark'}))}>
-                Astro
-                <img className='tinyLogo' src={require('./planet.png')} alt='Dark Mode Indicator'/>
-                Store
+            <div className={'appTitle ' + (darkMode && 'darkNavText')}>
+                Astro<img className='tinyLogo' src={require('./planet.png')} alt='Main Icon' />Store
             </div>
 
             <div className={props.local}>

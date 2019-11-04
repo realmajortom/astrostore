@@ -2,11 +2,18 @@
 	display: flex;
 	flex-flow: column nowrap;
 	align-items: center;
-	height: 360px;
+	height: 420px;
 	width: 100vw;
 	font-family: "Lato", sans-serif;
 }
 
+.modalHeader {
+		font-weight: 700;
+    user-select: none;
+    white-space: nowrap;
+    font-size: 22pt;
+    margin-top: 20px;
+}
 .fieldWrapper {
-	width: 320px;
+	width: 100vw;
 }

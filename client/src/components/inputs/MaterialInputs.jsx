@@ -1,9 +1,9 @@
 import React from 'react';
-import {makeStyles, withStyles} from '@material-ui/core/styles/index';
-import FormControl from '@material-ui/core/FormControl/index';
-import InputLabel from '@material-ui/core/InputLabel/index';
-import InputBase from '@material-ui/core/InputBase/index';
 import Select from '@material-ui/core/Select/index';
+import InputBase from '@material-ui/core/InputBase/index';
+import InputLabel from '@material-ui/core/InputLabel/index';
+import FormControl from '@material-ui/core/FormControl/index';
+import {makeStyles, withStyles} from '@material-ui/core/styles/index';
 
 
 const MaterialInput = withStyles(theme => ({
@@ -26,6 +26,7 @@ const MaterialInput = withStyles(theme => ({
     }
 }))(InputBase);
 
+
 const useStyles = makeStyles({
     formControl: {
         margin: 0,
@@ -36,7 +37,7 @@ const useStyles = makeStyles({
     label: {
         fontFamily: ['Lato', 'sans-serif'],
         fontSize: 20,
-        color: '#415a70!important'
+        color: '#1d1d1d!important'
     },
     labelDark: {
         fontFamily: ['Lato', 'sans-serif'],
@@ -77,8 +78,11 @@ export function TextField(props) {
     );
 }
 
+
 export function Dropdown(props) {
+
     const classes = useStyles();
+
     return (
         <FormControl classes={{root: classes.formControl}}>
 
@@ -89,11 +93,11 @@ export function Dropdown(props) {
             <Select
                 value={props.value}
                 onChange={props.onChange}
-                input={<MaterialInput classes={{root: (props.dark ? classes.innerDark : null)}}/>}
+                input={<MaterialInput classes={{root: (props.dark ? classes.innerDark : null)}} />}
                 MenuProps={{
                     transitionDuration: 50,
                     classes: {paper: classes.dropdownPaper, list: classes.dropdownList}
-            }}>
+                }}>
                 {props.children}
             </Select>
 

@@ -35,25 +35,32 @@ function AddBookmark(props) {
     const [url, setUrl] = useState('');
 
     const closeModal = () => {
-    	setVis(false);
-    	setTitle('');
-    	setUrl('');
+        setVis(false);
+        setTitle('');
+        setUrl('');
     };
 
     const addBookmark = () => {
-        axios.post('https://astrostore.io/api/bookmark/create',
-            {title: title, url: url, parentId: parentId},
-            {headers: {Authorization: `JWT ${token}`}})
+        if (title.length < 1) {
+            alert('Title must contain at least 1 character');
+        } else if (parentId.length < 1) {
+            alert('Please choose a collection from the dropdown to save your bookmark!');
+        } else {
+            axios.post('https://astrostore.io/api/bookmark/create',
+                {title: title, url: url, parentId: parentId},
+                {headers: {Authorization: `JWT ${token}`}})
+                .then(res => {
+                    if (res.data.success) {
+                        dispatch({type: 'addBook', payload: res.data.bookmarks, id: parentId});
+                        closeModal();
+                    } else {
+                        window.alert(res.data.message);
+                    }
+                });
+        }
 
-             .then(res => {
-	            if (res.data.success) {
-	                dispatch({type: 'addBook', payload: res.data.bookmarks, id: parentId});
-	                closeModal();
-	            } else {
-	                window.alert(res.data.message);
-	            }
-             });
     };
+
 
     return (
         <div>
@@ -65,7 +72,7 @@ function AddBookmark(props) {
                     type={darkMode ? 'secondaryDark' : 'secondary'} />
                 : <button
                     onClick={() => setVis(true)}
-                    className="plusButton"><img src={require('../../add.png')} alt='Add Bookmark' className='addImg' /></button>
+                    className="plusButton"><img src={require('../inputs/add.png')} alt='Add Bookmark' className='addImg' /></button>
             }
 
             <Dialog
