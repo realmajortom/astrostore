@@ -29,13 +29,11 @@ function ShareBookmark(props) {
 			let collections = res.data.collections.map((c) => ({id: c._id, title: c.title}));
 			let order = res.data.order;
 			let sortedCollections = [];
-			let newOrder = [];
 
 			for (let i = 0; i < order.length; i++) {
 				const index = collections.findIndex(c => c._id === order[i]);
 				if (index >= 0) {
 					sortedCollections.push(collections[index]);
-					newOrder.push(collections[index]._id);
 					collections.splice(index, 1);
 				}
 			}
@@ -43,15 +41,7 @@ function ShareBookmark(props) {
 			if (collections.length > 0) {
 				for (let j = 0; j < collections.length; j++) {
 					sortedCollections.push(collections[j]);
-					newOrder.push(collections[j]._id);
 				}
-			}
-
-			if (order.join('') !== newOrder.join('')) {
-				axios.post('https://astrostore.io/api/user/order',
-					{order: newOrder},
-					{headers: {Authorization: `JWT ${token}`}})
-					.then(res => console.log(res.data.message));
 			}
 
 			setDropItems(sortedCollections);
