@@ -10,11 +10,9 @@ import ChunkyButton from '../inputs/ChunkyButton';
 const useStyles = makeStyles({
     root: {
         fontFamily: ['"Lato"', 'sans-serif'],
-        fontSize: 13,
+        fontSize: '16px',
         borderBottom: '1px solid #eeeeee',
-        paddingTop: 0,
-        paddingBottom: 0,
-        minHeight: 42,
+        padding: '12px',
         '&:hover': {
             color: '#7e17ea',
             background: 'transparent'
@@ -67,6 +65,7 @@ function AddBookmark(props) {
 
             {props.buttonType === 'primary'
                 ? <ChunkyButton
+                    locale='nav'
                     onPress={() => setVis(true)}
                     text={'New Bookmark'}
                     type={darkMode ? 'secondaryDark' : 'secondary'} />
@@ -87,10 +86,9 @@ function AddBookmark(props) {
 
                 <div className={"modalHeader " + (darkMode && 'darkBook')}>New Bookmark</div>
 
-                <div className='fieldWrapper'>
+                <form>
                     <TextField
                         label='Bookmark Title'
-                        placeholder='Very Real Website'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         dark={darkMode}
@@ -98,7 +96,6 @@ function AddBookmark(props) {
 
                     <TextField
                         label='Bookmark Url'
-                        placeholder='https://www.veryrealwebsite.com'
                         value={url}
                         onChange={(e) => setUrl(e.target.value)}
                         dark={darkMode}
@@ -118,16 +115,13 @@ function AddBookmark(props) {
                         )}
 
                     </Dropdown>
-                </div>
+                </form>
 
                 <div className='submitWrapper'>
-
                     <ChunkyButton
                         onPress={() => addBookmark()}
                         text={'Submit'}
-                        type={darkMode ? 'primaryDark' : 'primary'}
-                    />
-
+                        type={darkMode ? 'primaryDark' : 'primary'} />
                 </div>
 
             </Dialog>

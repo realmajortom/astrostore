@@ -41,7 +41,7 @@ function EditBookmark(props) {
 
                 <div className={"modalHeader " + (darkMode && 'darkBook')}>Edit Bookmark</div>
 
-                <div className='fieldWrapper'>
+                <form>
                     <TextField label="Bookmark Title"
                         value={title}
                         placeholder={props.title}
@@ -53,7 +53,7 @@ function EditBookmark(props) {
                         placeholder={props.url}
                         onChange={(e) => setUrl(e.target.value)}
                         dark={darkMode} />
-                </div>
+                </form>
 
                 <div className='submitWrapper'>
                     <ChunkyButton onPress={() => sendUpdate()}

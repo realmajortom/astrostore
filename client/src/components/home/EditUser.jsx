@@ -110,68 +110,60 @@ function EditUser(props) {
 
                     <div className={(message !== '' && 'userMessage ') + (darkMode && 'darkText')}>{message}</div>
 
-                    <div className={'userForm ' + (darkMode && 'darkUserForm')}>
-
-                        <div className='userFieldWrap'>
-                            <TextField
-                                label='New Username'
-                                placeholder={user}
-                                value={newUser}
-                                onChange={(e) => setNewUser(e.target.value)}
-                                dark={darkMode}
-                            />
-                        </div>
-
-                        <div className='userFieldWrap'>
-                            <ChunkyButton
-                                onPress={() => updateUsername()}
-                                text="Update Username"
-                                type={darkMode ? 'primaryDark' : 'primary'} />
-                        </div>
-                    </div>
+                    <form className={'userForm ' + (darkMode && 'darkUserForm')}>
+                        <TextField
+                            label='New Username'
+                            placeholder={user}
+                            value={newUser}
+                            onChange={(e) => setNewUser(e.target.value)}
+                            dark={darkMode}
+                        />
+                        <ChunkyButton
+                            onPress={() => updateUsername()}
+                            text="Update Username"
+                            type={darkMode ? 'primaryDark' : 'primary'}
+                        />
+                    </form>
 
 
-                    <div className={'passForm ' + (darkMode && 'darkUserForm')}>
-                        <div className='userFieldWrap'>
-                            <TextField
-                                type='password'
-                                label='Current Password'
-                                placeholder=''
-                                value={currentPass}
-                                onChange={(e) => setCurrentPass(e.target.value)}
-                                dark={darkMode}
-                            />
-                        </div>
+                    <form className={'passForm ' + (darkMode && 'darkUserForm')}>
+                        <TextField
+                            autocomplete='current-password'
+                            type='password'
+                            label='Current Password'
+                            placeholder=''
+                            value={currentPass}
+                            onChange={(e) => setCurrentPass(e.target.value)}
+                            dark={darkMode}
+                        />
 
-                        <div className='userFieldWrap'>
-                            <TextField
-                                type='password'
-                                label='New Password'
-                                placeholder=''
-                                value={newPass1}
-                                onChange={(e) => setNewPass1(e.target.value)}
-                                dark={darkMode}
-                            />
-                        </div>
+                        <TextField
+                            autocomplete='new-password'
+                            type='password'
+                            label='New Password'
+                            placeholder=''
+                            value={newPass1}
+                            onChange={(e) => setNewPass1(e.target.value)}
+                            dark={darkMode}
+                        />
 
-                        <div className='userFieldWrap'>
-                            <TextField
-                                type='password'
-                                label='Confirm New Password'
-                                placeholder=''
-                                value={newPass2}
-                                onChange={(e) => setNewPass2(e.target.value)}
-                                dark={darkMode}
-                            />
-                        </div>
+                        <TextField
+                            autocomplete='new-password'
+                            type='password'
+                            label='Confirm New Password'
+                            placeholder=''
+                            value={newPass2}
+                            onChange={(e) => setNewPass2(e.target.value)}
+                            dark={darkMode}
+                        />
 
-                        <div className='userFieldWrap'>
-                            <ChunkyButton
-                                onPress={() => updatePassword()}
-                                text='Update Password'
-                                type={darkMode ? 'primaryDark' : 'primary'} />
-                        </div>
-                    </div>
+                        <ChunkyButton
+                            onPress={() => updatePassword()}
+                            text='Update Password'
+                            type={darkMode ? 'primaryDark' : 'primary'}
+                        />
+
+                    </form>
 
 
                     <div className={'deleteWrapperUser ' + (darkMode && 'darkUserForm')}>

@@ -19,7 +19,7 @@ function Register() {
         if (user === '' || pass2 === '') {
             setMessage('Please enter a username and password');
         } else if (pass1 !== pass2) {
-            setMessage("Passwords don't match");
+            setMessage("Passwords must match");
         } else {
             axios.post('https://astrostore.io/api/user/register',
                 {username: user, password: pass2}).then(res => {
@@ -48,33 +48,40 @@ function Register() {
                     transitionDuration={250}>
 
                     <div className="modalHeader">Register</div>
-                    <div className="modalMessage">{message}</div>
-                    <div className='fieldWrapper'>
 
-                        <TextField label='Username'
+                    {message.length > 0 && <div className='modalMessage'>{message}</div>}
+
+                    <form>
+                        <TextField
+                            autocomplete='off'
+                            label='Username'
                             placeholder=''
                             value={user}
                             onChange={(e) => setUser(e.target.value)} />
 
-                        <TextField type='password'
+                        <TextField
+                            autocomplete='new-password'
+                            type='password'
                             label='Password'
                             placeholder=''
                             value={pass1}
                             onChange={(e) => setPass1(e.target.value)} />
 
-                        <TextField type='password'
+                        <TextField
+                            autocomplete='new-password'
+                            type='password'
                             label='Confirm Password'
                             placeholder=''
                             value={pass2}
                             onChange={(e) => setPass2(e.target.value)} />
+                    </form>
 
-                    </div>
 
                     <div className='submitWrapper'>
                         <ChunkyButton onPress={register} text={'Submit'} type={'primary'} />
                     </div>
                 </Dialog>
-            </div>
+            </div >
         );
     } else {
         return <Redirect to={`/${user}`} />;

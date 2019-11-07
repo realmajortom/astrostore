@@ -45,21 +45,25 @@ function Login() {
                     transitionDuration={250}>
 
                     <div className='modalHeader'>Login</div>
-                    <div className='modalMessage'>{message}</div>
-                    <div className='fieldWrapper'>
 
-                        <TextField label='Username'
+                    {message.length > 0 && <div className='modalMessage'>{message}</div>}
+
+                    <form>
+                        <TextField
+                            autocomplete='username'
+                            label='Username'
                             placeholder=''
                             value={user}
                             onChange={(e) => setUser(e.target.value)} />
 
-                        <TextField type='password'
+                        <TextField
+                            autocomplete='current-password'
+                            type='password'
                             label='Password'
                             placeholder=''
                             svalue={pass}
                             onChange={(e) => setPass(e.target.value)} />
-
-                    </div>
+                    </form>
 
                     <div className='submitWrapper'>
                         <ChunkyButton onPress={() => loginUser()} text={'Submit'} type={'primary'} />

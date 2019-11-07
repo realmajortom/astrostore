@@ -255,11 +255,13 @@ function Home() {
                                     <AddCollection />
                                     <AddBookmark buttonType="primary" pTitle={''} id={''} />
                                     <ChunkyButton
+                                        locale='nav'
                                         type={state.darkMode ? 'pinkDark' : 'pink'}
                                         text={mainVis ? 'Show Favorites' : 'Show All'}
                                         onPress={() => setMainVis(!mainVis)}
                                     />
                                     <ChunkyButton
+                                        locale='nav'
                                         type={state.darkMode ? 'pinkDark' : 'pink'}
                                         text='User'
                                         onPress={() => dispatch({type: 'toggleSheet'})}

@@ -65,13 +65,14 @@ function EditCollection(props) {
 
                 <div className={"modalHeader " + (darkMode && 'darkBook')}>Edit Collection</div>
 
-                <div className='fieldWrapper'>
+
+                <form>
                     <TextField label="Collection Title:"
                         value={title}
                         placeholder=''
                         dark={darkMode}
                         onChange={(e) => setTitle(e.target.value)} />
-                </div>
+                </form>
 
                 <div className='submitWrapper'>
                     <ChunkyButton onPress={() => sendUpdate()}

@@ -92,7 +92,6 @@
 .collectionContainer {
 	 	width: 250px;
   	padding: 25px;
-		border: 1px solid #eeeeee;
 		box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
 		border-radius: 10px;
 		margin: 10px;
@@ -131,7 +130,7 @@
 }
 
 .faveTitle {
-	margin-bottom: 5px;
+	margin-bottom: 6px;
 }
 
 /***** bookmarks *****/
@@ -253,7 +252,6 @@
 /************ dialogs ************/
 .modalBody {
     font-family: "Lato", sans-serif;
-    height: 400px;
     min-width: 340px;
     display: flex;
     flex-flow: column nowrap;
@@ -261,14 +259,6 @@
     background: #1D1D1D;
     border-radius: 4px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
-
-.modalSmall {
-    height: 230px;
-}
-
-.modalMedium {
-    height: 300px;
 }
 
 .modalHeader {
@@ -280,7 +270,7 @@
 }
 
 .modalMessage {
-    margin-bottom: 15px;
+    margin: 15px 0 0 0;
 }
 
 .collectionSelection {
@@ -297,12 +287,8 @@
 		margin-top: 20px;
 }
 
-.submitWrapper {
+.btnWrapper {
     margin: 30px 0;
-}
-
-.deleteWrapper {
-    margin-bottom: 30px;
 }
 
 .collectionsModal {
@@ -343,12 +329,14 @@
 .userForm {
     border-top: 1px solid #eee;
     margin-top: 30px;
-    padding: 10px 0;
+		padding: 10px 0;
+		align-items: baseline;
 }
 
 .passForm {
     border-top: 1px solid #eee;
-    padding: 10px 0;
+		padding: 10px 0;
+		align-items: baseline;
 }
 
 .userFieldWrap {
@@ -357,8 +345,6 @@
 
 .deleteWrapperUser {
     border-top: 1px solid #eee;
-    margin-top: 1.5vh;
-    padding: 40px 0;
 }
 
 .footer {
@@ -406,12 +392,12 @@
 }
 
 .collBubbleOuter {
-	padding: 8px 0;
+	padding: 10px 0;
 }
 
 .collBubbleInner {
   padding: 15px;
-	border: 1px solid #eeeeee;
+	/* border: 1px solid #eeeeee; */
 	background-color: #ffffff;
 	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
 	border-radius: 10px;
@@ -434,7 +420,7 @@
 
 
 .reorderBtnsOuter {
-	margin-top: 20px;
+	margin: 20px 0;
 	width: 100%;
 	display: flex;
 	flex-flow: row nowrap;
@@ -486,6 +472,12 @@
 .darkReorderBtn:hover {
 	background-color: #ccc;
 	border-color: #ccc;
+}
+
+form {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center
 }
 
 
@@ -551,12 +543,9 @@
 	.paper {
 		width: 80vw;
 	}
-	.favTitle {
-		padding-left: 0;
+	.faveTitle {
+		margin-bottom: 14px;
 	 }
-	.favCollection {
-		padding-left: 0;
-	}
 	.listContainer {
 		width: 100vw;
 		margin: 0;

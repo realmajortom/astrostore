@@ -66,7 +66,7 @@ function ShareBookmark(props) {
 			<div className='modalHeader'>New Bookmark</div>
 			<div className='modalMessage'>{message}</div>
 
-			<div className='fieldWrapper'>
+			<form>
 				<TextField
 					label='Bookmark Title'
 					placeholder=''
@@ -86,15 +86,9 @@ function ShareBookmark(props) {
 					value={parentId}
 					onChange={(e) => setParent(e.target.value)}
 				>
-					{
-						dropItems.map(c =>
-							<MenuItem value={c.id} key={c.id} >
-								{c.title}
-							</MenuItem>
-						)
-					}
+					{dropItems.map(c => <MenuItem value={c.id} key={c.id}>{c.title}</MenuItem>)}
 				</Dropdown>
-			</div>
+			</form>
 
 			<div className='submitWrapper'>
 				<ChunkyButton onPress={() => addBookmark()} text={'Submit'} type={'primary'} />

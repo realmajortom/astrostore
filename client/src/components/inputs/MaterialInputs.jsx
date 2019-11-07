@@ -8,13 +8,13 @@ import {makeStyles, withStyles} from '@material-ui/core/styles/index';
 
 const MaterialInput = withStyles(theme => ({
     root: {
-        marginTop: 23
+        marginTop: '28px'
     },
     input: {
-        borderRadius: 3,
+        borderRadius: 4,
         border: '1px solid #ced4da',
-        fontSize: 13,
-        paddingLeft: '10px',
+        fontSize: '16px',
+        padding: '8px 12px',
         transition: theme.transitions.create(['border-color']),
         fontFamily: ['Lato', 'sans-serif'].join(','),
         '&:focus': {
@@ -29,20 +29,22 @@ const MaterialInput = withStyles(theme => ({
 
 const useStyles = makeStyles({
     formControl: {
-        margin: 0,
+        margin: '30px 0 0 0',
         width: '90%',
-        maxWidth: 288,
-        minWidth: 240
+        minWidth: '270px',
+        maxWidth: 360
     },
     label: {
         fontFamily: ['Lato', 'sans-serif'],
-        fontSize: 20,
-        color: '#1d1d1d!important'
+        fontSize: '22px',
+        color: '#1d1d1d!important',
+        marginBottom: '10px!important'
     },
     labelDark: {
         fontFamily: ['Lato', 'sans-serif'],
-        fontSize: 20,
-        color: '#b3b3b3!important'
+        fontSize: '22px',
+        color: '#b3b3b3!important',
+        marginBottom: '10px!important'
     },
     innerDark: {
         color: '#ffffff!important'
@@ -67,6 +69,7 @@ export function TextField(props) {
             </InputLabel>
 
             <MaterialInput
+                autoComplete={props.autocomplete}
                 type={props.type}
                 placeholder={props.placeholder}
                 value={props.value}

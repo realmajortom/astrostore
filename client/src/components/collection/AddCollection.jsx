@@ -35,7 +35,9 @@ function AddCollection() {
 
     return (
         <div>
-            <ChunkyButton onPress={() => setVis(true)}
+            <ChunkyButton
+                locale='nav'
+                onPress={() => setVis(true)}
                 text={'New Collection'}
                 type={darkMode ? 'secondaryDark' : 'secondary'} />
 
@@ -51,16 +53,16 @@ function AddCollection() {
                     New Collection
                 </div>
 
-                <div className='fieldWrapper'>
+                <form>
                     <TextField label="Collection Title"
-                        placeholder='Space Articles'
                         value={title}
                         dark={darkMode}
                         onChange={(e) => setTitle(e.target.value)} />
-                </div>
+                </form>
 
                 <div className='submitWrapper'>
-                    <ChunkyButton onPress={() => addCollection()}
+                    <ChunkyButton
+                        onPress={() => addCollection()}
                         text={'Submit'}
                         type={darkMode ? 'primaryDark' : 'primary'} />
                 </div>
