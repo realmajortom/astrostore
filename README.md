@@ -1,21 +1,22 @@
 # AstroStore
-A personal bookmark manager built with React, Node, &amp; MongoDB.
+A cross-platform bookmark manager built with React, Node, &amp; MongoDB.
+
+Check it out: https://astrostore.io
 
 ## Introduction
-As far as motivation goes, I designed the tool so I could access my bookmarks from any browser at any time, without depending one browser's proprietary sync tools. AstroStore also differentiates itself from other bookmarking tools with its whimsical personality--I like when apps make me smile.
+AstroStore is a tool to access and save bookmarks in any browser. The app is designed to work elegantly on both desktop and mobile--it can be installed as a standalone PWA on mobile, and desktop browser extensions are available for Chrome & Firefox. 
 
-AstroStore doesn't request any identifying information from users. An account only requires a unique username and password--which is encrypted and securely stored in a NoSQL database.
+On top of awesome cross-platform functionality, AstroStore is mindful of user privacy. Zero identifying information is requested from users. An account only requires a unique username and password--which is encrypted and saved in an encrypted cloud database. There will also never be any trackers or ads on AstroStore because I hate that crap :)
 
-## Technologies
-- React w/ React Hooks.
-  - I initially built the app with class components, but updated it with hooks to improve data congruency between dropdowns, collection lists, and favorites list.
-- Node server w/ Express framework
-- REST APIs
+## Tools & Technologies
+- React
+- Node.js
+- Express
 - MongoDB
 - Google Cloud App Engine
 
 ## Upcoming Features & Fixes
-- Capability for users to delete their accounts and all corresponding bookmarks
+- Ability for users to delete their accounts
 
 ## Design Credits
   - Buttons: react-awesome-button
