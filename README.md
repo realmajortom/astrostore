@@ -18,6 +18,30 @@ On top of awesome cross-platform functionality, AstroStore is mindful of user pr
 ## Upcoming Features & Fixes
 - Ability for users to delete their accounts
 
+## Screenshots
+
+### Registration
+<kbd>![Registration](https://thomasg.dev/screenshots/astrostore/register.png "Registration")</kbd>
+
+### Collections
+<kbd>![Collections](https://thomasg.dev/screenshots/astrostore/collections.png "Collections")</kbd>
+
+### Favorites
+<kbd>![Favorites](https://thomasg.dev/screenshots/astrostore/favorites.png "Favorites")</kbd>
+
+### Preferences
+<kbd>![Preferences](https://thomasg.dev/screenshots/astrostore/user-sheet.png "Preferences")</kbd>
+
+### Dark Mode
+<kbd>![Dark Mode](https://thomasg.dev/screenshots/astrostore/collections_dark.png "Dark Mode")</kbd>
+
+### Browser Extension
+<kbd>![Browser Extension](https://thomasg.dev/screenshots/astrostore/addon_chrome.png "Browser Extension")</kbd>
+
+### Mobile PWA
+<kbd><img src="https://thomasg.dev/screenshots/astrostore/mobile.png" width="300px"></kbd>
+
+
 ## Design Credits
   - Buttons: react-awesome-button
         https://github.com/rcaferati/react-awesome-button
