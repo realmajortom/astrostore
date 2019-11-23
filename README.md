@@ -41,7 +41,7 @@ On top of awesome cross-platform functionality, AstroStore is mindful of user pr
 ### Mobile PWA
 <kbd><img src="https://thomasg.dev/screenshots/astrostore/mobile.png" width="300px"></kbd>
 
-### Android Sharesheet
+### Save Bookmarks from Android Sharesheet
 <kbd><img src="https://thomasg.dev/screenshots/astrostore/sharesheet.png" width="300px"></kbd>
 
 
