@@ -1,5 +1,5 @@
 # AstroStore
-Cross-platform, privacy-respecting bookmark manager.
+Cross-platform cloud bookmark manager.
 Check it out: https://astrostore.io
 
 ## Introduction
