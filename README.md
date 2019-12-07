@@ -39,7 +39,7 @@ On top of awesome cross-platform functionality, AstroStore is mindful of user pr
 <kbd>![Dark Mode](https://thomasg.dev/screenshots/astrostore/collections_dark.png "Dark Mode")</kbd>
 
 ### Browser Extension
-<kbd>![Browser Extension](https://thomasg.dev/screenshots/astrostore/addon_chrome.png "Browser Extension")</kbd>
+<kbd>![Browser Extension](https://thomasg.dev/screenshots/astrostore/addon_chrome_update.png "Browser Extension")</kbd>
 
 ### Mobile PWA
 <kbd><img src="https://thomasg.dev/screenshots/astrostore/mobile.png" width="300px"></kbd>
