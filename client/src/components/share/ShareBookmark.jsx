@@ -89,7 +89,7 @@ function ShareBookmark(props) {
 
 	} else {
 		return (
-			<div className={'share' + (darkMode ? ' dark' : null)}>
+			<div className={'share ' + (darkMode ? 'dark' : null)}>
 				<div className='modalHeader'>New Bookmark</div>
 				<div className='modalMessage'>{message}</div>
 
