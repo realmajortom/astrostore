@@ -1,21 +1,52 @@
 # AstroStore
-A personal bookmark manager built with React, Node, &amp; MongoDB.
+Cross-platform cloud bookmark manager.
+Check it out: https://astrostore.io
 
 ## Introduction
-As far as motivation goes, I designed the tool so I could access my bookmarks from any browser at any time, without depending one browser's proprietary sync tools. AstroStore also differentiates itself from other bookmarking tools with its whimsical personality--I like when apps make me smile.
+AstroStore is a tool to access and save bookmarks in any browser--it can be installed as a standalone PWA on mobile, and desktop browser extensions are available for Chrome & Firefox.
 
-AstroStore doesn't request any identifying information from users. An account only requires a unique username and password--which is encrypted and securely stored in a NoSQL database.
+On top of awesome cross-platform functionality, AstroStore is mindful of user privacy. Zero identifying information is requested from users. An account only requires a unique username and password--which is encrypted and saved in an encrypted cloud database. There will also never be any trackers or ads on AstroStore because I hate that crap :)
 
-## Technologies
-- React w/ React Hooks.
-  - I initially built the app with class components, but updated it with hooks to improve data congruency between dropdowns, collection lists, and favorites list.
-- Node server w/ Express framework
-- REST APIs
+## Tools & Technologies
+- JavaScript
+- HTML
+- CSS
+- React
+- Node.js
+- Express
 - MongoDB
-- Google Cloud App Engine
+- Google App Engine
+- REST APIs
 
 ## Upcoming Features & Fixes
-- Capability for users to delete their accounts and all corresponding bookmarks
+- Ability for users to delete their accounts
+
+## Screenshots
+
+### Registration
+<kbd>![Registration](https://thomasg.dev/screenshots/astrostore/register.png "Registration")</kbd>
+
+### Collections
+<kbd>![Collections](https://thomasg.dev/screenshots/astrostore/collections.png "Collections")</kbd>
+
+### Favorites
+<kbd>![Favorites](https://thomasg.dev/screenshots/astrostore/favorites.png "Favorites")</kbd>
+
+### Preferences
+<kbd>![Preferences](https://thomasg.dev/screenshots/astrostore/user-sheet.png "Preferences")</kbd>
+
+### Dark Mode
+<kbd>![Dark Mode](https://thomasg.dev/screenshots/astrostore/collections_dark.png "Dark Mode")</kbd>
+
+### Browser Extension
+<kbd>![Browser Extension](https://thomasg.dev/screenshots/astrostore/addon_chrome_update.png "Browser Extension")</kbd>
+
+### Mobile PWA
+<kbd><img src="https://thomasg.dev/screenshots/astrostore/mobile.png" width="300px"></kbd>
+
+### Save bookmarks from Android sharesheet
+<kbd><img src="https://thomasg.dev/screenshots/astrostore/sharesheet.png" width="300px"></kbd>
+
 
 ## Design Credits
   - Buttons: react-awesome-button
