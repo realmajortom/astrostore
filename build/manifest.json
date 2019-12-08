@@ -1,7 +1,7 @@
 {
   "short_name": "AstroStore",
   "name": "AstroStore Bookmark Manager",
-  "description": "A cross-platform, open-source bookmark manager.",
+  "description": "Cross-platform cloud bookmark manager",
   "lang": "en-US",
   "display": "standalone",
   "theme_color": "#121212",

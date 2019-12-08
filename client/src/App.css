@@ -1,57 +1,57 @@
 /************ app body ************/
 .appContainer {
-    font-family: "Lato", sans-serif;
-	padding: 0;
+	font-family: "Lato", sans-serif;
 	overflow: scroll;
+	padding: 0;
 }
 
 .navbar {
+	align-items: center;
+	background-color: #ffffff;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	left: 0;
+	padding-top: 10px;
+	position: fixed;
+	top: 0;
+	width: 100vw;
 	z-index: 10;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    position: fixed;
-		top: 0;
-		left: 0;
-		padding-top: 10px;
-		background-color: #fff;
 }
 
 .navHome {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 800px;
-		margin: 0 3vw;
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0 3vw;
+	width: 800px;
 }
 
 .navLanding {
+	align-items: baseline;
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
 	margin-left: 40px;
-    display: flex;
-    flex-flow: row;
-    width: 320px;
-    align-items: baseline;
-    justify-content: space-between;
+	width: 320px;
 }
 
 .appTitle {
-    font-family: "Roboto", sans-serif;
-    font-size: 38pt;
-    text-decoration: none;
-    color: #313131;
-    width: 248px;
-    display: flex;
-    align-items: baseline;
-    flex-wrap: nowrap;
-    user-select: none;
-		padding-left: 3vw;
+	align-items: baseline;
+	color: #313131;
+	display: flex;
+	flex-wrap: nowrap;
+	font-family: "Roboto", sans-serif;
+	font-size: 38pt;
+	padding-left: 3vw;
+	text-decoration: none;
+	user-select: none;
+	width: 248px;
 }
 
 .tinyLogo {
-    height: 16px;
+	height: 16px;
 }
 
 .aws-btn {
@@ -60,27 +60,27 @@
 
 /************ landing intro ************/
 .astronaut {
-    margin-top: 20vh;
-    height: 70vh;
-    width: 70vh;
+	height: 70vh;
+	margin-top: 20vh;
+	width: 70vh;
 }
 
 /************ list container ************/
 .listContainer {
-    height: calc(100vh - 71px);
-    margin: 71px calc(2vw + 10px) 0 2vw;
-    padding: 0;
-    display: flex;
-    flex-flow: column wrap;
-    align-content: flex-start;
-		overflow: scroll;
+	align-content: flex-start;
+	display: flex;
+	flex-flow: column wrap;
+	height: calc(100vh - 71px);
+	margin: 71px calc(2vw + 10px) 0 2vw;
+	overflow: scroll;
+	padding: 0;
 }
 
 .favTitle {
+	font-size: 15pt;
 	padding: 25px 0 5px 0;
-    font-size: 15pt;
-    user-select: none;
-    white-space: nowrap;
+	user-select: none;
+	white-space: nowrap;
 }
 
 .favCollection {
@@ -90,43 +90,40 @@
 
 /************ collection container ************/
 .collectionContainer {
-	 	width: 250px;
-  	padding: 25px;
-		box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
-		border-radius: 10px;
-		margin: 10px;
+	border-radius: 10px;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.20);
+	margin: 10px;
+	padding: 25px;
+	width: 250px;
 }
 
 .collTitleContainer {
-    display: flex;
-    flex-direction: row;
-		align-items: baseline;
-		justify-content: space-between;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 .collTitleText {
-    font-size: 15pt;
-		font-weight: 700;
-    user-select: none;
-    white-space: nowrap;
+	font-size: 15pt;
+	font-weight: 700;
+	height: 25px;
+	user-select: none;
+	white-space: nowrap;
 }
 
-.controlsOuter {
-
-}
 .collTitleContainer .controls {
-		visibility: hidden;
-    transition-property: visibility;
-    transition-delay: .2s;
+	transition-delay: .2s;
+	transition-property: visibility;
+	visibility: hidden;
 }
 
 .collTitleContainer:hover .controls {
-    visibility: visible;
+	visibility: visible;
 }
 
 .controls {
-	display: flex;
 	align-items: baseline;
+	display: flex;
 }
 
 .faveTitle {
@@ -139,10 +136,11 @@
 }
 
 .borderCont {
-	/*border-bottom: 1px solid #eee;*/
 	cursor: default;
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
 	padding: 8px 0;
 }
 
@@ -151,15 +149,14 @@
 }
 
 .borderCont .editImg {
-	width: 16px;
 	margin: 0;
+	width: 16px;
 }
 
-
 .bookTitle {
-	text-decoration: none;
 	color: #1d1d1d;
 	font-size: 11pt;
+	text-decoration: none;
 }
 
 .bookTitle:hover {
@@ -167,13 +164,17 @@
 }
 
 .bookRow .controls {
-	visibility: hidden;
-	transition-property: visibility;
 	transition-delay: .2s;
+	transition-property: visibility;
+	visibility: hidden;
 }
 
 .bookRow:hover .controls {
 	visibility: visible;
+}
+
+.titleColumn {
+	width: 100%;
 }
 
 .editCol {
@@ -181,14 +182,14 @@
 }
 
 .favColumn {
-	margin: 0 10px 0 0;
-	padding: 0;
 	color: #8b8b8b;
-	font-size: 10pt;
+	cursor: pointer;
 	display: flex;
 	flex-direction: column;
+	font-size: 10pt;
 	justify-content: space-around;
-	cursor: pointer;
+	margin: 0 10px 0 0;
+	padding: 0;
 }
 
 .faveIcon {
@@ -200,40 +201,39 @@
 }
 
 
-
 /**** bookmark/collection buttons ****/
 
 .editButton {
-    border: none;
-    background-color: transparent;
-    color: #9b9b9b;
-    margin: 0 0 0 20px;
-    padding: 0;
-    user-select: none;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 100%;
+	align-items: center;
+	background-color: transparent;
+	border: none;
+	color: #9b9b9b;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	margin: 0 0 0 20px;
+	padding: 0;
+	user-select: none;
 }
 
 .plusButton {
-	border: none;
 	background-color: transparent;
+	border: none;
 	color: #9b9b9b;
 	font-size: 15pt;
-	padding: 0;
 	margin: 0 0 0 20px;
+	padding: 0;
 	user-select: none;
 }
 
 .editImg {
-	width: 18px;
 	margin: 0 0 -2px 0;
+	width: 18px;
 }
 
 .addImg {
-	width: 26px;
 	margin: 0 0 -5px 0;
+	width: 26px;
 }
 
 .addImg, .editImg {
@@ -247,79 +247,77 @@
 }
 
 
-
-
 /************ dialogs ************/
 .modalBody {
-    font-family: "Lato", sans-serif;
-    min-width: 340px;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    background: #1D1D1D;
-    border-radius: 4px;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	align-items: center;
+	background: #1d1d1d;
+	border-radius: 4px;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	display: flex;
+	flex-flow: column nowrap;
+	font-family: "Lato", sans-serif;
+	min-width: 340px;
 }
 
 .modalHeader {
-		font-weight: 700;
-    user-select: none;
-    white-space: nowrap;
-    font-size: 22pt;
-    margin-top: 20px;
+	font-size: 22pt;
+	font-weight: 700;
+	margin-top: 20px;
+	user-select: none;
+	white-space: nowrap;
 }
 
 .modalMessage {
-    margin: 15px 0 0 0;
+	margin: 15px 0 0 0;
 }
 
 .collectionSelection {
-    margin: 12px 0 36px 0;
-    width: 80%;
+	margin: 12px 0 36px 0;
+	width: 80%;
 }
 
 .fieldWrapper {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: space-around;
-		flex-grow: 1;
-		margin-top: 20px;
+	align-items: center;
+	display: flex;
+	flex-flow: column nowrap;
+	flex-grow: 1;
+	justify-content: space-around;
+	margin-top: 20px;
 }
 
 .btnWrapper {
-    margin: 30px 0;
+	margin: 30px 0;
 }
 
 .collectionsModal {
-    font-family: "Lato", sans-serif;
-    /* height: 400px; */
-		/* min-width: 340px; */
-		width: 90vw;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    background: #1D1D1D;
-    border-radius: 4px;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	align-items: center;
+	/* height: 400px; */
+	/* min-width: 340px; */
+	background: #1d1d1d;
+	border-radius: 4px;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	display: flex;
+	flex-flow: column nowrap;
+	font-family: "Lato", sans-serif;
+	width: 90vw;
 }
 
 
 /*********** User Drawer ************/
 .paper {
-    width: 35vw;
+	width: 35vw;
 }
 
 .userContainer {
-    font-family: "Lato", sans-serif;
-    font-size: 14pt;
-    color: #313131;
-    padding: 3vh 4vw;
+	color: #313131;
+	font-family: "Lato", sans-serif;
+	font-size: 14pt;
+	padding: 3vh 4vw;
 }
 
 .welcomeHome {
-    font-family: "Roboto", sans-serif;
-    font-size: 38pt;
+	font-family: "Roboto", sans-serif;
+	font-size: 38pt;
 }
 
 .userMessage {
@@ -327,16 +325,16 @@
 }
 
 .userForm {
-    border-top: 1px solid #eee;
-    margin-top: 30px;
-		padding: 10px 0;
-		align-items: baseline;
+	align-items: baseline;
+	border-top: 1px solid #eeeeee;
+	margin-top: 30px;
+	padding: 10px 0;
 }
 
 .passForm {
-    border-top: 1px solid #eee;
-		padding: 10px 0;
-		align-items: baseline;
+	align-items: baseline;
+	border-top: 1px solid #eeeeee;
+	padding: 10px 0;
 }
 
 .userFieldWrap {
@@ -344,32 +342,32 @@
 }
 
 .deleteWrapperUser {
-    border-top: 1px solid #eee;
+	border-top: 1px solid #eeeeee;
 }
 
 .footer {
-    font-size: 11pt;
+	font-size: 11pt;
 }
 
 .footerLink {
-    text-decoration: none;
-    color: #7e17ea
+	color: #7e17ea;
+	text-decoration: none;
 }
 
 .toggleContainer {
-	margin: 25px 0;
-	width: 160px;
+	align-items: center;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	margin: 25px 0;
+	width: 160px;
 }
 
 .toggleCustom.react-toggle--checked .react-toggle-track {
-  background-color: #d9f0ff;
+	background-color: #d9f0ff;
 }
 
 .toggleCustom.react-toggle--checked:hover .react-toggle-track {
-  background-color: #68c3ff;
+	background-color: #68c3ff;
 }
 
 
@@ -378,17 +376,17 @@
 }
 
 .reorderHeader {
+	font-size: 22pt;
+	font-weight: 700;
 	margin: 0 0 15px 0;
 	padding: 0;
-	font-weight: 700;
 	user-select: none;
 	white-space: nowrap;
-	font-size: 22pt;
 }
 
 .dropArea {
-	width: 90%;
 	margin: 0 auto;
+	width: 90%;
 }
 
 .collBubbleOuter {
@@ -396,52 +394,52 @@
 }
 
 .collBubbleInner {
-  padding: 15px;
-	/* border: 1px solid #eeeeee; */
 	background-color: #ffffff;
-	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
+	/* border: 1px solid #eeeeee; */
 	border-radius: 10px;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.20);
+	padding: 15px;
 	transition: box-shadow 150ms ease 0s;
 }
 
 .collBubbleInner:hover {
-		cursor: pointer;
-		box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.20);
+	box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.20);
+	cursor: pointer;
 }
 
 .collBubbleTitle {
-    font-size: 15pt;
-		font-weight: 600;
-		margin: 0;
-		padding: 0;
-    user-select: none;
-    white-space: nowrap;
+	font-size: 15pt;
+	font-weight: 600;
+	margin: 0;
+	padding: 0;
+	user-select: none;
+	white-space: nowrap;
 }
 
 
 .reorderBtnsOuter {
-	margin: 20px 0;
-	width: 100%;
+	align-items: center;
 	display: flex;
 	flex-flow: row nowrap;
-	align-items: center;
 	justify-content: space-around;
+	margin: 20px 0;
+	width: 100%;
 }
 
 .reorderBtnsInner {
-	width: 200px;
+	align-items: center;
 	display: flex;
 	flex-flow: row nowrap;
-	align-items: center;
 	justify-content: space-between;
+	width: 200px;
 }
 
 .reorderCancelBtn {
-	padding: 10px 20px;
 	background-color: transparent;
 	border: none;
-	font-size: 11pt;
 	color: #666666;
+	font-size: 11pt;
+	padding: 10px 20px;
 }
 
 .reorderCancelBtn:hover, .reorderCancelBtn:active {
@@ -450,18 +448,18 @@
 }
 
 .reorderSaveBtn {
-	padding: 10px 20px;
 	background-color: transparent;
 	border: 1px solid #eeeeee;
-	color: #333;
+	border-radius: 4px;
+	color: #333333;
 	font-size: 11pt;
 	font-weight: 700;
-	border-radius: 4px;
+	padding: 10px 20px;
 }
 
 .reorderSaveBtn:hover, .reorderSaveBtn:active {
-	cursor: pointer;
 	background-color: #eeeeee;
+	cursor: pointer;
 }
 
 .darkReorderBtn {
@@ -470,115 +468,136 @@
 }
 
 .darkReorderBtn:hover {
-	background-color: #ccc;
-	border-color: #ccc;
+	background-color: #cccccc;
+	border-color: #cccccc;
 }
 
 form {
+	align-items: center;
 	display: flex;
 	flex-flow: column nowrap;
-	align-items: center
 }
-
 
 
 /****** mobile adjustments *******/
 @media (max-width: 1009px) {
 	.navbar {
-		flex-direction: column;
 		align-items: baseline;
+		flex-direction: column;
 	}
+
 	.navHome {
 		padding-top: 10px;
 		width: 94vw;
 	}
+
 	.navLanding {
 		margin-left: calc(3vw - 5px);
 	}
+
 	.listContainer {
 		height: calc(100vh - 111px);
 		margin-top: 131px;
 		padding: 0;
 	}
+
 	.astronaut {
 		margin-top: 15vh;
 	}
+
 	.paper {
 		width: 60vw;
 	}
+
 	.welcomeHome {
 		font-size: 22pt;
 	}
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
 	.reorderModal {
 		min-width: 90vw;
 	}
 }
 
-@media(max-width: 680px) {
+@media (max-width: 680px) {
 	.navbar {
 		align-items: center;
 		padding-top: 0;
 		position: relative;
 	}
+
 	.navHome {
-		width: 320px;
 		flex-wrap: wrap;
-		padding-top: 0;
 		margin-bottom: 20px;
+		padding-top: 0;
+		width: 320px;
 	}
+
 	.navLanding {
 		margin-left: 0;
 	}
+
 	.appTitle {
 		padding: 10px 0;
 	}
+
 	.astronaut {
 		height: 94vw;
-		width: 94vw;
 		margin-left: 3vw;
+		width: 94vw;
 	}
+
 	.paper {
 		width: 80vw;
 	}
+
 	.faveTitle {
 		margin-bottom: 14px;
-	 }
+	}
+
 	.listContainer {
-		width: 100vw;
-		margin: 0;
-		height: 100%;
+		align-items: center;
 		display: flex;
 		flex-flow: column nowrap;
-		align-items: center;
+		height: 100%;
+		margin: 0;
+		width: 100vw;
 	}
+
 	.collectionContainer {
 		width: 80%;
 	}
+
 	.collTitleContainer .controls, .bookRow .controls {
 		visibility: visible;
 	}
+
 	.bookTitle {
 		font-size: 13pt;
 	}
+
 	.collTitleText {
 		font-size: 18pt;
 	}
+
 	.editImg {
 		margin: 0 0 -1px 0;
 		width: 20px;
 	}
+
 	.titleColumn {
 		width: 100%;
 	}
+
 	.addImg, .editImg {
 		filter: invert(82%) sepia(59%) saturate(1%) hue-rotate(314deg) brightness(89%) contrast(94%);
 	}
+
 	.bookList {
 		margin-top: 14px;
 	}
+
 	.appContainer {
 		padding-bottom: 40px;
 	}
@@ -589,20 +608,25 @@ form {
 	.collectionContainer {
 		width: 253px;
 	}
+
 	.bookTitle {
 		font-size: 11pt;
 	}
+
 	.collTitleText {
 		font-size: 14pt;
 	}
+
 	.plusButton {
-		font-size: 14pt;
 		color: #c7c7c7;
+		font-size: 14pt;
 		margin-right: 0;
 	}
+
 	.editImg {
 		width: 17px;
 	}
+
 	.modalBody {
 		min-width: 300px;
 	}

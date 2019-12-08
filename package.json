@@ -1,7 +1,7 @@
 {
   "name": "astrostore",
-  "version": "1.1.1",
-  "description": "cloud bookmark manager",
+  "version": "1.1.2",
+  "description": "Cross-platform cloud bookmark manager",
   "main": "server.js",
   "engines": {
     "node": ">=12.6.0"
@@ -14,22 +14,22 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "bcrypt": "^3.0.6",
-    "body-parser": "^1.19.0",
-    "concurrently": "^4.1.1",
-    "cors": "^2.8.5",
-    "dotenv": "^8.0.0",
-    "express": "^4.17.1",
-    "express-rate-limit": "^5.0.0",
-    "helmet": "^3.19.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.6.5",
-    "morgan": "^1.9.1",
-    "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0",
-    "path": "^0.12.7",
-    "rate-limit-mongo": "^1.0.3",
-    "session": "^0.1.0"
+    "bcrypt": "latest",
+    "body-parser": "latest",
+    "concurrently": "latest",
+    "cors": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "express-rate-limit": "latest",
+    "helmet": "latest",
+    "jsonwebtoken": "latest",
+    "mongoose": "latest",
+    "morgan": "latest",
+    "passport": "latest",
+    "passport-jwt": "latest",
+    "passport-local": "latest",
+    "path": "latest",
+    "rate-limit-mongo": "latest",
+    "session": "latest"
   }
 }

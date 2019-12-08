@@ -34,7 +34,7 @@ module.exports = (app) => {
 
 						const token = jwt.sign({
 							sub: user.id,
-							exp: Math.floor(Date.now() / 1000) + (3600 * 168)
+							exp: Math.floor(Date.now() / 1000) + (3600 * 168 * 12)
 						}, process.env.SECRET);
 
 						return res.json({success: true, token: token});
@@ -141,7 +141,7 @@ module.exports = (app) => {
 										User.findOne({username: user.username}).then(user => {
 											const token = jwt.sign({
 												sub: user.id,
-												exp: Math.floor(Date.now() / 1000) + (3600 * 168)
+												exp: Math.floor(Date.now() / 1000) + (3600 * 168 * 12)
 											}, process.env.SECRET);
 											Collection.create({
 												owner: user.id,
