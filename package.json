@@ -1,18 +1,20 @@
 {
   "name": "astrostore",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Cross-platform cloud bookmark manager",
   "main": "server.js",
   "engines": {
-    "node": ">=12.6.0"
+    "node": "^12.0.0",
+    "npm": "^6.13.4"
   },
   "scripts": {
     "start": "node server.js"
   },
-  "repository": "https://github.com/tggir1/astrostore",
-  "author": "Thomas Girgenti <thomasg@disroot.org>",
+  "repository": "github:tggir1/astrostore",
+  "homepage": "https://astrostore.io",
+  "author": "Thomas Girgenti <thomasg@disroot.org> (https://thomasg.dev)",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "dependencies": {
     "bcrypt": "latest",
     "body-parser": "latest",
