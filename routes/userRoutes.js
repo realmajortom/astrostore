@@ -10,7 +10,7 @@ require('../security/auth');
 router.use(passport.initialize());
 
 
-router.post('/api/user/order',
+router.post('/order',
 	passport.authenticate('jwt', {session: false}), (req, res) => {
 		User.findByIdAndUpdate(req.user.id, {collOrder: req.body.order}, err =>
 			err
@@ -20,7 +20,7 @@ router.post('/api/user/order',
 	});
 
 
-router.post('/api/user/login', (req, res) => {
+router.post('/login', (req, res) => {
 
 	User.findOne({username: req.body.username}, (err, user) => {
 		if (err) {
@@ -50,7 +50,7 @@ router.post('/api/user/login', (req, res) => {
 });
 
 
-router.post('/api/user/updatePassword', passport.authenticate('jwt', {session: false}), (req, res) => {
+router.post('/updatePassword', passport.authenticate('jwt', {session: false}), (req, res) => {
 		bcrypt.compare(req.body.currentPass, req.user.password).then(match => {
 			if (match === false) {
 				res.send({message: 'Passwords must match', success: false});
@@ -81,7 +81,7 @@ router.post('/api/user/updatePassword', passport.authenticate('jwt', {session: f
 );
 
 
-router.post('/api/user/updateName', passport.authenticate('jwt', {session: false}), (req, res) => {
+router.post('/updateName', passport.authenticate('jwt', {session: false}), (req, res) => {
 		User.findOne({username: req.body.newName}, (err, user) => {
 			if (err) {
 				res.send({
@@ -112,7 +112,7 @@ router.post('/api/user/updateName', passport.authenticate('jwt', {session: false
 );
 
 
-router.post('/api/user/register', (req, res) => {
+router.post('/register', (req, res) => {
 	User.findOne({username: req.body.username}, (err, user) => {
 			if (err) {
 				res.send({

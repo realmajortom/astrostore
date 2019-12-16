@@ -4,10 +4,12 @@ const path = require('path');
 const helmet = require('helmet');
 const logger = require('morgan');
 const express = require('express');
-const passport = require('passport');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+
 const limiter = require('./security/rateLimiter');
+const userRoutes = require('./routes/userRoutes');
+const dataRoutes = require('./routes/dataRoutes');
 
 const app = express();
 
@@ -22,7 +24,7 @@ app.get('/_ah/warmup', (req, res) => {
 });
 
 
-app.enable('trust proxy');
+app.set('trust proxy', true);
 
 app.use((req, res, next) => {
 	if (req.secure) {
@@ -40,7 +42,6 @@ app.use(cors());
 app.use(helmet());
 app.use(logger('short'));
 app.use(bodyParser.json());
-app.use(passport.initialize());
 
 
 app.use('/api/user/register', limiter.regOp);
@@ -49,9 +50,8 @@ app.use('/api/collection', limiter.collectionOp);
 app.use('/api/bookmark', limiter.bookmarkOp);
 
 
-require('./security/auth');
-require('./routes/userRoutes')(app);
-require('./routes/dataRoutes')(app);
+app.use('/api/user', userRoutes);
+app.use('/api', dataRoutes);
 
 
 app.get('/*', function(req, res) {
@@ -60,5 +60,3 @@ app.get('/*', function(req, res) {
 
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
-
-module.exports = app;

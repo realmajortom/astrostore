@@ -8,7 +8,7 @@ require('../security/auth');
 router.use(passport.initialize());
 
 
-router.get('/api/collection/all',
+router.get('/collection/all',
   passport.authenticate('jwt', {session: false}), (req, res) => {
     const order = req.user.collOrder;
     Collection.find({'owner': req.user.id}, (err, collections) => {
@@ -18,7 +18,7 @@ router.get('/api/collection/all',
     });
   });
 
-router.post('/api/collection/create',
+router.post('/collection/create',
   passport.authenticate('jwt', {session: false}), (req, res) => {
     Collection.create(
       {
@@ -32,7 +32,7 @@ router.post('/api/collection/create',
     );
   });
 
-router.post('/api/collection/delete/:id', (req, res) => {
+router.post('/collection/delete/:id', (req, res) => {
   passport.authenticate('jwt', {session: false}),
     Collection.findByIdAndDelete(req.params.id, err =>
       err
@@ -41,7 +41,7 @@ router.post('/api/collection/delete/:id', (req, res) => {
     );
 });
 
-router.post('/api/collection/update/:id',
+router.post('/collection/update/:id',
   passport.authenticate('jwt', {session: false}), (req, res) => {
     Collection.findByIdAndUpdate(req.params.id, {title: req.body.title}, err =>
       err
@@ -51,7 +51,7 @@ router.post('/api/collection/update/:id',
   });
 
 
-router.post('/api/collection/collapse/:id',
+router.post('/collection/collapse/:id',
   passport.authenticate('jwt', {session: false}), (req, res) => {
     Collection.findByIdAndUpdate(req.params.id, {vis: req.body.vis}, err =>
       err
@@ -60,7 +60,7 @@ router.post('/api/collection/collapse/:id',
     );
   });
 
-router.post('/api/bookmark/create',
+router.post('/bookmark/create',
   passport.authenticate('jwt', {session: false}), (req, res) => {
     const newBookmark = new Bookmark({
       title: req.body.title,
@@ -75,7 +75,7 @@ router.post('/api/bookmark/create',
     );
   });
 
-router.post('/api/bookmark/update',
+router.post('/bookmark/update',
   passport.authenticate('jwt', {session: false}), (req, res) => {
     Collection.findOneAndUpdate({'_id': req.body.parentId, 'bookmarks.addDate': req.body.addDate}, {
       $set: {
@@ -89,7 +89,7 @@ router.post('/api/bookmark/update',
     );
   });
 
-router.post('/api/bookmark/fave',
+router.post('/bookmark/fave',
   passport.authenticate('jwt', {session: false}), (req, res) => {
     Collection.findOneAndUpdate({'_id': req.body.parentId, 'bookmarks.addDate': req.body.addDate}, {
       $set: {
@@ -102,7 +102,7 @@ router.post('/api/bookmark/fave',
     );
   });
 
-router.post('/api/bookmark/delete',
+router.post('/bookmark/delete',
   passport.authenticate('jwt', {session: false}), (req, res) => {
     Collection.findOneAndUpdate({'_id': req.body.parentId}, {
       $pull: {
