@@ -17,7 +17,7 @@ const PORT = process.env.PORT;
 
 
 app.get('/_ah/warmup', (req, res) => {
-	mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true});
+	mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true}, {useUnifiedTopology: true});
 	const db = mongoose.connection;
 	db.once('open', () => console.log('Connected to database'));
 	db.on('error', console.error.bind(console, 'Database connection error'));
@@ -54,9 +54,7 @@ app.use('/api/user', userRoutes);
 app.use('/api', dataRoutes);
 
 
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
-});
+app.get('/*', function(req, res) {res.sendFile(path.join(__dirname, 'build', 'index.html'))});
 
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));

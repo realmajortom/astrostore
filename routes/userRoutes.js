@@ -23,17 +23,22 @@ router.post('/order',
 router.post('/login', (req, res) => {
 
 	User.findOne({username: req.body.username}, (err, user) => {
+
 		if (err) {
 			res.json({message: 'Auth error', success: false});
+
 		} else if (!user) {
 			res.json({message: 'User not found', success: false});
+
 		} else {
 
 			bcrypt.compare(req.body.password, user.password, (err, response) => {
 				if (err) {
 					res.json({message: 'An error occurred during authentication.', success: false});
+
 				} else if (response === false) {
 					res.json({message: 'Incorrect password', success: false});
+
 				} else {
 
 					const token = jwt.sign({
@@ -41,7 +46,6 @@ router.post('/login', (req, res) => {
 					}, process.env.SECRET, {expiresIn: '90d'});
 
 					res.json({token: token, success: true});
-
 				}
 			});
 		}
