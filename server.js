@@ -16,12 +16,10 @@ const app = express();
 const PORT = process.env.PORT;
 
 
-app.get('/_ah/warmup', (req, res) => {
-	mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true}, {useUnifiedTopology: true});
-	const db = mongoose.connection;
-	db.once('open', () => console.log('Connected to database'));
-	db.on('error', console.error.bind(console, 'Database connection error'));
-});
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true}, {useUnifiedTopology: true});
+const db = mongoose.connection;
+db.once('open', () => console.log('Connected to database'));
+db.on('error', console.error.bind(console, 'Database connection error'));
 
 
 app.set('trust proxy', true);
