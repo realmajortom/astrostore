@@ -21,7 +21,7 @@ const initialState = {
     ddl: [],
     faves: [],
     sheetVis: false,
-    darkMode: JSON.parse(localStorage.getItem('darkMode')),
+    darkMode: null,
     redirect: false,
 };
 
@@ -115,7 +115,7 @@ const reducer = (state, action) => {
             return {...state, sheetVis: !state.sheetVis};
 
         case 'darkOn':
-            localStorage.setItem('darkMode', 'true');
+            // localStorage.setItem('darkMode', 'true');
             return {...state, darkMode: true};
 
         case 'toggleDark':
@@ -128,7 +128,7 @@ const reducer = (state, action) => {
                 theme.setAttribute("content", '#121212');
             }
 
-            localStorage.setItem('darkMode', newMode);
+            // localStorage.setItem('darkMode', newMode);
 
             return {...state, darkMode: !state.darkMode};
 
@@ -142,7 +142,7 @@ const reducer = (state, action) => {
 export const Ddl = React.createContext(null);
 export const Token = React.createContext(null);
 export const DarkMode = React.createContext(null);
-export const HomeDispatch = React.createContext(null)
+export const HomeDispatch = React.createContext(null);
 
 
 function Home() {

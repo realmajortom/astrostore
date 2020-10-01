@@ -4,10 +4,10 @@ import {HomeDispatch, Token, DarkMode} from './Home';
 import Drawer from '@material-ui/core/Drawer/index';
 import ChunkyButton from '../inputs/ChunkyButton';
 import {TextField} from '../inputs/MaterialInputs';
-import Toggle from 'react-toggle'
-import "react-toggle/style.css"
-import Moon from './Moon';
-import Sun from './Sun';
+// import Toggle from 'react-toggle'
+// import "react-toggle/style.css"
+// import Moon from './Moon';
+// import Sun from './Sun';
 import Reorder from './Reorder'
 
 function EditUser(props) {
@@ -92,17 +92,17 @@ function EditUser(props) {
 
                     <div className={'welcomeHome ' + (darkMode && 'darkBook')}>Hello, {user}!</div>
 
-                    <div className='toggleContainer'>
-                        <Toggle
-                            className='toggleCustom'
-                            icons={{
-                                checked: <Sun />,
-                                unchecked: <Moon />
-                            }}
-                            defaultChecked={darkMode}
-                            onChange={() => dispatch({type: 'toggleDark'})}
-                        />
-                    </div>
+                    {/*<div className='toggleContainer'>*/}
+                    {/*    <Toggle*/}
+                    {/*        className='toggleCustom'*/}
+                    {/*        icons={{*/}
+                    {/*            checked: <Sun />,*/}
+                    {/*            unchecked: <Moon />*/}
+                    {/*        }}*/}
+                    {/*        defaultChecked={darkMode}*/}
+                    {/*        onChange={() => dispatch({type: 'toggleDark'})}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
 
                     <button onClick={() => setCollEdit(true)} className={'reorderSaveBtn ' + (darkMode && 'darkReorderBtn')}>Rearrange Collections</button>
 

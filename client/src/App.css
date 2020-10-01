@@ -106,7 +106,6 @@
 .collTitleText {
 	font-size: 15pt;
 	font-weight: 700;
-	height: 25px;
 	user-select: none;
 	white-space: nowrap;
 }
@@ -318,6 +317,7 @@
 .welcomeHome {
 	font-family: "Roboto", sans-serif;
 	font-size: 38pt;
+	margin-bottom: 15px;
 }
 
 .userMessage {

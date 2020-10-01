@@ -14,7 +14,7 @@ export default function App() {
         } else {
             document.querySelector("meta[name=theme-color]").setAttribute('content', '#ffffff');
         }
-    })
+    });
 
     return (
         <div>
